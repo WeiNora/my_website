@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trace & Sip 心靈咖啡所</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+TC:wght@300;400;700;900&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   TOKENS
+══════════════════════════════════════ */
+:root {
+  --ink:        #2a1f17;
+  --bark:       #5c3d28;
+  --caramel:    #9b6a3c;
+  --latte:      #c9a97a;
+  --cream:      #f7f2ea;
+  --parchment:  #ede5d4;
+  --white:      #fdfaf5;
+  --rust:       #b85c38;
+  --sage:       #7d9270;
+  --blush:      #c9908a;
+  --gold:       #b89450;
+
+  --nav-h: 72px;
+  --hero-h: 100vh;
+  --section-pad: 120px 0;
+  --r: 2px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.625;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .serif {
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 400;
+}
+
+/* ── LAYOUT & GLOBAL ── */
+.container {
+  width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 40px;
+}
+@media (max-width: 768px) { .container { padding: 0 24px; } }
+
+/* ── NAVBAR ── */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 1000;
+  display: flex; align-items: center;
+  background: rgba(253, 250, 245, 0.85);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(42, 31, 23, 0.04);
+  transition: transform 0.4s var(--ease), background 0.4s var(--ease);
+}
+#navbar.hidden { transform: translateY(-100%); }
+#navbar.scrolled { background: rgba(253, 250, 245, 0.95); }
+
+.nav-container {
+  width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+@media (max-width: 1024px) { .nav-container { padding: 0 32px; } }
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 500; letter-spacing: 0.08em;
+  color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo span { font-size: 13px; font-family: 'Noto Sans TC', sans-serif; letter-spacing: 0.2em; opacity: 0.6; font-weight: 300; }
+
+.nav-links { display: flex; gap: 48px; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 13px; font-weight: 400; color: var(--bark); text-decoration: none;
+  letter-spacing: 0.15em; position: relative; padding: 4px 0;
+  transition: color 0.3s ease;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px;
+  background: var(--caramel); transform: scaleX(0); transform-origin: right;
+  transition: transform 0.4s var(--ease);
+}
+.nav-links a:hover { color: var(--caramel); }
+.nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+.nav-cta {
+  background: var(--ink); color: var(--white) !important;
+  padding: 8px 20px !important; border-radius: var(--r);
+  font-size: 12px !important; font-weight: 500 !important;
+}
+.nav-cta:hover { background: var(--caramel); }
+.nav-cta::after { display: none !important; }
+
+.burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1100; }
+.burger spectrum { display: block; width: 20px; height: 1px; background: var(--ink); margin: 5px 0; transition: 0.3s; }
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed; top: 0; right: 0; width: 100%; height: 100vh;
+    background: var(--white); flex-direction: column; justify-content: center;
+    gap: 40px; transform: translateX(100%); transition: transform 0.5s var(--ease);
+    box-shadow: -20px 0 40px rgba(0,0,0,0.02);
+  }
+  .nav-links.active { transform: translateX(0); }
+  .burger { display: block; }
+  .burger.active .line1 { transform: translateY(6px) rotate(45deg); }
+  .burger.active .line2 { opacity: 0; }
+  .burger.active .line3 { transform: translateY(-6px) rotate(-45deg); }
+}
+
+/* ── HERO ── */
+#hero {
+  height: var(--hero-h); width: 100%; background: var(--cream);
+  display: flex; align-items: center; position: relative; overflow: hidden;
+}
+.hero-bg-art {
+  position: absolute; right: -5%; bottom: -10%; width: 55%; height: 110%;
+  background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80&w=1600');
+  background-size: cover; background-position: center;
+  mask-image: radial-gradient(circle at 60% 50%, black 40%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 60% 50%, black 40%, transparent 75%);
+  opacity: 0.18; filter: grayscale(30%);
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.2fr 0.8fr; width: 100%; height: 100%; align-items: center; z-index: 2;
+}
+.hero-text { padding-top: 60px; }
+.hero-tag {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.3em;
+  color: var(--caramel); margin-bottom: 24px; display: inline-block;
+  font-weight: 500;
+}
+.hero-text h1 {
+  font-size: 56px; line-height: 1.25; color: var(--ink); margin-bottom: 32px; letter-spacing: 0.02em;
+}
+.hero-text h1 span { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--caramel); font-weight: 400; }
+.hero-text p {
+  font-size: 15px; color: var(--bark); max-width: 520px; margin-bottom: 48px;
+  font-weight: 300; text-align: justify; letter-spacing: 0.05em;
+}
+.hero-btns { display: flex; gap: 24px; align-items: center; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 14px 36px; border-radius: var(--r); font-size: 13px; font-weight: 400;
+  text-decoration: none; letter-spacing: 0.15em; transition: all 0.3s var(--ease);
+  cursor: pointer;
+}
+.btn-primary { background: var(--ink); color: var(--white); border: 1px solid var(--ink); }
+.btn-primary:hover { background: var(--caramel); border-color: var(--caramel); transform: translateY(-2px); }
+.btn-secondary { background: transparent; color: var(--bark); border: 1px solid rgba(92, 61, 40, 0.3); }
+.btn-secondary:hover { border-color: var(--ink); color: var(--ink); }
+
+@media (max-width: 1024px) {
+  .hero-text h1 { font-size: 44px; }
+}
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-bg-art { width: 100%; height: 100%; right: 0; bottom: 0; opacity: 0.12; }
+  .hero-text h1 { font-size: 38px; }
+  .hero-btns { flex-direction: column; align-items: flex-start; gap: 16px; width: 100%; }
+  .btn { width: 100%; }
+}
+
+/* ── ABOUT & CONCEPT ── */
+#about { background: var(--white); padding: var(--section-pad); position: relative; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+.about-img-frame { position: relative; padding-bottom: 125%; background: var(--parchment); overflow: hidden; }
+.about-img {
+  position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover;
+  filter: grayscale(15%) contrast(95%); transition: transform 0.8s var(--ease);
+}
+.about-img-frame:hover .about-img { transform: scale(1.04); }
+.about-content { padding-right: 40px; }
+.sec-title { font-size: 32px; color: var(--ink); margin-bottom: 24px; letter-spacing: 0.05em; }
+.sec-title span { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--caramel); }
+.about-content p { font-size: 15px; color: var(--bark); margin-bottom: 24px; text-align: justify; font-weight: 300; }
+
+@media (max-width: 1024px) {
+  .about-grid { gap: 48px; }
+  .about-content { padding-right: 0; }
+}
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; gap: 56px; }
+  .about-img-frame { order: 2; padding-bottom: 100%; }
+}
+
+/* ── JOURNEY (TIMELINE) ── */
+#journey { background: var(--cream); padding: var(--section-pad); }
+.tl-container { max-width: 900px; margin: 60px auto 0; position: relative; }
+.tl-container::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: rgba(92, 61, 40, 0.15);
+}
+.tl-item { position: relative; margin-bottom: 80px; width: 50%; padding-right: 60px; }
+.tl-item:nth-child(even) { left: 50%; padding-right: 0; padding-left: 60px; }
+.tl-dot {
+  position: absolute; right: -6px; top: 4px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--caramel); border: 2px solid var(--cream); z-index: 5;
+}
+.tl-item:nth-child(even) .tl-dot { left: -6px; right: auto; }
+.tl-time { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--caramel); margin-bottom: 8px; display: block; }
+.tl-item h3 { font-size: 18px; color: var(--ink); margin-bottom: 12px; }
+.tl-item p { font-size: 14px; color: var(--bark); font-weight: 300; text-align: justify; }
+
+@media (max-width: 768px) {
+  .tl-container::before { left: 16px; }
+  .tl-item { width: 100%; padding-left: 48px; padding-right: 0; margin-bottom: 48px; }
+  .tl-item:nth-child(even) { left: 0; padding-left: 48px; }
+  .tl-dot { left: 10px !important; right: auto !important; }
+}
+
+/* ── SERVICES ── */
+#services { background: var(--white); padding: var(--section-pad); }
+.srv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px; }
+.srv-card {
+  background: var(--white); border: 1px solid rgba(42, 31, 23, 0.06); padding: 48px 36px;
+  transition: all 0.4s var(--ease); display: flex; flex-direction: column;
+}
+.srv-card:hover {
+  transform: translateY(-4px); border-color: transparent;
+  box-shadow: 0 20px 40px rgba(42, 31, 23, 0.03); background: var(--cream);
+}
+.srv-icon { font-size: 28px; color: var(--caramel); margin-bottom: 32px; font-weight: 300; }
+.srv-card h3 { font-size: 20px; color: var(--ink); margin-bottom: 16px; letter-spacing: 0.05em; }
+.srv-card p { font-size: 14px; color: var(--bark); font-weight: 300; margin-bottom: 32px; text-align: justify; }
+.srv-price {
+  font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--ink);
+  margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(42, 31, 23, 0.05);
+}
+
+@media (max-width: 1024px) {
+  .srv-grid { grid-template-columns: 1fr; gap: 24px; }
+  .srv-card { padding: 40px 28px; }
+}
+
+/* ── BOOKING FORM ── */
+#booking { background: var(--parchment); padding: var(--section-pad); position: relative; }
+.form-box {
+  background: var(--white); max-width: 680px; margin: 0 auto; padding: 60px 80px;
+  box-shadow: 0 30px 60px rgba(42,31,23,0.04); position: relative; overflow: hidden;
+}
+@media (max-width: 768px) { .form-box { padding: 40px 24px; } }
+
+.form-group { margin-bottom: 24px; }
+.form-group label { display: block; font-size: 12px; letter-spacing: 0.1em; color: var(--bark); margin-bottom: 8px; font-weight: 500; }
+.form-control {
+  width: 100%; background: var(--white); border: none; border-bottom: 1px solid rgba(92, 61, 40, 0.2);
+  padding: 10px 0; font-size: 14px; color: var(--ink); font-family: inherit; transition: border-color 0.3s;
+}
+.form-control:focus { outline: none; border-color: var(--caramel); }
+select.form-control { cursor: pointer; border-radius: 0; -webkit-appearance: none; }
+
+.success-msg {
+  display: none; text-align: center; padding: 40px 0;
+}
+.success-msg.show { display: block; animation: fadeIn 0.6s ease forwards; }
+.success-msg h3 { font-size: 24px; color: var(--ink); margin-bottom: 16px; }
+.success-msg p { font-size: 14px; color: var(--bark); font-weight: 300; }
+
+/* ── FOOTER ── */
+footer { background: var(--ink); color: var(--parchment); padding: 80px 0 40px; font-size: 13px; font-weight: 300; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr repeat(2, 1fr); gap: 80px; margin-bottom: 60px; }
+.footer-brand h2 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--white); margin-bottom: 16px; letter-spacing: 0.05em; }
+.footer-brand p { color: rgba(237, 229, 212, 0.6); max-width: 320px; }
+.footer-col h4 { color: var(--white); font-weight: 400; margin-bottom: 20px; letter-spacing: 0.1em; font-size: 14px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul a { color: rgba(237, 229, 212, 0.7); text-decoration: none; transition: color 0.3s; }
+.footer-col ul a:hover { color: var(--latte); }
+.footer-bottom { border-top: 1px solid rgba(237, 229, 212, 0.08); padding-top: 40px; display: flex; justify-content: space-between; color: rgba(237, 229, 212, 0.4); }
+
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+/* ── ANIMATIONS ── */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-logo">Trace & Sip <span>心靈咖啡所</span></a>
+    <button class="burger" aria-label="Toggle Menu" onclick="toggleMenu()">
+      <span class="line1"></span>
+      <span class="line2"></span>
+      <span class="line3"></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" onclick="closeMenu()">關於空間</a></li>
+      <li><a href="#journey" onclick="closeMenu()">品牌旅程</a></li>
+      <li><a href="#services" onclick="closeMenu()">服務項目</a></li>
+      <li><a href="#booking" class="nav-cta" onclick="closeMenu()">預約諮詢</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg-art"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="hero-tag">A Sanctuary for the Soul</span>
+        <h1>在咖啡香氣中，<br>找回內心的<span>平靜與軌跡</span></h1>
+        <p>這不是一間傳統的諮商室，而是一個融合了精品咖啡與深度敘事諮詢的溫柔空間。在這裡，你可以卸下防備，點一杯專屬此時此刻的心情咖啡，讓思緒隨著氤氳慢慢沈澱、梳理。</p>
+        <div class="hero-btns">
+          <a href="#booking" class="btn btn-primary">線上預約體驗</a>
+          <a href="#services" class="btn btn-secondary">探索服務項目</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-frame reveal">
+        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=1200" alt="Space atmosphere" class="about-img">
+      </div>
+      <div class="about-content reveal">
+        <span class="hero-tag">The Concept</span>
+        <h2 class="sec-title">留下痕跡，<span>輕啜一口</span></h2>
+        <p>「Trace」代表梳理、追尋與探索內心的流動與傷痕；「Sip」則是專注當下、溫柔承接與細細品味生活。我們相信，每一個來到這裡的人，身上的故事都如同咖啡豆一樣，經歷過高溫與磨礪，才散發出獨一無二的風味。</p>
+        <p>在這裡，沒有冰冷的診療椅或教條式的問答。我們透過香氣媒介，引導你在放鬆的氛圍中與專業諮詢師對話，重拾生活的前行力量。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 40px;" class="reveal">
+      <span class="hero-tag">Our Timeline</span>
+      <h2 class="sec-title">時間沉澱出的<span>空間溫度</span></h2>
+    </div>
+    <div class="tl-container">
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <span class="tl-time">2024.11</span>
+        <h3>最初的種子</h3>
+        <p>創辦人結合心理學背景與對咖啡文化的熱愛，萌生了打造一個「非典型心靈避難所」的初衷，希望打破大眾對心理諮商的冰冷刻板印象。</p>
+      </div>
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <span class="tl-time">2025.04</span>
+        <h3>空間與風味的研發</h3>
+        <p>我們花費了半年的時間尋找隱密且充滿自然光的基底空間，並與專業烘豆師合作，研發出三款分別對應「迷惘」、「沉澱」與「覺察」的心靈處方主題咖啡豆。</p>
+      </div>
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <span class="tl-time">2025.10</span>
+        <h3>Trace & Sip 正式啟航</h3>
+        <p>空間正式對外開放，首創「咖啡特調 x 敘事對話」的複合式體驗，期盼陪伴每一位在都市中步伐緊湊的靈魂，在這裡找到短暫安放自我的角落。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div style="text-align: center;" class="reveal">
+      <span class="hero-tag">What We Offer</span>
+      <h2 class="sec-title">為你量身打造的<span>沉澱方案</span></h2>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card reveal">
+        <div class="srv-icon">☕</div>
+        <h3>敘事咖啡漫遊</h3>
+        <p>適合想獨處放鬆的你。內含一組心情主題特調咖啡與互動式牌卡自主梳理引導，在無壓力的角落與自己進行一場無聲的對話。</p>
+        <div class="srv-price">NT$ 380 / 體驗</div>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon">✨</div>
+        <h3>微光心靈諮詢</h3>
+        <p>一對一專業敘事諮詢（40分鐘）。結合當日特調咖啡，在輕鬆的吧台或獨立包廂中，由合格諮詢師陪伴你釐清當下的情緒結節與迷惘。</p>
+        <div class="srv-price">NT$ 1,800 / 40 min</div>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon">🌱</div>
+        <h3>深度敘事專案</h3>
+        <p>針對特定議題（如職涯迷惘、情感關係、自我價值）進行深度陪伴（共3堂）。包含專屬風味咖啡點單與量身定制的系統化梳理路徑。</p>
+        <div class="srv-price">NT$ 5,200 / 3 堂</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="container">
+    <div class="form-box reveal">
+      <div id="formContent">
+        <div style="text-align: center; margin-bottom: 40px;">
+          <span class="hero-tag">Reservation</span>
+          <h2 class="sec-title" style="font-size:26px;">預約一場與心靈的<span>咖啡約會</span></h2>
+        </div>
+        <form onsubmit="event.preventDefault(); submitForm();">
+          <div class="form-group">
+            <label for="f-name">您的姓名 / 稱呼</label>
+            <input type="text" id="f-name" class="form-control" placeholder="例如：林先生 / 檾小姐" required>
+          </div>
+          <div class="form-group">
+            <label for="f-phone">聯絡電話</label>
+            <input type="tel" id="f-phone" class="form-control" placeholder="請輸入您的手機號碼" required>
+          </div>
+          <div class="form-group">
+            <label for="f-service">想體驗的項目</label>
+            <select id="f-service" class="form-control" required>
+              <option value="" disabled selected>請選擇一個沉澱方案</option>
+              <option value="coffee">敘事咖啡漫遊 (NT$380)</option>
+              <option value="light">微光心靈諮詢 (NT$1,800)</option>
+              <option value="deep">深度敘事專案 (NT$5,200)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-date">偏好預約日期</label>
+            <input type="date" id="f-date" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="f-message">簡單聊聊您目前的狀態或期待 (選填)</label>
+            <textarea id="f-message" class="form-control" rows="3" placeholder="讓我們能提前為您準備最適合的氛圍與咖啡風味..."></textarea>
+          </div>
+          <div style="margin-top: 40px;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">提交預約申請</button>
+          </div>
+        </form>
+      </div>
+      <div id="formSuccess" class="success-msg">
+        <div style="font-size: 48px; margin-bottom: 20px;">✓</div>
+        <h3>預約申請已收到</h3>
+        <p>謝謝您願意給自己一段沉澱的時間。<br>我們將於 24 小時內傳送簡訊及 Email 與您確認最終入座時間，期待與您相遇。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h2>Trace & Sip</h2>
+        <p>融合精品咖啡與敘事諮詢的溫柔空間。陪你在香氣中追尋傷痕，在輕啜中安放靈魂。</p>
+      </div>
+      <div class="footer-col">
+        <h4>空間資訊</h4>
+        <ul>
+          <li>時間 / 週二至週日 13:00 - 21:00</li>
+          <li>地址 / 台北市大安區靜謐巷弄 10 號</li>
+          <li>電話 / 02-2345-6789</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>關注我們</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">LINE 官方帳號</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Trace & Sip 心靈咖啡所. All rights reserved.</p>
+      <p>Designed for Inner Peace</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── SCROLL DETECT (NAVBAR SHADOW & HIDE) ── */
+let lastScrollY = window.scrollY;
+const navbar = document.getElementById('navbar');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+  
+  if (window.scrollY > lastScrollY && window.scrollY > 200) {
+    navbar.classList.add('hidden');
+  } else {
+    navbar.classList.remove('hidden');
+  }
+  lastScrollY = window.scrollY;
+});
+
+/* ── MOBILE NAV MENU ── */
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('active');
+  document.querySelector('.burger').classList.toggle('active');
+}
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('active');
+  document.querySelector('.burger').classList.remove('active');
+}
+
+/* ── REVEAL ON SCROLL ── */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(r => observer.observe(r));
+
+/* ── FORM SUBMIT ── */
+function submitForm() {
+  const name    = document.getElementById('f-name').value.trim();
+  const phone   = document.getElementById('f-phone').value.trim();
+  const service = document.getElementById('f-service').value;
+
+  if (!name || !phone || !service) {
+    const form = document.getElementById('formContent');
+    form.style.animation = 'none';
+    form.offsetHeight;
+    form.style.animation = 'shake 0.4s ease';
+    alert('請填寫姓名、聯絡電話，並選擇服務項目。');
+    return;
+  }
+
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+  window.scrollTo({top: document.getElementById('booking').offsetTop - 80, behavior:'smooth'});
+}
+
+/* ── SET MIN DATE ── */
+const dateInput = document.getElementById('f-date');
+if (dateInput) {
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  dateInput.min = tomorrow.toISOString().split('T')[0];
+}
+
+/* ── SMOOTH ANCHOR ── */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href');
+    if(targetId === '#') return;
+    e.preventDefault();
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 70,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
