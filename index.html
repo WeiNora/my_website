@@ -4,887 +4,484 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trace & Sip 心靈咖啡所</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Trace & Sip 心靈咖啡所——結合咖啡文化與心理支持的複合式場域，讓心理照顧成為一種生活風格。台北大安區，提供手沖咖啡、心理諮詢、諮商療程服務。">
+<meta name="keywords" content="心靈咖啡,心理諮詢,台北咖啡廳,療癒空間,心理支持,Trace and Sip">
+<meta property="og:title" content="Trace & Sip 心靈咖啡所">
+<meta property="og:description" content="不只是咖啡，而是一個可以安心放下自己的地方。">
+<meta property="og:type" content="website">
+
+<!-- Schema Markup for SEO & AI Search -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "Trace & Sip 心靈咖啡所",
+  "description": "結合咖啡文化與心理支持的複合式場域，讓心理照顧成為一種生活風格。",
+  "url": "https://traceandsip.tw",
+  "telephone": "02-XXXX-XXXX",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "復興南路一段XX號",
+    "addressLocality": "大安區",
+    "addressRegion": "台北市",
+    "addressCountry": "TW"
+  },
+  "openingHours": ["Tu-Su 10:00-21:00"],
+  "priceRange": "$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "心靈咖啡所服務",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "手沖單品咖啡"}, "price": "150", "priceCurrency": "TWD"},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "心理諮詢"}, "price": "500", "priceCurrency": "TWD"},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "諮商療程"}, "price": "1800", "priceCurrency": "TWD"}
+    ]
+  }
+}
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Noto+Serif+TC:wght@300;400;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
 :root {
-  --sand:    #f5ede0;
-  --warm:    #eddcca;
-  --kraft:   #c9a87a;
-  --brown:   #7a4e2d;
-  --dark:    #3b2412;
-  --rust:    #c05a35;
-  --sage:    #7a9e7e;
-  --blush:   #d4938a;
-  --cream:   #fdf8f1;
-  --ink:     #2e1f0f;
+  --sand:#f5ede0; --warm:#eddcca; --kraft:#c9a87a;
+  --brown:#7a4e2d; --dark:#3b2412; --rust:#c05a35;
+  --sage:#7a9e7e; --blush:#d4938a; --cream:#fdf8f1;
+  --ink:#2e1f0f; --gold:#c9a030;
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:16px;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--sand);overflow-x:hidden;}
 
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { font-size:16px; scroll-behavior:smooth; }
-body {
-  font-family: 'Noto Sans TC', sans-serif;
-  background: var(--sand);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+/* TEXTURE */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9997;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");}
 
-/* ── PAPER TEXTURE ── */
-body::before {
-  content:'';
-  position:fixed; inset:0; pointer-events:none; z-index:9999;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-}
+/* ── CURTAIN ── */
+#curtain{position:fixed;inset:0;z-index:8000;pointer-events:none;background:var(--brown);transform:translateX(-100%);}
+#curtain.wipe-in{animation:cIn .4s cubic-bezier(.7,0,.3,1) forwards;}
+#curtain.wipe-out{animation:cOut .36s cubic-bezier(.7,0,.3,1) forwards;}
+@keyframes cIn{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+@keyframes cOut{from{transform:translateX(0)}to{transform:translateX(100%)}}
+.page-enter>*{animation:pRev .5s .04s cubic-bezier(.4,0,.2,1) both;}
+@keyframes pRev{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
-/* ══════════════════════════════════
-   PAGE TRANSITION OVERLAY
-   — the "curtain" that wipes across
-══════════════════════════════════ */
-#curtain {
-  position: fixed;
-  inset: 0;
-  z-index: 8000;
-  pointer-events: none;
-  /* two layers: sand wipe → reveal */
-  background: var(--brown);
-  transform: translateX(-100%);
-}
-#curtain.wipe-in  { animation: curtainIn  0.42s cubic-bezier(0.7,0,0.3,1) forwards; }
-#curtain.wipe-out { animation: curtainOut 0.38s cubic-bezier(0.7,0,0.3,1) forwards; }
+/* ── NAVBAR ── */
+#navbar{position:sticky;top:0;height:62px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;z-index:1000;background:rgba(245,237,224,0.93);backdrop-filter:blur(14px);
+  border-bottom:2px solid rgba(122,78,45,0.1);}
+.nb-logo{font-family:'Caveat',cursive;font-size:26px;font-weight:700;color:var(--brown);cursor:pointer;}
+.nb-logo span{color:var(--rust);}
+.nb-links{display:flex;gap:4px;}
+.nb-link{font-family:'Caveat',cursive;font-size:17px;color:var(--brown);padding:7px 14px;
+  border-radius:20px;cursor:pointer;transition:all .2s;opacity:.62;border:2px solid transparent;}
+.nb-link:hover{opacity:1;background:rgba(122,78,45,0.08);}
+.nb-link.here{opacity:1;background:var(--brown);color:var(--cream);border-color:var(--brown);box-shadow:2px 3px 0 rgba(58,36,18,0.15);}
+.nb-cta{font-family:'Caveat',cursive;font-size:17px;font-weight:700;padding:9px 22px;background:var(--rust);
+  color:var(--cream);border:none;border-radius:20px;cursor:pointer;transition:all .22s;box-shadow:2px 3px 0 rgba(122,78,45,0.25);}
+.nb-cta:hover{transform:translate(-1px,-1px);box-shadow:4px 5px 0 rgba(122,78,45,0.22);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
+.hamburger span{width:22px;height:2px;background:var(--brown);border-radius:2px;display:block;}
 
-@keyframes curtainIn  { from{transform:translateX(-100%)} to{transform:translateX(0)} }
-@keyframes curtainOut { from{transform:translateX(0)} to{transform:translateX(100%)} }
+/* ── MOBILE MENU ── */
+#mob-menu{display:none;position:fixed;inset:0;background:var(--dark);z-index:7000;
+  flex-direction:column;align-items:center;justify-content:center;gap:26px;}
+#mob-menu.open{display:flex;}
+.mob-close{position:absolute;top:22px;right:26px;font-size:28px;color:var(--kraft);cursor:pointer;background:none;border:none;font-family:'Caveat',cursive;}
+.mob-lnk{font-family:'Caveat',cursive;font-size:36px;font-weight:700;color:var(--cream);cursor:pointer;transition:color .2s;}
+.mob-lnk:hover{color:var(--kraft);}
 
-/* page content fade on enter */
-.page-enter > * {
-  animation: pageReveal 0.5s 0.05s cubic-bezier(0.4,0,0.2,1) both;
-}
-@keyframes pageReveal {
-  from { opacity:0; transform:translateY(18px); }
-  to   { opacity:1; transform:none; }
-}
+/* ── SHARED ── */
+.container{max-width:1140px;margin:0 auto;padding:0 48px;}
+.s-tag{font-family:'Caveat',cursive;font-size:15px;color:var(--rust);display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.s-tag::before{content:'';width:26px;height:2px;background:var(--rust);border-radius:2px;}
+.s-head{font-family:'Caveat',cursive;font-size:clamp(34px,5vw,58px);font-weight:700;color:var(--dark);line-height:1.1;margin-bottom:14px;}
+.s-head em{color:var(--rust);font-style:normal;}
+.serif-p{font-family:'Noto Serif TC',serif;font-weight:300;font-size:14px;line-height:2.1;color:var(--brown);}
+.btn-m{font-family:'Caveat',cursive;font-size:18px;font-weight:700;padding:12px 28px;border-radius:6px;
+  cursor:pointer;border:none;transition:all .22s;display:inline-flex;align-items:center;gap:8px;}
+.btn-dk{background:var(--dark);color:var(--cream);box-shadow:3px 4px 0 rgba(58,36,18,0.18);}
+.btn-dk:hover{transform:translate(-2px,-2px);box-shadow:5px 6px 0 rgba(58,36,18,0.18);background:var(--brown);}
+.btn-ol{background:transparent;color:var(--brown);border:2px solid var(--brown);box-shadow:2px 3px 0 rgba(122,78,45,0.15);}
+.btn-ol:hover{background:var(--brown);color:var(--cream);transform:translate(-2px,-2px);}
+.btn-rs{background:var(--rust);color:var(--cream);box-shadow:3px 4px 0 rgba(122,78,45,0.2);}
+.btn-rs:hover{transform:translate(-2px,-2px);box-shadow:5px 6px 0 rgba(122,78,45,0.2);}
 
-/* ══════════════════════════════════
-   NAVBAR
-══════════════════════════════════ */
-#navbar {
-  position: sticky;
-  top: 0; left: 0; right: 0;
-  height: 62px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 48px;
-  z-index: 1000;
-  background: rgba(245,237,224,0.92);
-  backdrop-filter: blur(14px);
-  border-bottom: 2px solid rgba(122,78,45,0.1);
-}
+/* ════════════════ HOME ════════════════ */
+.hero{min-height:calc(100vh - 62px);display:grid;grid-template-columns:1fr 420px;align-items:center;position:relative;overflow:hidden;}
+.hero-ghost{position:absolute;font-family:'Caveat',cursive;font-size:28vw;font-weight:700;color:rgba(122,78,45,0.04);
+  top:50%;left:-2%;transform:translateY(-50%);pointer-events:none;white-space:nowrap;user-select:none;}
+.hero-left{padding:80px 56px 80px 72px;position:relative;z-index:2;}
+.hero-tag{font-family:'Caveat',cursive;font-size:15px;color:var(--rust);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.hero-tag::before{content:'';width:28px;height:2px;background:var(--rust);}
+.hero-title{font-family:'Caveat',cursive;font-size:clamp(56px,8vw,96px);font-weight:700;color:var(--dark);line-height:.95;margin-bottom:12px;}
+.hero-title .amp{color:var(--rust);}
+.hero-zh{font-family:'Noto Serif TC',serif;font-weight:300;font-size:clamp(13px,2vw,19px);color:var(--brown);letter-spacing:.42em;margin-bottom:30px;}
+.hero-desc{font-family:'Noto Serif TC',serif;font-weight:300;font-size:15px;line-height:2.1;color:rgba(58,36,18,0.7);max-width:400px;margin-bottom:42px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.hero-right{height:calc(100vh - 62px);background:var(--warm);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.hero-right::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 28px,rgba(122,78,45,0.04) 28px,rgba(122,78,45,0.04) 29px);}
+.cup-wrap{position:relative;z-index:1;animation:cupBob 4s ease-in-out infinite;}
+@keyframes cupBob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1.5deg)}}
+.hero-label{position:absolute;top:38px;left:30px;background:rgba(58,36,18,0.72);color:var(--cream);font-family:'Caveat',cursive;font-size:14px;padding:7px 16px;border-radius:20px;}
+.hero-stamp{position:absolute;bottom:46px;right:34px;font-family:'Caveat',cursive;font-size:13px;font-weight:700;color:var(--rust);
+  width:86px;height:86px;border-radius:50%;border:2.5px dashed var(--rust);display:flex;align-items:center;justify-content:center;
+  text-align:center;line-height:1.4;transform:rotate(12deg);animation:stampPop 3s ease-in-out infinite;}
+@keyframes stampPop{0%,100%{opacity:.65;transform:rotate(12deg) scale(1)}50%{opacity:1;transform:rotate(12deg) scale(1.05)}}
 
-.nb-logo {
-  font-family: 'Caveat', cursive;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--brown);
-  cursor: pointer;
-  letter-spacing: 0.03em;
-}
-.nb-logo span { color: var(--rust); }
+/* home stats bar */
+.stats-bar{background:var(--dark);padding:28px 72px;display:flex;gap:0;border-bottom:1px solid rgba(201,168,122,0.12);}
+.stat-item{flex:1;text-align:center;padding:0 20px;border-right:1px solid rgba(201,168,122,0.15);}
+.stat-item:last-child{border:none;}
+.stat-num{font-family:'Caveat',cursive;font-size:36px;font-weight:700;color:var(--kraft);line-height:1;}
+.stat-lbl{font-family:'Noto Sans TC',sans-serif;font-size:11px;color:rgba(253,248,241,0.4);letter-spacing:.12em;margin-top:4px;}
 
-.nb-links {
-  display: flex;
-  gap: 6px;
-}
-.nb-link {
-  font-family: 'Caveat', cursive;
-  font-size: 18px;
-  color: var(--brown);
-  padding: 7px 16px;
-  border-radius: 22px;
-  cursor: pointer;
-  transition: all 0.22s;
-  opacity: 0.6;
-  border: 2px solid transparent;
-}
-.nb-link:hover { opacity:1; background:rgba(122,78,45,0.08); }
-.nb-link.here  { opacity:1; background:var(--brown); color:var(--cream); border-color:var(--brown); box-shadow:2px 3px 0 rgba(58,36,18,0.15); }
+/* home features */
+.features-section{padding:80px 72px;background:var(--cream);}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
+.feat-card{background:var(--sand);border-radius:8px;border:2px solid rgba(122,78,45,0.13);padding:28px 24px;
+  transition:all .28s;box-shadow:2px 3px 0 rgba(122,78,45,0.08);}
+.feat-card:hover{transform:translateY(-4px) rotate(-.3deg);box-shadow:4px 6px 0 rgba(122,78,45,0.13);border-color:var(--kraft);}
+.feat-card .f-ico{font-size:36px;margin-bottom:12px;}
+.feat-card h3{font-family:'Caveat',cursive;font-size:20px;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.feat-card p{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;line-height:1.9;color:var(--brown);}
 
-.nb-cta {
-  font-family: 'Caveat', cursive;
-  font-size: 17px;
-  font-weight: 700;
-  padding: 9px 24px;
-  background: var(--rust);
-  color: var(--cream);
-  border: none;
-  border-radius: 22px;
-  cursor: pointer;
-  transition: all 0.22s;
-  box-shadow: 2px 3px 0 rgba(122,78,45,0.25);
-}
-.nb-cta:hover { transform:translate(-1px,-1px); box-shadow:4px 5px 0 rgba(122,78,45,0.22); }
+/* ════════════════ MENU ════════════════ */
+.menu-banner{background:var(--brown);padding:62px 72px 54px;position:relative;overflow:hidden;}
+.menu-banner::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:26px;background:var(--sand);clip-path:ellipse(53% 100% at 50% 100%);}
+.menu-banner .s-tag{color:var(--kraft);}
+.menu-banner .s-tag::before{background:var(--kraft);}
+.menu-banner .s-head{color:var(--cream);}
+.menu-banner p{color:rgba(253,248,241,0.6);max-width:480px;}
+.filter-bar{display:flex;gap:10px;padding:30px 72px 18px;flex-wrap:wrap;}
+.f-btn{font-family:'Caveat',cursive;font-size:17px;padding:8px 20px;border-radius:20px;
+  border:2px solid rgba(122,78,45,0.2);background:transparent;color:var(--brown);cursor:pointer;transition:all .2s;}
+.f-btn:hover{border-color:var(--brown);}
+.f-btn.on{background:var(--dark);color:var(--cream);border-color:var(--dark);box-shadow:2px 3px 0 rgba(58,36,18,0.15);}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:20px;padding:18px 72px 80px;}
+.prod-card{background:var(--cream);border-radius:10px;border:2px solid rgba(122,78,45,0.12);overflow:hidden;cursor:pointer;
+  transition:transform .28s cubic-bezier(.4,0,.2,1),box-shadow .28s cubic-bezier(.4,0,.2,1),border-color .2s;
+  box-shadow:3px 4px 0 rgba(122,78,45,0.08);}
+.prod-card:hover{transform:translateY(-6px) rotate(-.4deg);box-shadow:6px 10px 0 rgba(122,78,45,0.14);border-color:var(--kraft);}
+.pc-img{height:162px;display:flex;align-items:center;justify-content:center;font-size:60px;position:relative;}
+.pc-badge{position:absolute;top:11px;left:11px;font-family:'Caveat',cursive;font-size:13px;font-weight:700;padding:3px 10px;border-radius:12px;color:var(--cream);}
+.pc-tag{position:absolute;top:11px;right:11px;font-family:'Caveat',cursive;font-size:12px;background:rgba(46,31,15,0.55);color:var(--cream);padding:3px 10px;border-radius:12px;}
+.pc-body{padding:16px 18px 22px;}
+.pc-name{font-family:'Caveat',cursive;font-size:21px;font-weight:700;color:var(--dark);margin-bottom:5px;line-height:1.2;}
+.pc-desc{font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;line-height:1.75;color:var(--brown);margin-bottom:13px;}
+.pc-foot{display:flex;align-items:center;justify-content:space-between;}
+.pc-price{font-family:'Caveat',cursive;font-size:25px;font-weight:700;color:var(--rust);}
+.pc-unit{font-size:11px;color:var(--rust);}
+.pc-btn{font-family:'Caveat',cursive;font-size:14px;font-weight:700;padding:6px 13px;background:var(--dark);color:var(--cream);border-radius:5px;border:none;cursor:pointer;transition:background .2s;}
+.pc-btn:hover{background:var(--brown);}
+.t-coffee{background:linear-gradient(135deg,#e8c99a,#c9a87a);}
+.t-blush{background:linear-gradient(135deg,#f0bfbb,#d4938a);}
+.t-sage{background:linear-gradient(135deg,#b5cdb8,#7a9e7e);}
+.t-dark{background:linear-gradient(135deg,#9e7d5e,#3b2412);}
+.t-gold{background:linear-gradient(135deg,#f0d98a,#c9a030);}
+.t-warm{background:linear-gradient(135deg,#f0d5b5,#c9a87a);}
+.lb-c{background:var(--brown);}
+.lb-n{background:var(--blush);}
+.lb-t{background:var(--sage);}
+.lb-p{background:var(--gold);}
 
-/* hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 6px;
-}
-.hamburger span {
-  width: 22px; height: 2px;
-  background: var(--brown);
-  border-radius: 2px;
-  transition: all 0.3s;
-  display: block;
-}
+/* ════════════════ DETAIL ════════════════ */
+.detail-layout{display:grid;grid-template-columns:400px 1fr;min-height:calc(100vh - 62px);}
+.d-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;position:sticky;top:62px;height:calc(100vh - 62px);overflow:hidden;}
+.d-circle{position:absolute;width:250px;height:250px;border-radius:50%;background:rgba(255,255,255,0.25);}
+.d-emoji{font-size:108px;filter:drop-shadow(4px 8px 20px rgba(58,36,18,0.18));animation:cupBob 4s ease-in-out infinite;position:relative;z-index:1;}
+.d-back{position:absolute;top:20px;left:20px;font-family:'Caveat',cursive;font-size:17px;font-weight:700;
+  color:var(--brown);background:rgba(253,248,241,0.85);border:2px solid rgba(122,78,45,0.2);padding:7px 15px;
+  border-radius:20px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;}
+.d-back:hover{background:var(--brown);color:var(--cream);border-color:var(--brown);}
+.d-info{padding:58px 60px 80px;overflow-y:auto;background:var(--cream);}
+.d-info::-webkit-scrollbar{width:4px;}
+.d-info::-webkit-scrollbar-thumb{background:rgba(122,78,45,0.2);border-radius:4px;}
+.d-cat{font-family:'Caveat',cursive;font-size:14px;color:var(--rust);letter-spacing:.14em;margin-bottom:7px;}
+.d-name{font-family:'Caveat',cursive;font-size:clamp(30px,4.5vw,50px);font-weight:700;color:var(--dark);line-height:1.15;margin-bottom:5px;}
+.d-en{font-family:'Noto Serif TC',serif;font-size:14px;font-weight:300;color:var(--kraft);font-style:italic;margin-bottom:22px;}
+.d-price-row{display:flex;align-items:baseline;gap:6px;margin-bottom:26px;padding-bottom:22px;border-bottom:2px dashed rgba(122,78,45,0.17);}
+.d-price{font-family:'Caveat',cursive;font-size:50px;font-weight:700;color:var(--rust);line-height:1;}
+.d-unit{font-family:'Caveat',cursive;font-size:18px;color:var(--rust);}
+.d-desc{font-family:'Noto Serif TC',serif;font-size:14px;font-weight:300;line-height:2.1;color:var(--brown);margin-bottom:26px;}
+.d-feats{display:flex;flex-direction:column;gap:10px;margin-bottom:32px;}
+.d-feat{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;background:rgba(201,168,122,0.1);border-left:3px solid var(--kraft);border-radius:0 6px 6px 0;}
+.d-feat-i{font-size:17px;flex-shrink:0;}
+.d-feat-t{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;line-height:1.8;color:var(--brown);}
+.d-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px;}
+.d-rel h4{font-family:'Caveat',cursive;font-size:20px;font-weight:700;color:var(--dark);margin-bottom:13px;position:relative;display:inline-block;}
+.d-rel h4::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:3px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6'%3E%3Cpath d='M0 3 Q25 0 50 3 Q75 6 100 3' stroke='%23c9a87a' stroke-width='2' fill='none'/%3E%3C/svg%3E") repeat-x center / auto 100%;}
+.rel-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.rel-chip{font-family:'Caveat',cursive;font-size:16px;padding:8px 17px;border-radius:6px;border:2px solid rgba(122,78,45,0.2);
+  background:var(--sand);color:var(--brown);cursor:pointer;transition:all .2s;box-shadow:2px 2px 0 rgba(122,78,45,0.08);}
+.rel-chip:hover{background:var(--brown);color:var(--cream);border-color:var(--brown);transform:translate(-1px,-1px);}
 
-/* mobile menu */
-#mob-menu {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: var(--dark);
-  z-index: 7000;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-}
-#mob-menu.open { display: flex; }
-.mob-close {
-  position: absolute;
-  top: 24px; right: 28px;
-  font-size: 28px;
-  color: var(--kraft);
-  cursor: pointer;
-  background: none; border: none;
-  font-family: 'Caveat', cursive;
-}
-.mob-link {
-  font-family: 'Caveat', cursive;
-  font-size: 38px;
-  font-weight: 700;
-  color: var(--cream);
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.mob-link:hover { color: var(--kraft); }
+/* ════════════════ ABOUT ════════════════ */
+.about-layout{display:grid;grid-template-columns:360px 1fr;min-height:calc(100vh - 62px);}
+.about-left{background:var(--brown);padding:58px 44px;display:flex;flex-direction:column;justify-content:center;
+  position:sticky;top:62px;height:calc(100vh - 62px);overflow:hidden;}
+.about-left::before{content:'';position:absolute;bottom:-60px;right:-60px;width:210px;height:210px;
+  border-radius:50%;border:2px dashed rgba(201,168,122,0.17);}
+.about-left h2{font-family:'Caveat',cursive;font-size:clamp(32px,3.8vw,50px);font-weight:700;color:var(--cream);line-height:1.1;margin-bottom:16px;position:relative;z-index:1;}
+.about-left h2 em{color:var(--kraft);font-style:normal;}
+.about-left p{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;line-height:2;color:rgba(253,248,241,0.58);position:relative;z-index:1;margin-bottom:12px;}
+.av-list{display:flex;flex-direction:column;gap:9px;margin-top:6px;position:relative;z-index:1;}
+.av-row{display:flex;align-items:center;gap:10px;padding:10px 13px;background:rgba(253,248,241,0.07);border:1px solid rgba(201,168,122,0.17);border-radius:6px;}
+.av-ico{font-size:16px;}
+.av-zh{font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--cream);}
+.av-en{font-family:'Noto Sans TC',sans-serif;font-size:9px;color:rgba(253,248,241,0.38);letter-spacing:.1em;}
+.about-right{padding:58px 60px 80px;background:var(--sand);overflow-y:auto;}
+.about-right::-webkit-scrollbar{width:4px;}
+.about-right::-webkit-scrollbar-thumb{background:rgba(122,78,45,0.2);border-radius:4px;}
+.story-quote{font-family:'Caveat',cursive;font-size:19px;color:var(--brown);line-height:1.7;
+  padding:18px 22px;background:rgba(201,168,122,0.12);border-left:4px solid var(--kraft);border-radius:0 8px 8px 0;margin-bottom:38px;font-style:italic;}
+.timeline{display:flex;flex-direction:column;position:relative;}
+.timeline::before{content:'';position:absolute;left:27px;top:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--kraft),rgba(201,168,122,0.1));}
+.t-item{display:flex;gap:22px;padding-bottom:28px;}
+.t-item:last-child{padding-bottom:0;}
+.t-dot{width:55px;height:55px;border-radius:50%;background:var(--cream);border:2.5px solid var(--kraft);
+  display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;position:relative;z-index:1;
+  box-shadow:2px 3px 0 rgba(122,78,45,0.12);transition:all .25s;}
+.t-item:hover .t-dot{background:var(--kraft);transform:scale(1.1);}
+.t-content{flex:1;padding-top:11px;}
+.t-content h4{font-family:'Caveat',cursive;font-size:21px;font-weight:700;color:var(--dark);margin-bottom:5px;}
+.t-content p{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;line-height:1.9;color:var(--brown);}
 
-/* ══════════════════════════════════
-   SHARED SECTION HELPERS
-══════════════════════════════════ */
-.container { max-width: 1140px; margin: 0 auto; padding: 0 48px; }
+/* ════════════════ MEMBER ════════════════ */
+#view-member{background:var(--cream);}
+.member-hero{background:linear-gradient(135deg,var(--dark),var(--brown));padding:60px 72px 52px;position:relative;overflow:hidden;}
+.member-hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:24px;background:var(--cream);clip-path:ellipse(53% 100% at 50% 100%);}
+.member-hero .s-tag{color:var(--kraft);}
+.member-hero .s-tag::before{background:var(--kraft);}
+.member-hero .s-head{color:var(--cream);}
+.member-hero p{color:rgba(253,248,241,0.6);max-width:480px;}
 
-.section-tag {
-  font-family: 'Caveat', cursive;
-  font-size: 16px;
-  color: var(--rust);
-  letter-spacing: 0.14em;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-.section-tag::before { content:''; width:28px; height:2px; background:var(--rust); border-radius:2px; }
+/* tier cards */
+.tiers-wrap{padding:40px 72px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.tier-card{border-radius:10px;overflow:hidden;border:2px solid rgba(122,78,45,0.15);box-shadow:3px 4px 0 rgba(122,78,45,0.1);transition:all .28s;}
+.tier-card:hover{transform:translateY(-5px) rotate(-.3deg);box-shadow:6px 8px 0 rgba(122,78,45,0.16);}
+.tier-top{padding:28px 24px 22px;text-align:center;}
+.tier-badge{display:inline-block;font-family:'Caveat',cursive;font-size:13px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:10px;}
+.tier-icon{font-size:44px;margin-bottom:8px;}
+.tier-name{font-family:'Caveat',cursive;font-size:26px;font-weight:700;margin-bottom:4px;}
+.tier-sub{font-family:'Noto Sans TC',sans-serif;font-size:11px;letter-spacing:.12em;opacity:.65;}
+.tier-body{background:var(--cream);padding:22px 22px 28px;}
+.tier-body ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.tier-body li{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:var(--brown);display:flex;gap:8px;line-height:1.7;}
+.tier-body li::before{content:'✓';color:var(--sage);font-weight:700;flex-shrink:0;}
+.tier-cond{font-family:'Caveat',cursive;font-size:14px;color:var(--kraft);margin-top:14px;padding-top:14px;border-top:1px dashed rgba(122,78,45,0.2);}
 
-.section-heading {
-  font-family: 'Caveat', cursive;
-  font-size: clamp(36px,5vw,60px);
-  font-weight: 700;
-  color: var(--dark);
-  line-height: 1.1;
-  margin-bottom: 16px;
-}
-.section-heading em { color: var(--rust); font-style: normal; }
+/* points system */
+.points-section{padding:48px 72px 60px;}
+.points-section h3{font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--dark);margin-bottom:24px;}
+.points-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px;}
+.point-card{background:var(--sand);border:2px solid rgba(122,78,45,0.13);border-radius:8px;padding:20px 16px;text-align:center;box-shadow:2px 3px 0 rgba(122,78,45,0.07);}
+.point-card .p-ico{font-size:28px;margin-bottom:8px;}
+.point-card .p-num{font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--rust);}
+.point-card .p-lbl{font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);line-height:1.7;margin-top:4px;}
 
-.serif-body {
-  font-family: 'Noto Serif TC', serif;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 2.1;
-  color: var(--brown);
-}
+/* CLV section */
+.clv-section{background:var(--dark);padding:48px 72px;margin:0;}
+.clv-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.clv-text h3{font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--cream);margin-bottom:14px;}
+.clv-text p{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;line-height:2;color:rgba(253,248,241,0.58);margin-bottom:16px;}
+.clv-badge{display:inline-block;background:rgba(201,168,122,0.15);border:1px solid rgba(201,168,122,0.3);
+  color:var(--kraft);font-family:'Caveat',cursive;font-size:14px;padding:6px 16px;border-radius:20px;margin:4px;}
+.clv-chart{background:rgba(253,248,241,0.05);border-radius:8px;padding:24px;border:1px solid rgba(201,168,122,0.15);}
+.clv-chart h4{font-family:'Caveat',cursive;font-size:16px;color:var(--kraft);margin-bottom:16px;text-align:center;}
+.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.bar-label{font-family:'Caveat',cursive;font-size:14px;color:var(--cream);width:60px;flex-shrink:0;}
+.bar-track{flex:1;height:20px;background:rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:10px;transition:width 1s ease;}
+.bar-val{font-family:'Caveat',cursive;font-size:14px;color:var(--kraft);width:50px;text-align:right;flex-shrink:0;}
 
-.btn-main {
-  font-family: 'Caveat', cursive;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 12px 30px;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-  transition: all 0.22s;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.btn-dark  { background:var(--dark); color:var(--cream); box-shadow:3px 4px 0 rgba(58,36,18,0.18); }
-.btn-dark:hover  { transform:translate(-2px,-2px); box-shadow:5px 6px 0 rgba(58,36,18,0.18); background:var(--brown); }
-.btn-outline { background:transparent; color:var(--brown); border:2px solid var(--brown); box-shadow:2px 3px 0 rgba(122,78,45,0.15); }
-.btn-outline:hover { background:var(--brown); color:var(--cream); transform:translate(-2px,-2px); }
-.btn-rust  { background:var(--rust); color:var(--cream); box-shadow:3px 4px 0 rgba(122,78,45,0.2); }
-.btn-rust:hover  { transform:translate(-2px,-2px); box-shadow:5px 6px 0 rgba(122,78,45,0.2); }
+/* ════════════════ DATA DASHBOARD ════════════════ */
+#view-data{background:var(--dark);}
+.data-hero{padding:60px 72px 40px;position:relative;}
+.data-hero .s-tag{color:var(--kraft);}
+.data-hero .s-tag::before{background:var(--kraft);}
+.data-hero .s-head{color:var(--cream);}
+.data-hero p{color:rgba(253,248,241,0.55);max-width:520px;}
+.dashboard{padding:0 72px 80px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.dash-card{background:rgba(253,248,241,0.05);border:1px solid rgba(201,168,122,0.15);border-radius:10px;padding:28px 24px;}
+.dash-card h3{font-family:'Caveat',cursive;font-size:18px;font-weight:700;color:var(--cream);margin-bottom:18px;
+  display:flex;align-items:center;gap:8px;}
+.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:8px;}
+.kpi{background:rgba(255,255,255,0.06);border-radius:6px;padding:14px 12px;text-align:center;}
+.kpi-num{font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--kraft);line-height:1;}
+.kpi-lbl{font-family:'Noto Sans TC',sans-serif;font-size:10px;color:rgba(253,248,241,0.4);letter-spacing:.1em;margin-top:3px;}
+.chart-area{margin-top:6px;}
+.chart-bar-h{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.cbh-lbl{font-family:'Caveat',cursive;font-size:13px;color:rgba(253,248,241,0.6);width:55px;flex-shrink:0;text-align:right;}
+.cbh-track{flex:1;height:18px;background:rgba(255,255,255,0.07);border-radius:9px;overflow:hidden;}
+.cbh-fill{height:100%;border-radius:9px;}
+.cbh-val{font-family:'Caveat',cursive;font-size:13px;color:var(--kraft);width:40px;flex-shrink:0;}
+.data-note{font-family:'Noto Serif TC',serif;font-size:11px;color:rgba(253,248,241,0.3);margin-top:10px;font-weight:300;}
 
-/* ══════════════════════════════════
-   PAGE: HOME
-══════════════════════════════════ */
-#view-home { display:block; }
-#view-menu, #view-detail, #view-about, #view-booking { display:none; }
+/* donut chart */
+.donut-wrap{position:relative;width:130px;height:130px;margin:0 auto 14px;}
+.donut-wrap canvas{display:block;}
+.donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
+.donut-center .dc-num{font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--kraft);}
+.donut-center .dc-lbl{font-family:'Noto Sans TC',sans-serif;font-size:9px;color:rgba(253,248,241,0.4);letter-spacing:.1em;}
+.legend{display:flex;flex-direction:column;gap:6px;}
+.legend-row{display:flex;align-items:center;gap:8px;}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.legend-txt{font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:rgba(253,248,241,0.6);}
+.legend-pct{font-family:'Caveat',cursive;font-size:14px;color:var(--kraft);margin-left:auto;}
 
-.hero {
-  min-height: calc(100vh - 62px);
-  display: grid;
-  grid-template-columns: 1fr 440px;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
+/* ════════════════ BOOKING ════════════════ */
+.booking-layout{display:grid;grid-template-columns:340px 1fr;min-height:calc(100vh - 62px);}
+.bk-left{background:var(--dark);padding:58px 42px;display:flex;flex-direction:column;justify-content:center;
+  position:sticky;top:62px;height:calc(100vh - 62px);overflow:hidden;}
+.bk-left::before{content:'';position:absolute;bottom:-80px;right:-80px;width:250px;height:250px;
+  border-radius:50%;border:2px dashed rgba(201,168,122,0.1);}
+.bk-left h2{font-family:'Caveat',cursive;font-size:clamp(28px,3.8vw,46px);font-weight:700;color:var(--cream);line-height:1.1;margin-bottom:15px;position:relative;z-index:1;}
+.bk-left h2 em{color:var(--kraft);font-style:normal;}
+.bk-left>p{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:rgba(253,248,241,0.55);line-height:2;margin-bottom:28px;position:relative;z-index:1;}
+.bk-info{display:flex;flex-direction:column;gap:14px;position:relative;z-index:1;}
+.bk-row{display:flex;gap:11px;align-items:flex-start;}
+.bk-ico{font-size:16px;flex-shrink:0;margin-top:2px;}
+.bk-h{font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--kraft);margin-bottom:2px;}
+.bk-v{font-family:'Noto Sans TC',sans-serif;font-size:12px;color:rgba(253,248,241,0.42);line-height:1.75;}
+.bk-right{padding:56px 52px 80px;overflow-y:auto;background:var(--cream);}
+.bk-right::-webkit-scrollbar{width:4px;}
+.bk-right::-webkit-scrollbar-thumb{background:rgba(122,78,45,0.2);border-radius:4px;}
+.bk-right h3{font-family:'Caveat',cursive;font-size:26px;font-weight:700;color:var(--dark);margin-bottom:26px;}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:15px;}
+.fg label{font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--brown);}
+.fg input,.fg select,.fg textarea{background:var(--sand);border:2px solid rgba(122,78,45,0.18);border-radius:6px;
+  padding:11px 13px;font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:var(--dark);outline:none;width:100%;
+  transition:border-color .2s,background .2s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--kraft);background:var(--cream);}
+.fg textarea{resize:vertical;min-height:80px;}
+.fg-2{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.f-submit{width:100%;padding:14px;background:var(--brown);color:var(--cream);font-family:'Caveat',cursive;font-size:19px;font-weight:700;
+  border:none;border-radius:6px;cursor:pointer;box-shadow:3px 4px 0 rgba(58,36,18,0.17);margin-top:6px;transition:all .22s;}
+.f-submit:hover{transform:translate(-2px,-2px);box-shadow:5px 6px 0 rgba(58,36,18,0.17);background:var(--dark);}
+.f-note{font-family:'Caveat',cursive;font-size:14px;color:rgba(58,36,18,0.35);text-align:center;margin-top:9px;}
+.f-ok{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:13px;min-height:380px;}
+.f-ok.show{display:flex;}
+.f-ok .ok-e{font-size:60px;}
+.f-ok h3{font-family:'Caveat',cursive;font-size:26px;font-weight:700;color:var(--dark);}
+.f-ok p{font-family:'Noto Serif TC',serif;font-size:14px;font-weight:300;line-height:2;color:var(--brown);}
 
-.hero-left {
-  padding: 80px 60px 80px 72px;
-  position: relative;
-  z-index: 2;
-}
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:52px 0 30px;}
+.footer-g{max-width:1140px;margin:0 auto;padding:0 72px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:38px;margin-bottom:44px;}
+.fb-brand h3{font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--cream);margin-bottom:9px;}
+.fb-brand h3 span{color:var(--kraft);}
+.fb-brand p{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:rgba(253,248,241,0.38);line-height:2;max-width:250px;}
+.f-col h4{font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--kraft);margin-bottom:13px;}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.f-col li{font-family:'Noto Sans TC',sans-serif;font-size:12px;color:rgba(253,248,241,0.38);cursor:pointer;transition:color .2s;}
+.f-col li:hover{color:var(--kraft);}
+.footer-bot{max-width:1140px;margin:0 auto;padding:18px 72px 0;border-top:1px solid rgba(253,248,241,0.07);
+  display:flex;align-items:center;justify-content:space-between;}
+.footer-bot p{font-family:'Noto Sans TC',sans-serif;font-size:11px;color:rgba(253,248,241,0.23);}
+.socials{display:flex;gap:16px;}
+.socials a{font-family:'Caveat',cursive;font-size:14px;color:rgba(253,248,241,0.32);transition:color .2s;cursor:pointer;}
+.socials a:hover{color:var(--kraft);}
 
-/* faint background lettering */
-.hero-ghost {
-  position: absolute;
-  font-family: 'Caveat', cursive;
-  font-size: 28vw;
-  font-weight: 700;
-  color: rgba(122,78,45,0.04);
-  top: 50%; left: -2%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  white-space: nowrap;
-  line-height: 1;
-  user-select: none;
-}
+/* ── AI CHATBOT ── */
+#chatBtn{position:fixed;bottom:28px;right:28px;z-index:5000;
+  width:56px;height:56px;border-radius:50%;background:var(--brown);border:none;cursor:pointer;
+  font-size:24px;box-shadow:0 4px 20px rgba(58,36,18,0.3);transition:all .25s;display:flex;align-items:center;justify-content:center;}
+#chatBtn:hover{transform:scale(1.1);background:var(--dark);}
+.chat-bubble{position:absolute;bottom:66px;right:0;background:var(--dark);color:var(--cream);
+  font-family:'Caveat',cursive;font-size:14px;padding:8px 14px;border-radius:12px 12px 0 12px;
+  white-space:nowrap;opacity:0;transition:opacity .3s;pointer-events:none;}
+#chatBtn:hover .chat-bubble{opacity:1;}
 
-.hero-tag {
-  font-family: 'Caveat', cursive;
-  font-size: 15px;
-  color: var(--rust);
-  letter-spacing: 0.14em;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.hero-tag::before { content:''; width:30px; height:2px; background:var(--rust); }
+#chatBox{position:fixed;bottom:96px;right:28px;z-index:5000;
+  width:320px;background:var(--cream);border-radius:12px;border:2px solid rgba(122,78,45,0.18);
+  box-shadow:0 12px 48px rgba(58,36,18,0.2);display:none;flex-direction:column;overflow:hidden;}
+#chatBox.open{display:flex;}
+.chat-head{background:var(--brown);padding:14px 18px;display:flex;align-items:center;gap:10px;justify-content:space-between;}
+.chat-head-l{display:flex;align-items:center;gap:10px;}
+.chat-avatar{width:32px;height:32px;border-radius:50%;background:var(--kraft);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.chat-head h4{font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--cream);}
+.chat-head p{font-size:10px;color:rgba(253,248,241,0.55);}
+.chat-close{background:none;border:none;cursor:pointer;color:rgba(253,248,241,0.6);font-size:18px;transition:color .2s;}
+.chat-close:hover{color:var(--cream);}
+.chat-msgs{flex:1;max-height:260px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;}
+.chat-msgs::-webkit-scrollbar{width:3px;}
+.chat-msgs::-webkit-scrollbar-thumb{background:rgba(122,78,45,0.2);border-radius:3px;}
+.msg{max-width:85%;padding:10px 13px;border-radius:10px;font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;line-height:1.7;}
+.msg.bot{background:var(--sand);color:var(--ink);border-radius:4px 10px 10px 10px;align-self:flex-start;}
+.msg.user{background:var(--brown);color:var(--cream);border-radius:10px 4px 10px 10px;align-self:flex-end;}
+.msg.typing{background:var(--sand);align-self:flex-start;border-radius:4px 10px 10px 10px;}
+.typing-dots{display:flex;gap:4px;padding:2px 4px;}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--kraft);animation:dot .8s ease-in-out infinite;}
+.typing-dots span:nth-child(2){animation-delay:.16s;}
+.typing-dots span:nth-child(3){animation-delay:.32s;}
+@keyframes dot{0%,80%,100%{transform:scale(0.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+.chat-quick{display:flex;gap:6px;padding:8px 14px;flex-wrap:wrap;border-top:1px solid rgba(122,78,45,0.1);}
+.q-btn{font-family:'Caveat',cursive;font-size:13px;padding:5px 11px;border-radius:14px;
+  border:1.5px solid rgba(122,78,45,0.22);background:transparent;color:var(--brown);cursor:pointer;transition:all .2s;}
+.q-btn:hover{background:var(--brown);color:var(--cream);border-color:var(--brown);}
+.chat-input-row{display:flex;gap:8px;padding:10px 14px;border-top:1px solid rgba(122,78,45,0.1);}
+.chat-input{flex:1;border:1.5px solid rgba(122,78,45,0.18);border-radius:20px;padding:8px 14px;
+  font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:var(--ink);background:var(--sand);outline:none;}
+.chat-input:focus{border-color:var(--kraft);}
+.chat-send{padding:8px 14px;background:var(--brown);color:var(--cream);border:none;border-radius:20px;
+  cursor:pointer;font-family:'Caveat',cursive;font-size:14px;font-weight:700;transition:background .2s;}
+.chat-send:hover{background:var(--dark);}
 
-.hero-title {
-  font-family: 'Caveat', cursive;
-  font-size: clamp(58px,8vw,96px);
-  font-weight: 700;
-  color: var(--dark);
-  line-height: 0.95;
-  margin-bottom: 14px;
-}
-.hero-title .amp { color: var(--rust); }
+/* ── MOOD RECOMMENDER ── */
+.mood-section{background:var(--warm);padding:56px 72px;}
+.mood-section h3{font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.mood-section>p{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:var(--brown);margin-bottom:24px;line-height:1.9;}
+.mood-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;}
+.mood-btn{font-family:'Caveat',cursive;font-size:17px;padding:10px 22px;border-radius:22px;
+  border:2px solid rgba(122,78,45,0.2);background:var(--cream);color:var(--brown);cursor:pointer;transition:all .22s;
+  box-shadow:2px 3px 0 rgba(122,78,45,0.08);}
+.mood-btn:hover,.mood-btn.picked{background:var(--brown);color:var(--cream);border-color:var(--brown);
+  transform:translate(-1px,-1px);box-shadow:3px 4px 0 rgba(58,36,18,0.15);}
+.mood-result{display:none;background:var(--cream);border-radius:10px;border:2px solid var(--kraft);
+  padding:24px;animation:pRev .4s both;}
+.mood-result.show{display:block;}
+.mood-result h4{font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.mood-result p{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;line-height:1.9;color:var(--brown);}
+.mood-result .mr-tag{display:inline-flex;gap:10px;align-items:center;margin-top:12px;
+  background:var(--sand);padding:8px 16px;border-radius:6px;font-family:'Caveat',cursive;font-size:16px;color:var(--rust);}
 
-.hero-zh {
-  font-family: 'Noto Serif TC', serif;
-  font-weight: 300;
-  font-size: clamp(14px,2vw,19px);
-  color: var(--brown);
-  letter-spacing: 0.42em;
-  margin-bottom: 32px;
-}
-
-.hero-desc {
-  font-family: 'Noto Serif TC', serif;
-  font-weight: 300;
-  font-size: 15px;
-  line-height: 2.1;
-  color: rgba(58,36,18,0.7);
-  max-width: 400px;
-  margin-bottom: 44px;
-}
-
-.hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
-
-/* hero right — illustrated panel */
-.hero-right {
-  height: calc(100vh - 62px);
-  background: var(--warm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero-right::before {
-  content:'';
-  position:absolute; inset:0;
-  background: repeating-linear-gradient(
-    -45deg, transparent, transparent 28px,
-    rgba(122,78,45,0.04) 28px, rgba(122,78,45,0.04) 29px
-  );
-}
-
-/* animated coffee cup */
-.cup-wrap {
-  position: relative;
-  z-index: 1;
-  animation: cupBob 4s ease-in-out infinite;
-}
-@keyframes cupBob { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-14px) rotate(1.5deg)} }
-
-.hero-stamp {
-  position: absolute;
-  bottom: 48px; right: 36px;
-  font-family: 'Caveat', cursive;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--rust);
-  width: 88px; height: 88px;
-  border-radius: 50%;
-  border: 2.5px dashed var(--rust);
-  display: flex; align-items:center; justify-content:center;
-  text-align: center;
-  line-height: 1.4;
-  transform: rotate(12deg);
-  animation: stampPop 3s ease-in-out infinite;
-}
-@keyframes stampPop { 0%,100%{opacity:0.65;transform:rotate(12deg) scale(1)} 50%{opacity:1;transform:rotate(12deg) scale(1.05)} }
-
-/* floating label on hero-right */
-.hero-label {
-  position: absolute;
-  top: 40px; left: 32px;
-  background: rgba(58,36,18,0.75);
-  color: var(--cream);
-  font-family: 'Caveat', cursive;
-  font-size: 14px;
-  padding: 7px 16px;
-  border-radius: 20px;
-  backdrop-filter: blur(4px);
-}
-
-/* ══════════════════════════════════
-   PAGE: MENU
-══════════════════════════════════ */
-.menu-banner {
-  background: var(--brown);
-  padding: 64px 72px 56px;
-  position: relative;
-  overflow: hidden;
-}
-.menu-banner::after {
-  content:'';
-  position: absolute;
-  bottom: -1px; left: 0; right: 0;
-  height: 28px;
-  background: var(--sand);
-  clip-path: ellipse(53% 100% at 50% 100%);
-}
-.menu-banner .section-tag { color: var(--kraft); }
-.menu-banner .section-tag::before { background: var(--kraft); }
-.menu-banner .section-heading { color: var(--cream); }
-.menu-banner p { color: rgba(253,248,241,0.62); max-width:480px; }
-
-/* filter bar */
-.filter-bar {
-  display: flex;
-  gap: 10px;
-  padding: 32px 72px 20px;
-  flex-wrap: wrap;
-}
-.f-btn {
-  font-family: 'Caveat', cursive;
-  font-size: 17px;
-  padding: 8px 22px;
-  border-radius: 22px;
-  border: 2px solid rgba(122,78,45,0.22);
-  background: transparent;
-  color: var(--brown);
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-.f-btn:hover { border-color:var(--brown); }
-.f-btn.on { background:var(--dark); color:var(--cream); border-color:var(--dark); box-shadow:2px 3px 0 rgba(58,36,18,0.15); }
-
-/* product grid */
-.prod-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 22px;
-  padding: 20px 72px 80px;
-}
-
-.prod-card {
-  background: var(--cream);
-  border-radius: 10px;
-  border: 2px solid rgba(122,78,45,0.13);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1),
-              box-shadow 0.28s cubic-bezier(0.4,0,0.2,1),
-              border-color 0.2s;
-  box-shadow: 3px 4px 0 rgba(122,78,45,0.08);
-}
-.prod-card:hover {
-  transform: translateY(-6px) rotate(-0.4deg);
-  box-shadow: 6px 10px 0 rgba(122,78,45,0.14);
-  border-color: var(--kraft);
-}
-
-.pc-img {
-  height: 168px;
-  display: flex; align-items:center; justify-content:center;
-  font-size: 62px;
-  position: relative;
-}
-.pc-badge {
-  position: absolute;
-  top: 12px; left: 12px;
-  font-family: 'Caveat', cursive;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 3px 11px;
-  border-radius: 12px;
-  color: var(--cream);
-}
-.pc-tag {
-  position: absolute;
-  top: 12px; right: 12px;
-  font-family: 'Caveat', cursive;
-  font-size: 12px;
-  background: rgba(46,31,15,0.55);
-  color: var(--cream);
-  padding: 3px 10px;
-  border-radius: 12px;
-}
-
-.pc-body { padding: 18px 20px 22px; }
-.pc-name {
-  font-family: 'Caveat', cursive;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--dark);
-  margin-bottom: 5px;
-  line-height: 1.2;
-}
-.pc-desc {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 12px;
-  font-weight: 300;
-  line-height: 1.75;
-  color: var(--brown);
-  margin-bottom: 14px;
-}
-.pc-foot { display:flex; align-items:center; justify-content:space-between; }
-.pc-price {
-  font-family: 'Caveat', cursive;
-  font-size: 25px;
-  font-weight: 700;
-  color: var(--rust);
-}
-.pc-unit { font-size: 11px; color: var(--rust); font-family:'Noto Sans TC',sans-serif; }
-.pc-btn {
-  font-family: 'Caveat', cursive;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 6px 14px;
-  background: var(--dark);
-  color: var(--cream);
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.pc-btn:hover { background: var(--brown); }
-
-/* themes */
-.t-coffee { background: linear-gradient(135deg,#e8c99a,#c9a87a); }
-.t-blush  { background: linear-gradient(135deg,#f0bfbb,#d4938a); }
-.t-sage   { background: linear-gradient(135deg,#b5cdb8,#7a9e7e); }
-.t-dark   { background: linear-gradient(135deg,#9e7d5e,#3b2412); }
-.t-gold   { background: linear-gradient(135deg,#f0d98a,#c9a030); }
-.t-warm   { background: linear-gradient(135deg,#f0d5b5,#c9a87a); }
-.lb-c { background:var(--brown); }
-.lb-n { background:var(--blush); }
-.lb-t { background:var(--sage); }
-.lb-p { background:#c9a030; }
-
-/* ══════════════════════════════════
-   PAGE: DETAIL
-══════════════════════════════════ */
-.detail-layout {
-  display: grid;
-  grid-template-columns: 420px 1fr;
-  min-height: calc(100vh - 62px);
-}
-
-.detail-visual {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: sticky;
-  top: 62px;
-  height: calc(100vh - 62px);
-  overflow: hidden;
-}
-.detail-emoji {
-  font-size: 110px;
-  filter: drop-shadow(4px 8px 20px rgba(58,36,18,0.18));
-  animation: cupBob 4s ease-in-out infinite;
-  position: relative;
-  z-index: 1;
-}
-.detail-circle {
-  position: absolute;
-  width: 260px; height: 260px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.25);
-}
-.detail-back-btn {
-  position: absolute;
-  top: 22px; left: 22px;
-  font-family: 'Caveat', cursive;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--brown);
-  background: rgba(253,248,241,0.85);
-  border: 2px solid rgba(122,78,45,0.2);
-  padding: 7px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex; align-items:center; gap:6px;
-}
-.detail-back-btn:hover { background:var(--brown); color:var(--cream); border-color:var(--brown); }
-
-.detail-info {
-  padding: 60px 64px 80px;
-  overflow-y: auto;
-  background: var(--cream);
-}
-.d-cat {
-  font-family: 'Caveat', cursive;
-  font-size: 14px;
-  color: var(--rust);
-  letter-spacing: 0.14em;
-  margin-bottom: 8px;
-}
-.d-name {
-  font-family: 'Caveat', cursive;
-  font-size: clamp(32px,4.5vw,52px);
-  font-weight: 700;
-  color: var(--dark);
-  line-height: 1.15;
-  margin-bottom: 6px;
-}
-.d-en {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--kraft);
-  font-style: italic;
-  margin-bottom: 24px;
-}
-.d-price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  margin-bottom: 28px;
-  padding-bottom: 24px;
-  border-bottom: 2px dashed rgba(122,78,45,0.18);
-}
-.d-price { font-family:'Caveat',cursive; font-size:52px; font-weight:700; color:var(--rust); line-height:1; }
-.d-unit  { font-family:'Caveat',cursive; font-size:18px; color:var(--rust); }
-
-.d-desc {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 2.1;
-  color: var(--brown);
-  margin-bottom: 28px;
-}
-
-.d-features { display:flex; flex-direction:column; gap:10px; margin-bottom:34px; }
-.feat {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 12px 16px;
-  background: rgba(201,168,122,0.1);
-  border-left: 3px solid var(--kraft);
-  border-radius: 0 6px 6px 0;
-}
-.feat-ico { font-size:18px; flex-shrink:0; }
-.feat-txt {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 13px; font-weight:300;
-  line-height: 1.8;
-  color: var(--brown);
-}
-
-.d-cta { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:36px; }
-
-.d-related h4 {
-  font-family: 'Caveat', cursive;
-  font-size: 20px; font-weight:700;
-  color: var(--dark); margin-bottom:14px;
-  position: relative; display:inline-block;
-}
-.d-related h4::after {
-  content:'';
-  position:absolute; bottom:-3px; left:0; right:0; height:3px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6'%3E%3Cpath d='M0 3 Q25 0 50 3 Q75 6 100 3' stroke='%23c9a87a' stroke-width='2' fill='none'/%3E%3C/svg%3E") repeat-x center / auto 100%;
-}
-.rel-chips { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
-.rel-chip {
-  font-family: 'Caveat', cursive;
-  font-size: 16px;
-  padding: 8px 18px;
-  border-radius: 6px;
-  border: 2px solid rgba(122,78,45,0.2);
-  background: var(--sand);
-  color: var(--brown);
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 2px 2px 0 rgba(122,78,45,0.08);
-}
-.rel-chip:hover { background:var(--brown); color:var(--cream); border-color:var(--brown); transform:translate(-1px,-1px); box-shadow:3px 3px 0 rgba(58,36,18,0.15); }
-
-/* ══════════════════════════════════
-   PAGE: ABOUT
-══════════════════════════════════ */
-.about-layout {
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  min-height: calc(100vh - 62px);
-}
-
-.about-left {
-  background: var(--brown);
-  padding: 60px 48px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: sticky; top: 62px;
-  height: calc(100vh - 62px);
-  overflow: hidden;
-}
-.about-left::before {
-  content:''; position:absolute;
-  bottom:-60px; right:-60px;
-  width:220px; height:220px;
-  border-radius:50%;
-  border:2px dashed rgba(201,168,122,0.18);
-}
-.about-left h2 {
-  font-family: 'Caveat', cursive;
-  font-size: clamp(34px,4vw,52px);
-  font-weight: 700;
-  color: var(--cream);
-  line-height: 1.1;
-  margin-bottom: 18px;
-  position: relative; z-index:1;
-}
-.about-left h2 em { color: var(--kraft); font-style:normal; }
-.about-left p {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 13px; font-weight:300;
-  line-height: 2;
-  color: rgba(253,248,241,0.6);
-  position: relative; z-index:1;
-  margin-bottom: 14px;
-}
-.av-list { display:flex; flex-direction:column; gap:10px; margin-top:8px; position:relative; z-index:1; }
-.av-row {
-  display: flex; align-items:center; gap:10px;
-  padding: 10px 14px;
-  background: rgba(253,248,241,0.07);
-  border: 1px solid rgba(201,168,122,0.18);
-  border-radius: 6px;
-}
-.av-ico { font-size:17px; }
-.av-zh  { font-family:'Caveat',cursive; font-size:17px; font-weight:700; color:var(--cream); }
-.av-en  { font-family:'Noto Sans TC',sans-serif; font-size:10px; color:rgba(253,248,241,0.4); letter-spacing:0.1em; }
-
-.about-right { padding: 60px 64px 80px; overflow-y:auto; background:var(--sand); }
-
-.story-quote {
-  font-family: 'Caveat', cursive;
-  font-size: 20px;
-  color: var(--brown);
-  line-height: 1.7;
-  padding: 20px 24px;
-  background: rgba(201,168,122,0.12);
-  border-left: 4px solid var(--kraft);
-  border-radius: 0 8px 8px 0;
-  margin-bottom: 40px;
-  font-style: italic;
-}
-
-.timeline { display:flex; flex-direction:column; gap:0; position:relative; }
-.timeline::before {
-  content:''; position:absolute;
-  left:27px; top:0; bottom:0; width:2px;
-  background: linear-gradient(to bottom, var(--kraft), rgba(201,168,122,0.1));
-}
-.t-item { display:flex; gap:22px; padding-bottom:30px; }
-.t-item:last-child { padding-bottom:0; }
-.t-dot {
-  width:56px; height:56px; border-radius:50%;
-  background:var(--cream); border:2.5px solid var(--kraft);
-  display:flex; align-items:center; justify-content:center;
-  font-size:22px; flex-shrink:0; position:relative; z-index:1;
-  box-shadow:2px 3px 0 rgba(122,78,45,0.12);
-  transition: all 0.25s;
-}
-.t-item:hover .t-dot { background:var(--kraft); transform:scale(1.1); }
-.t-content { flex:1; padding-top:12px; }
-.t-content h4 { font-family:'Caveat',cursive; font-size:22px; font-weight:700; color:var(--dark); margin-bottom:5px; }
-.t-content p  { font-family:'Noto Serif TC',serif; font-size:13px; font-weight:300; line-height:1.9; color:var(--brown); }
-
-/* ══════════════════════════════════
-   PAGE: BOOKING
-══════════════════════════════════ */
-.booking-layout {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  min-height: calc(100vh - 62px);
-}
-
-.bk-left {
-  background: var(--dark);
-  padding: 60px 44px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: sticky; top:62px;
-  height: calc(100vh - 62px);
-  overflow: hidden;
-}
-.bk-left::before {
-  content:''; position:absolute;
-  bottom:-80px; right:-80px;
-  width:260px; height:260px; border-radius:50%;
-  border:2px dashed rgba(201,168,122,0.1);
-}
-.bk-left h2 { font-family:'Caveat',cursive; font-size:clamp(30px,4vw,48px); font-weight:700; color:var(--cream); line-height:1.1; margin-bottom:16px; position:relative;z-index:1; }
-.bk-left h2 em { color:var(--kraft); font-style:normal; }
-.bk-left > p { font-family:'Noto Serif TC',serif; font-size:13px; font-weight:300; color:rgba(253,248,241,0.55); line-height:2; margin-bottom:30px; position:relative;z-index:1; }
-
-.bk-info { display:flex; flex-direction:column; gap:16px; position:relative;z-index:1; }
-.bk-row  { display:flex; gap:12px; align-items:flex-start; }
-.bk-ico  { font-size:17px; flex-shrink:0; margin-top:2px; }
-.bk-h    { font-family:'Caveat',cursive; font-size:15px; font-weight:700; color:var(--kraft); margin-bottom:2px; }
-.bk-v    { font-family:'Noto Sans TC',sans-serif; font-size:12px; color:rgba(253,248,241,0.42); line-height:1.75; }
-
-.bk-right { padding:60px 56px 80px; overflow-y:auto; background:var(--cream); }
-.bk-right h3 { font-family:'Caveat',cursive; font-size:28px; font-weight:700; color:var(--dark); margin-bottom:28px; }
-
-.fg { display:flex; flex-direction:column; gap:5px; margin-bottom:16px; }
-.fg label { font-family:'Caveat',cursive; font-size:16px; font-weight:700; color:var(--brown); }
-.fg input,.fg select,.fg textarea {
-  background:var(--sand); border:2px solid rgba(122,78,45,0.18);
-  border-radius:6px; padding:11px 14px;
-  font-family:'Noto Serif TC',serif; font-size:13px; font-weight:300;
-  color:var(--dark); outline:none; width:100%;
-  transition:border-color 0.2s, background 0.2s;
-}
-.fg input:focus,.fg select:focus,.fg textarea:focus { border-color:var(--kraft); background:var(--cream); }
-.fg textarea { resize:vertical; min-height:84px; }
-.fg-2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-
-.f-submit {
-  width:100%; padding:14px;
-  background:var(--brown); color:var(--cream);
-  font-family:'Caveat',cursive; font-size:20px; font-weight:700;
-  border:none; border-radius:6px; cursor:pointer;
-  box-shadow:3px 4px 0 rgba(58,36,18,0.18); margin-top:6px;
-  transition:all 0.22s;
-}
-.f-submit:hover { transform:translate(-2px,-2px); box-shadow:5px 6px 0 rgba(58,36,18,0.18); background:var(--dark); }
-.f-note { font-family:'Caveat',cursive; font-size:14px; color:rgba(58,36,18,0.35); text-align:center; margin-top:10px; }
-
-.f-ok { display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:14px; min-height:400px; }
-.f-ok.show { display:flex; }
-.f-ok .ok-e { font-size:62px; }
-.f-ok h3 { font-family:'Caveat',cursive; font-size:28px; font-weight:700; color:var(--dark); }
-.f-ok p  { font-family:'Noto Serif TC',serif; font-size:14px; font-weight:300; line-height:2; color:var(--brown); }
-
-/* ══════════════════════════════════
-   FOOTER
-══════════════════════════════════ */
-footer {
-  background: var(--dark);
-  padding: 56px 0 32px;
-  margin-top: 0;
-}
-.footer-inner {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 72px;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 48px;
-}
-.footer-brand h3 {
-  font-family: 'Caveat', cursive;
-  font-size: 26px; font-weight:700;
-  color: var(--cream); margin-bottom:10px;
-}
-.footer-brand h3 span { color:var(--kraft); }
-.footer-brand p { font-family:'Noto Serif TC',serif; font-size:13px; font-weight:300; color:rgba(253,248,241,0.4); line-height:2; max-width:260px; }
-.footer-col h4 { font-family:'Caveat',cursive; font-size:15px; font-weight:700; color:var(--kraft); margin-bottom:14px; }
-.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
-.footer-col li { font-family:'Noto Sans TC',sans-serif; font-size:12px; color:rgba(253,248,241,0.4); cursor:pointer; transition:color 0.2s; }
-.footer-col li:hover { color:var(--kraft); }
-.footer-bottom {
-  max-width:1140px; margin:0 auto; padding:20px 72px 0;
-  border-top: 1px solid rgba(253,248,241,0.07);
-  display:flex; align-items:center; justify-content:space-between;
-}
-.footer-bottom p { font-family:'Noto Sans TC',sans-serif; font-size:11px; color:rgba(253,248,241,0.25); }
-.socials { display:flex; gap:18px; }
-.socials a { font-family:'Caveat',cursive; font-size:15px; color:rgba(253,248,241,0.35); transition:color 0.2s; cursor:pointer; }
-.socials a:hover { color:var(--kraft); }
-
-/* ══════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════ */
+/* ── RESPONSIVE ── */
 @media(max-width:900px){
-  .nb-links,.nb-cta { display:none; }
-  .hamburger { display:flex; }
-  .hero { grid-template-columns:1fr; }
-  .hero-right { height:260px; }
-  .hero-left { padding:80px 28px 40px; }
-  .detail-layout,.about-layout,.booking-layout { grid-template-columns:1fr; }
-  .detail-visual,.about-left,.bk-left { position:relative; top:0; height:auto; min-height:220px; }
-  .detail-info,.about-right,.bk-right { padding:36px 24px 60px; }
-  .menu-banner,.filter-bar,.prod-grid { padding-left:24px; padding-right:24px; }
-  .menu-banner { padding-top:44px; padding-bottom:44px; }
-  .prod-grid { grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:14px; }
-  .fg-2 { grid-template-columns:1fr; }
-  .footer-inner { grid-template-columns:1fr; padding:0 28px; }
-  .footer-bottom { flex-direction:column; gap:12px; padding:20px 28px 0; }
-  .container { padding:0 24px; }
+  .nb-links,.nb-cta{display:none;}
+  .hamburger{display:flex;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{height:240px;}
+  .hero-left,.features-section,.menu-banner,.filter-bar,.prod-grid,.stats-bar,.points-section,.clv-section,.mood-section{padding-left:24px;padding-right:24px;}
+  .tiers-wrap,.dashboard,.footer-g{grid-template-columns:1fr;padding-left:24px;padding-right:24px;}
+  .detail-layout,.about-layout,.booking-layout{grid-template-columns:1fr;}
+  .d-visual,.about-left,.bk-left{position:relative;top:0;height:auto;min-height:200px;}
+  .d-info,.about-right,.bk-right{padding:32px 22px 60px;}
+  .feat-grid,.points-grid,.kpi-row{grid-template-columns:1fr 1fr;}
+  .clv-inner,.fg-2{grid-template-columns:1fr;}
+  .footer-bot{flex-direction:column;gap:10px;padding:18px 24px 0;}
+  #chatBox{width:calc(100vw - 40px);right:20px;}
 }
 </style>
 </head>
 <body>
 
-<!-- TRANSITION CURTAIN -->
+<!-- CURTAIN -->
 <div id="curtain"></div>
 
 <!-- MOBILE MENU -->
 <div id="mob-menu">
   <button class="mob-close" onclick="closeMob()">✕</button>
-  <div class="mob-link" onclick="nav('home');closeMob()">首頁</div>
-  <div class="mob-link" onclick="nav('menu');closeMob()">菜單 & 服務</div>
-  <div class="mob-link" onclick="nav('about');closeMob()">關於我們</div>
-  <div class="mob-link" onclick="nav('booking');closeMob()">預約</div>
+  <div class="mob-lnk" onclick="nav('home');closeMob()">首頁</div>
+  <div class="mob-lnk" onclick="nav('menu');closeMob()">菜單 & 服務</div>
+  <div class="mob-lnk" onclick="nav('member');closeMob()">會員計畫</div>
+  <div class="mob-lnk" onclick="nav('data');closeMob()">數據看板</div>
+  <div class="mob-lnk" onclick="nav('about');closeMob()">關於我們</div>
+  <div class="mob-lnk" onclick="nav('booking');closeMob()">預約</div>
 </div>
 
 <!-- NAVBAR -->
@@ -892,7 +489,9 @@ footer {
   <div class="nb-logo" onclick="nav('home')">Trace <span>&</span> Sip</div>
   <div class="nb-links">
     <div class="nb-link here" onclick="nav('home')">首頁</div>
-    <div class="nb-link" onclick="nav('menu')">菜單 & 服務</div>
+    <div class="nb-link" onclick="nav('menu')">菜單</div>
+    <div class="nb-link" onclick="nav('member')">會員計畫</div>
+    <div class="nb-link" onclick="nav('data')">數據看板</div>
     <div class="nb-link" onclick="nav('about')">關於我們</div>
     <div class="nb-link" onclick="nav('booking')">預約</div>
   </div>
@@ -902,7 +501,33 @@ footer {
   </div>
 </nav>
 
-<!-- ═══ VIEW: HOME ═══ -->
+<!-- AI CHATBOT -->
+<button id="chatBtn" onclick="toggleChat()">
+  ☕
+  <div class="chat-bubble">AI 心靈助理</div>
+</button>
+<div id="chatBox">
+  <div class="chat-head">
+    <div class="chat-head-l">
+      <div class="chat-avatar">🌿</div>
+      <div><h4>心靈助理 Sip</h4><p>通常即時回覆</p></div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-msgs" id="chatMsgs"></div>
+  <div class="chat-quick" id="chatQuick">
+    <button class="q-btn" onclick="quickMsg('想了解服務項目')">服務項目</button>
+    <button class="q-btn" onclick="quickMsg('如何預約？')">如何預約</button>
+    <button class="q-btn" onclick="quickMsg('會員有什麼好處？')">會員好處</button>
+    <button class="q-btn" onclick="quickMsg('今天心情不太好')">心情不好</button>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chatInput" placeholder="說說你想知道什麼…" onkeydown="if(event.key==='Enter')sendChat()"/>
+    <button class="chat-send" onclick="sendChat()">→</button>
+  </div>
+</div>
+
+<!-- ═══════════ VIEW: HOME ═══════════ -->
 <div id="view-home">
   <section class="hero">
     <div class="hero-ghost">T&S</div>
@@ -912,27 +537,20 @@ footer {
       <p class="hero-zh">心 靈 咖 啡 所</p>
       <p class="hero-desc">不只是咖啡，而是一個可以<br>安心放下自己的地方。<br>讓心理照顧成為一種生活風格。</p>
       <div class="hero-btns">
-        <button class="btn-main btn-dark" onclick="nav('menu')">☕ 查看菜單 & 服務</button>
-        <button class="btn-main btn-outline" onclick="nav('about')">我們的故事 →</button>
+        <button class="btn-m btn-dk" onclick="nav('menu')">☕ 查看菜單 & 服務</button>
+        <button class="btn-m btn-ol" onclick="nav('about')">我們的故事 →</button>
       </div>
     </div>
     <div class="hero-right">
       <div class="hero-label">☕ 每日新鮮手沖</div>
       <div class="cup-wrap">
-        <svg width="220" height="250" viewBox="0 0 220 250" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M80 65 Q75 45 82 25 Q89 5 84 -10" stroke="#7a4e2d" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5">
-            <animate attributeName="d" dur="2.5s" repeatCount="indefinite" values="M80 65 Q75 45 82 25 Q89 5 84 -10;M80 65 Q85 43 78 23 Q71 3 78 -12;M80 65 Q75 45 82 25 Q89 5 84 -10"/>
-          </path>
-          <path d="M110 60 Q105 40 112 20 Q119 0 114 -15" stroke="#7a4e2d" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.38">
-            <animate attributeName="d" dur="3s" repeatCount="indefinite" values="M110 60 Q105 40 112 20 Q119 0 114 -15;M110 60 Q115 38 108 18 Q101 -2 108 -17;M110 60 Q105 40 112 20 Q119 0 114 -15"/>
-          </path>
-          <path d="M140 65 Q145 45 138 25 Q131 5 138 -10" stroke="#7a4e2d" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.3">
-            <animate attributeName="d" dur="3.5s" repeatCount="indefinite" values="M140 65 Q145 45 138 25 Q131 5 138 -10;M140 65 Q135 43 142 23 Q149 3 142 -12;M140 65 Q145 45 138 25 Q131 5 138 -10"/>
-          </path>
+        <svg width="210" height="240" viewBox="0 0 220 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M80 65 Q75 45 82 25 Q89 5 84 -10" stroke="#7a4e2d" stroke-width="3" stroke-linecap="round" fill="none" opacity=".5"><animate attributeName="d" dur="2.5s" repeatCount="indefinite" values="M80 65 Q75 45 82 25 Q89 5 84 -10;M80 65 Q85 43 78 23 Q71 3 78 -12;M80 65 Q75 45 82 25 Q89 5 84 -10"/></path>
+          <path d="M110 60 Q105 40 112 20 Q119 0 114 -15" stroke="#7a4e2d" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".38"><animate attributeName="d" dur="3s" repeatCount="indefinite" values="M110 60 Q105 40 112 20 Q119 0 114 -15;M110 60 Q115 38 108 18 Q101 -2 108 -17;M110 60 Q105 40 112 20 Q119 0 114 -15"/></path>
+          <path d="M140 65 Q145 45 138 25 Q131 5 138 -10" stroke="#7a4e2d" stroke-width="2" stroke-linecap="round" fill="none" opacity=".3"><animate attributeName="d" dur="3.5s" repeatCount="indefinite" values="M140 65 Q145 45 138 25 Q131 5 138 -10;M140 65 Q135 43 142 23 Q149 3 142 -12;M140 65 Q145 45 138 25 Q131 5 138 -10"/></path>
           <path d="M55 86 Q50 175 110 192 Q170 175 165 86 Z" fill="#c9a87a" stroke="#7a4e2d" stroke-width="2.5"/>
           <ellipse cx="110" cy="86" rx="55" ry="14" fill="#7a4e2d" stroke="#5c3820" stroke-width="2"/>
-          <path d="M90 82 Q110 74 130 82" stroke="#e8c99a" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
-          <path d="M85 87 Q110 79 135 87" stroke="#e8c99a" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+          <path d="M90 82 Q110 74 130 82" stroke="#e8c99a" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/>
           <path d="M165 106 Q205 106 205 136 Q205 168 165 168" stroke="#7a4e2d" stroke-width="12" fill="none" stroke-linecap="round"/>
           <path d="M165 106 Q197 106 197 136 Q197 168 165 168" stroke="#c9a87a" stroke-width="5" fill="none" stroke-linecap="round"/>
           <ellipse cx="110" cy="202" rx="72" ry="16" fill="#b8966a" stroke="#7a4e2d" stroke-width="2"/>
@@ -943,29 +561,60 @@ footer {
       <div class="hero-stamp">心理<br>友善空間<br>✦ 2026 ✦</div>
     </div>
   </section>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">500+</div><div class="stat-lbl">服務人次</div></div>
+    <div class="stat-item"><div class="stat-num">92%</div><div class="stat-lbl">回訪率</div></div>
+    <div class="stat-item"><div class="stat-num">3</div><div class="stat-lbl">服務類型</div></div>
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-lbl">隱私保障</div></div>
+    <div class="stat-item"><div class="stat-num">低門檻</div><div class="stat-lbl">接觸心理支持</div></div>
+  </div>
+
+  <!-- Features -->
+  <div class="features-section">
+    <div class="s-tag">我們的特色</div>
+    <h2 class="s-head">為什麼選擇<em>我們</em>？</h2>
+    <div class="feat-grid">
+      <div class="feat-card"><div class="f-ico">🔒</div><h3>完全保密</h3><p>心理服務紀錄採化名處理，與消費資料物理性隔離，AES-256 加密儲存。</p></div>
+      <div class="feat-card"><div class="f-ico">☕</div><h3>低門檻入口</h3><p>從一杯咖啡開始，不需要預先準備，沒有標籤，隨時可以走進來。</p></div>
+      <div class="feat-card"><div class="f-ico">🤖</div><h3>AI 智能推薦</h3><p>根據你的心情與消費記錄，智能推薦最適合的飲品與服務。</p></div>
+      <div class="feat-card"><div class="f-ico">🌿</div><h3>專業心理師</h3><p>具執照的心理諮詢師坐鎮，提供單次諮詢到長期療程的完整支持。</p></div>
+      <div class="feat-card"><div class="f-ico">💎</div><h3>會員積點回饋</h3><p>每次消費累積點數，升級會員等級享有更多專屬優惠與服務。</p></div>
+      <div class="feat-card"><div class="f-ico">📊</div><h3>數據透明</h3><p>清楚展示品牌運營數據，讓你了解我們如何運用數據優化每一次體驗。</p></div>
+    </div>
+  </div>
+
   <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <h3>Trace <span>&</span> Sip</h3>
-        <p>讓心理照顧成為一種生活風格，在一杯咖啡的溫度裡，找到回到自己的路。</p>
-      </div>
-      <div class="footer-col"><h4>服務</h4><ul><li onclick="nav('menu')">咖啡 & 飲品</li><li onclick="nav('menu')">心理諮詢</li><li onclick="nav('menu')">諮商療程</li><li onclick="nav('menu')">組合方案</li></ul></div>
-      <div class="footer-col"><h4>關於</h4><ul><li onclick="nav('about')">品牌故事</li><li onclick="nav('about')">我們的旅程</li><li onclick="nav('about')">品牌價值</li></ul></div>
-      <div class="footer-col"><h4>聯絡</h4><ul><li>02-XXXX-XXXX</li><li>info@traceandsip.tw</li><li>台北市大安區</li><li>週二—週日 10-21時</li></ul></div>
+    <div class="footer-g">
+      <div class="fb-brand"><h3>Trace <span>&</span> Sip</h3><p>讓心理照顧成為一種生活風格，在一杯咖啡的溫度裡，找到回到自己的路。</p></div>
+      <div class="f-col"><h4>服務</h4><ul><li onclick="nav('menu')">咖啡 & 飲品</li><li onclick="nav('menu')">心理諮詢</li><li onclick="nav('menu')">諮商療程</li><li onclick="nav('menu')">組合方案</li></ul></div>
+      <div class="f-col"><h4>關於</h4><ul><li onclick="nav('about')">品牌故事</li><li onclick="nav('member')">會員計畫</li><li onclick="nav('data')">數據看板</li></ul></div>
+      <div class="f-col"><h4>聯絡</h4><ul><li>02-XXXX-XXXX</li><li>info@traceandsip.tw</li><li>台北市大安區</li><li>週二—週日 10-21時</li></ul></div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 Trace & Sip 心靈咖啡所　版權所有</p>
-      <div class="socials"><a>Instagram</a><a>Facebook</a><a>Line@</a></div>
-    </div>
+    <div class="footer-bot"><p>© 2026 Trace & Sip 心靈咖啡所　版權所有</p><div class="socials"><a>Instagram</a><a>Facebook</a><a>Line@</a></div></div>
   </footer>
 </div>
 
-<!-- ═══ VIEW: MENU ═══ -->
+<!-- ═══════════ VIEW: MENU ═══════════ -->
 <div id="view-menu" style="display:none">
   <div class="menu-banner">
-    <div class="section-tag">菜單 & 服務</div>
-    <h2 class="section-heading">為你準備的<br>每一種陪伴</h2>
-    <p class="serif-body">點選任何一個項目，可以看到更多詳細介紹，並直接預約。</p>
+    <div class="s-tag">菜單 & 服務</div>
+    <h2 class="s-head">為你準備的<br>每一種陪伴</h2>
+    <p class="serif-p">點選任何項目，可以看到更多詳細介紹，並直接預約。</p>
+  </div>
+  <!-- Mood Recommender -->
+  <div class="mood-section">
+    <h3>🤖 根據你的心情推薦</h3>
+    <p>今天的你是什麼感覺？我們幫你選最適合的。</p>
+    <div class="mood-btns">
+      <button class="mood-btn" onclick="pickMood('tired',this)">😮‍💨 好累好累</button>
+      <button class="mood-btn" onclick="pickMood('anxious',this)">😟 有點焦慮</button>
+      <button class="mood-btn" onclick="pickMood('sad',this)">😔 心情不太好</button>
+      <button class="mood-btn" onclick="pickMood('happy',this)">😊 今天還不錯</button>
+      <button class="mood-btn" onclick="pickMood('curious',this)">🤔 想了解諮詢</button>
+    </div>
+    <div class="mood-result" id="moodResult"></div>
   </div>
   <div class="filter-bar">
     <button class="f-btn on" onclick="filterCat('all',this)">✦ 全部</button>
@@ -975,49 +624,230 @@ footer {
     <button class="f-btn" onclick="filterCat('package',this)">✨ 組合方案</button>
   </div>
   <div class="prod-grid" id="prodGrid"></div>
-  <footer>
-    <div class="footer-bottom" style="max-width:100%;padding:20px 48px;">
-      <p>© 2026 Trace & Sip 心靈咖啡所</p>
-      <div class="socials"><a>Instagram</a><a>Facebook</a><a>Line@</a></div>
-    </div>
-  </footer>
+  <footer><div class="footer-bot" style="max-width:100%;padding:18px 48px;"><p>© 2026 Trace & Sip 心靈咖啡所</p><div class="socials"><a>Instagram</a><a>Facebook</a><a>Line@</a></div></div></footer>
 </div>
 
-<!-- ═══ VIEW: DETAIL ═══ -->
+<!-- ═══════════ VIEW: DETAIL ═══════════ -->
 <div id="view-detail" style="display:none">
   <div class="detail-layout">
-    <div class="detail-visual" id="dVisual">
-      <div class="detail-circle"></div>
-      <button class="detail-back-btn" onclick="nav('menu')">← 返回列表</button>
-      <div class="detail-emoji" id="dEmoji">☕</div>
+    <div class="d-visual" id="dVisual">
+      <div class="d-circle"></div>
+      <button class="d-back" onclick="nav('menu')">← 返回列表</button>
+      <div class="d-emoji" id="dEmoji">☕</div>
     </div>
-    <div class="detail-info">
+    <div class="d-info">
       <div class="d-cat" id="dCat"></div>
       <div class="d-name" id="dName"></div>
-      <div class="d-en"   id="dEn"></div>
-      <div class="d-price-row">
-        <span class="d-price" id="dPrice"></span>
-        <span class="d-unit"  id="dUnit"></span>
-      </div>
+      <div class="d-en" id="dEn"></div>
+      <div class="d-price-row"><span class="d-price" id="dPrice"></span><span class="d-unit" id="dUnit"></span></div>
       <div class="d-desc" id="dDesc"></div>
-      <div class="d-features" id="dFeats"></div>
+      <div class="d-feats" id="dFeats"></div>
       <div class="d-cta">
-        <button class="btn-main btn-rust" onclick="nav('booking')">📅 立即預約這個項目</button>
-        <button class="btn-main btn-outline" onclick="nav('menu')">← 返回列表</button>
+        <button class="btn-m btn-rs" onclick="nav('booking')">📅 立即預約這個項目</button>
+        <button class="btn-m btn-ol" onclick="nav('menu')">← 返回列表</button>
       </div>
-      <div class="d-related">
-        <h4>你可能也喜歡</h4>
-        <div class="rel-chips" id="dRelated"></div>
-      </div>
+      <div class="d-rel"><h4>你可能也喜歡</h4><div class="rel-chips" id="dRel"></div></div>
     </div>
   </div>
 </div>
 
-<!-- ═══ VIEW: ABOUT ═══ -->
+<!-- ═══════════ VIEW: MEMBER ═══════════ -->
+<div id="view-member" style="display:none">
+  <div class="member-hero">
+    <div class="s-tag">會員忠誠計畫</div>
+    <h2 class="s-head">陪伴你越久<br><em>回饋越多</em></h2>
+    <p class="serif-p">累積每一次的消費與體驗，解鎖更多專屬優惠與心靈支持資源。</p>
+  </div>
+
+  <!-- Tier Cards -->
+  <div class="tiers-wrap">
+    <div class="tier-card">
+      <div class="tier-top" style="background:linear-gradient(135deg,#e8c99a,#c9a87a);">
+        <span class="tier-badge" style="background:rgba(58,36,18,0.3);color:#fff;">入門</span>
+        <div class="tier-icon">☕</div>
+        <div class="tier-name" style="color:var(--dark);">Espresso</div>
+        <div class="tier-sub" style="color:var(--dark);">初心會員</div>
+      </div>
+      <div class="tier-body">
+        <ul>
+          <li>每消費 $10 = 1 點</li>
+          <li>生日月份雙倍點數</li>
+          <li>每月 1 杯免費續杯</li>
+          <li>情緒日記本 85 折</li>
+        </ul>
+        <div class="tier-cond">加入即享，首次消費自動升級</div>
+      </div>
+    </div>
+    <div class="tier-card">
+      <div class="tier-top" style="background:linear-gradient(135deg,#d4938a,#a85a52);">
+        <span class="tier-badge" style="background:rgba(255,255,255,0.25);color:#fff;">進階</span>
+        <div class="tier-icon">🌿</div>
+        <div class="tier-name" style="color:#fff;">Latte</div>
+        <div class="tier-sub" style="color:rgba(255,255,255,0.7);">療癒會員</div>
+      </div>
+      <div class="tier-body">
+        <ul>
+          <li>每消費 $10 = 1.5 點</li>
+          <li>諮詢服務 9 折優惠</li>
+          <li>每季免費簡易諮詢 1 次</li>
+          <li>專屬情緒追蹤 App 功能</li>
+          <li>優先預約熱門時段</li>
+        </ul>
+        <div class="tier-cond">累積消費 $3,000 升級</div>
+      </div>
+    </div>
+    <div class="tier-card">
+      <div class="tier-top" style="background:linear-gradient(135deg,#6b4c35,#2a1f17);">
+        <span class="tier-badge" style="background:var(--gold);color:var(--dark);">尊榮</span>
+        <div class="tier-icon">💎</div>
+        <div class="tier-name" style="color:var(--kraft);">Pour-over</div>
+        <div class="tier-sub" style="color:rgba(201,168,122,0.6);">尊榮會員</div>
+      </div>
+      <div class="tier-body">
+        <ul>
+          <li>每消費 $10 = 2 點</li>
+          <li>所有服務 85 折</li>
+          <li>每月免費諮詢 1 次</li>
+          <li>專屬心理師配對服務</li>
+          <li>VIP 隱密包廂優先使用</li>
+          <li>CLV 客製化成長報告</li>
+        </ul>
+        <div class="tier-cond">累積消費 $12,000 升級</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Points System -->
+  <div class="points-section">
+    <h3>✦ 點數如何使用？</h3>
+    <div class="points-grid">
+      <div class="point-card"><div class="p-ico">☕</div><div class="p-num">50點</div><div class="p-lbl">兌換飲品升級<br>（加大或換特調）</div></div>
+      <div class="point-card"><div class="p-ico">🤝</div><div class="p-num">200點</div><div class="p-lbl">兌換簡易諮詢<br>一次（30分鐘）</div></div>
+      <div class="point-card"><div class="p-ico">🍰</div><div class="p-num">120點</div><div class="p-lbl">兌換下午茶<br>甜點一份</div></div>
+      <div class="point-card"><div class="p-ico">🎁</div><div class="p-num">300點</div><div class="p-lbl">兌換療癒禮盒<br>（含書與小物）</div></div>
+    </div>
+  </div>
+
+  <!-- CLV Section -->
+  <div class="clv-section">
+    <div class="container">
+      <div class="clv-inner">
+        <div class="clv-text">
+          <div class="s-tag" style="color:var(--kraft);">數據策略</div>
+          <h3>CLV 客戶終身價值預測</h3>
+          <p>我們透過第一方數據分析，預測每位會員的長期價值，並據此提供個人化的服務推薦與會員回饋，讓每一次互動都更有意義。</p>
+          <div>
+            <span class="clv-badge">消費頻率分析</span>
+            <span class="clv-badge">情緒趨勢追蹤</span>
+            <span class="clv-badge">服務升級預測</span>
+            <span class="clv-badge">流失風險預警</span>
+          </div>
+        </div>
+        <div class="clv-chart">
+          <h4>📊 各會員等級平均 CLV 預測</h4>
+          <div class="bar-row"><span class="bar-label">Espresso</span><div class="bar-track"><div class="bar-fill" style="width:35%;background:linear-gradient(to right,#c9a87a,#e8c99a);"></div></div><span class="bar-val">$3,200</span></div>
+          <div class="bar-row"><span class="bar-label">Latte</span><div class="bar-track"><div class="bar-fill" style="width:62%;background:linear-gradient(to right,#d4938a,#f0bfbb);"></div></div><span class="bar-val">$8,600</span></div>
+          <div class="bar-row"><span class="bar-label">Pour-over</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(to right,var(--gold),#f0d98a);"></div></div><span class="bar-val">$24,000+</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:48px 24px;background:var(--cream);">
+    <p class="serif-p" style="margin-bottom:24px;">準備好開始你的心靈旅程了嗎？</p>
+    <button class="btn-m btn-dk" onclick="nav('booking')">立即加入會員並預約 →</button>
+  </div>
+  <footer><div class="footer-bot" style="max-width:100%;padding:18px 48px;background:var(--dark);"><p style="color:rgba(253,248,241,0.23);font-family:'Noto Sans TC',sans-serif;font-size:11px;">© 2026 Trace & Sip 心靈咖啡所</p><div class="socials"><a>Instagram</a><a>Facebook</a><a>Line@</a></div></div></footer>
+</div>
+
+<!-- ═══════════ VIEW: DATA ═══════════ -->
+<div id="view-data" style="display:none">
+  <div class="data-hero">
+    <div class="s-tag">數據透明看板</div>
+    <h2 class="s-head" style="color:var(--cream);">我們如何<em style="color:var(--kraft);">運用數據</em></h2>
+    <p class="serif-p" style="color:rgba(253,248,241,0.55);max-width:520px;">Trace & Sip 承諾以透明的方式展示品牌數據，並說明我們如何運用第一方數據來優化每一次體驗。</p>
+  </div>
+  <div class="dashboard">
+    <!-- KPI -->
+    <div class="dash-card">
+      <h3>📈 核心 KPI（本月）</h3>
+      <div class="kpi-row">
+        <div class="kpi"><div class="kpi-num">847</div><div class="kpi-lbl">總訪客數</div></div>
+        <div class="kpi"><div class="kpi-num">92%</div><div class="kpi-lbl">回訪率</div></div>
+        <div class="kpi"><div class="kpi-num">4.8★</div><div class="kpi-lbl">客戶滿意度</div></div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi"><div class="kpi-num">238</div><div class="kpi-lbl">諮詢人次</div></div>
+        <div class="kpi"><div class="kpi-num">$680</div><div class="kpi-lbl">平均客單價</div></div>
+        <div class="kpi"><div class="kpi-num">156</div><div class="kpi-lbl">新會員數</div></div>
+      </div>
+      <div class="data-note">* 數據每月更新，採匿名化處理，不含個人識別資訊。</div>
+    </div>
+
+    <!-- Service Mix -->
+    <div class="dash-card">
+      <h3>🥧 服務組合分析</h3>
+      <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;">
+        <div class="donut-wrap">
+          <svg width="130" height="130" viewBox="0 0 130 130">
+            <circle cx="65" cy="65" r="50" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="24"/>
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#c9a87a" stroke-width="24" stroke-dasharray="126 188" stroke-dashoffset="0" transform="rotate(-90 65 65)"/>
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#d4938a" stroke-width="24" stroke-dasharray="75 239" stroke-dashoffset="-126" transform="rotate(-90 65 65)"/>
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#7a9e7e" stroke-width="24" stroke-dasharray="63 251" stroke-dashoffset="-201" transform="rotate(-90 65 65)"/>
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#c9a030" stroke-width="24" stroke-dasharray="50 264" stroke-dashoffset="-264" transform="rotate(-90 65 65)"/>
+          </svg>
+          <div class="donut-center"><span class="dc-num">314</span><span class="dc-lbl">總服務</span></div>
+        </div>
+        <div class="legend">
+          <div class="legend-row"><span class="legend-dot" style="background:#c9a87a;"></span><span class="legend-txt">咖啡 & 飲品</span><span class="legend-pct">40%</span></div>
+          <div class="legend-row"><span class="legend-dot" style="background:#d4938a;"></span><span class="legend-txt">心理諮詢</span><span class="legend-pct">24%</span></div>
+          <div class="legend-row"><span class="legend-dot" style="background:#7a9e7e;"></span><span class="legend-txt">諮商療程</span><span class="legend-pct">20%</span></div>
+          <div class="legend-row"><span class="legend-dot" style="background:#c9a030;"></span><span class="legend-txt">組合方案</span><span class="legend-pct">16%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weekly Traffic -->
+    <div class="dash-card">
+      <h3>📅 每日來客趨勢</h3>
+      <div class="chart-area">
+        <div class="chart-bar-h"><span class="cbh-lbl">週一</span><div class="cbh-track"><div class="cbh-fill" style="width:0%;background:#c9a87a;"></div></div><span class="cbh-val">休息</span></div>
+        <div class="chart-bar-h"><span class="cbh-lbl">週二</span><div class="cbh-track"><div class="cbh-fill" style="width:45%;background:#c9a87a;"></div></div><span class="cbh-val">38人</span></div>
+        <div class="chart-bar-h"><span class="cbh-lbl">週三</span><div class="cbh-track"><div class="cbh-fill" style="width:55%;background:#c9a87a;"></div></div><span class="cbh-val">46人</span></div>
+        <div class="chart-bar-h"><span class="cbh-lbl">週四</span><div class="cbh-track"><div class="cbh-fill" style="width:60%;background:#d4938a;"></div></div><span class="cbh-val">51人</span></div>
+        <div class="chart-bar-h"><span class="cbh-lbl">週五</span><div class="cbh-track"><div class="cbh-fill" style="width:88%;background:#d4938a;"></div></div><span class="cbh-val">74人</span></div>
+        <div class="chart-bar-h"><span class="cbh-lbl">週六</span><div class="cbh-track"><div class="cbh-fill" style="width:100%;background:var(--gold);"></div></div><span class="cbh-val">84人</span></div>
+        <div class="chart-bar-h"><span class="cbh-lbl">週日</span><div class="cbh-track"><div class="cbh-fill" style="width:72%;background:#7a9e7e;"></div></div><span class="cbh-val">61人</span></div>
+      </div>
+    </div>
+
+    <!-- Data Ethics -->
+    <div class="dash-card">
+      <h3>🔒 數據倫理聲明</h3>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;background:rgba(255,255,255,0.05);border-radius:6px;border-left:3px solid var(--kraft);">
+          <span style="font-size:18px;flex-shrink:0;">🎯</span>
+          <div><div style="font-family:'Caveat',cursive;font-size:15px;color:var(--cream);margin-bottom:3px;">最小化原則</div><div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:rgba(253,248,241,0.5);line-height:1.75;">只採集服務所必需的最少資料，不過度蒐集。</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;background:rgba(255,255,255,0.05);border-radius:6px;border-left:3px solid #d4938a;">
+          <span style="font-size:18px;flex-shrink:0;">🔐</span>
+          <div><div style="font-family:'Caveat',cursive;font-size:15px;color:var(--cream);margin-bottom:3px;">物理性隔離</div><div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:rgba(253,248,241,0.5);line-height:1.75;">咖啡消費與心理諮詢資料存放於完全獨立的系統。</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;background:rgba(255,255,255,0.05);border-radius:6px;border-left:3px solid #7a9e7e;">
+          <span style="font-size:18px;flex-shrink:0;">👤</span>
+          <div><div style="font-family:'Caveat',cursive;font-size:15px;color:var(--cream);margin-bottom:3px;">用戶控制權</div><div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:rgba(253,248,241,0.5);line-height:1.75;">可隨時申請查閱、修改或刪除個人資料。</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-bot" style="max-width:100%;padding:18px 48px;background:var(--dark);"><p style="color:rgba(253,248,241,0.23);font-family:'Noto Sans TC',sans-serif;font-size:11px;">© 2026 Trace & Sip 心靈咖啡所</p><div class="socials"><a>Instagram</a><a>Facebook</a><a>Line@</a></div></div></footer>
+</div>
+
+<!-- ═══════════ VIEW: ABOUT ═══════════ -->
 <div id="view-about" style="display:none">
   <div class="about-layout">
     <div class="about-left">
-      <div class="section-tag" style="color:var(--kraft);margin-bottom:12px;">關於我們</div>
+      <div class="s-tag" style="color:var(--kraft);">關於我們</div>
       <h2>喝咖啡<br>是放鬆的<em>起點</em></h2>
       <p>在都市快速的節奏下，許多人習慣用咖啡放鬆，卻很少有機會真正面對內在的情緒。Trace & Sip 正是為此而生。</p>
       <div class="av-list">
@@ -1027,8 +857,8 @@ footer {
       </div>
     </div>
     <div class="about-right">
-      <div class="section-tag">品牌故事</div>
-      <h2 class="section-heading" style="font-size:clamp(28px,3.5vw,44px);margin-bottom:20px;">從壓力到療癒的旅程</h2>
+      <div class="s-tag">品牌故事</div>
+      <h2 class="s-head" style="font-size:clamp(26px,3.5vw,42px);margin-bottom:18px;">從壓力到療癒的旅程</h2>
       <div class="story-quote">「許多人習慣透過喝咖啡放鬆，卻很少有機會真正面對內在情緒。一位長期處於壓力中的上班族，在某天走進 Trace & Sip，不只是點了一杯咖啡，而是開啟了一段自我修復的旅程。」</div>
       <div class="timeline">
         <div class="t-item"><div class="t-dot">☁️</div><div class="t-content"><h4>壓力——快節奏生活的重量</h4><p>都市化進程加速，情緒無處釋放，心理健康長期被忽視。</p></div></div>
@@ -1041,18 +871,18 @@ footer {
   </div>
 </div>
 
-<!-- ═══ VIEW: BOOKING ═══ -->
+<!-- ═══════════ VIEW: BOOKING ═══════════ -->
 <div id="view-booking" style="display:none">
   <div class="booking-layout">
     <div class="bk-left">
-      <div class="section-tag" style="color:var(--kraft);margin-bottom:12px;">預約 / 聯絡</div>
+      <div class="s-tag" style="color:var(--kraft);">預約 / 聯絡</div>
       <h2>準備好了<br>就來找<em>我們</em></h2>
       <p>不管你準備好了沒有，Trace & Sip 的門都為你敞開。</p>
       <div class="bk-info">
         <div class="bk-row"><span class="bk-ico">📍</span><div><div class="bk-h">地址</div><div class="bk-v">台北市大安區復興南路一段 ×× 號<br>（捷運大安站 3 號出口，步行 5 分）</div></div></div>
         <div class="bk-row"><span class="bk-ico">🕐</span><div><div class="bk-h">營業時間</div><div class="bk-v">週二至週日　10:00 — 21:00<br>週一公休</div></div></div>
         <div class="bk-row"><span class="bk-ico">📞</span><div><div class="bk-h">聯絡方式</div><div class="bk-v">02-XXXX-XXXX<br>info@traceandsip.tw</div></div></div>
-        <div class="bk-row"><span class="bk-ico">🔒</span><div><div class="bk-h">隱私保障</div><div class="bk-v">心理紀錄採化名處理，與消費資料完全物理性隔離</div></div></div>
+        <div class="bk-row"><span class="bk-ico">🔒</span><div><div class="bk-h">隱私保障</div><div class="bk-v">心理紀錄採化名處理，AES-256 加密儲存</div></div></div>
       </div>
     </div>
     <div class="bk-right">
@@ -1088,115 +918,48 @@ footer {
       <div class="f-ok" id="formOk">
         <div class="ok-e">☕</div>
         <h3>收到你的預約了！</h3>
-        <p>謝謝你願意給自己這個空間。<br>我們會在 24 小時內聯繫你，確認細節。<br><br>在那之前，先好好休息一下 🍃</p>
-        <button class="btn-main btn-dark" style="margin-top:12px;" onclick="resetForm()">再次預約</button>
+        <p>謝謝你願意給自己這個空間。<br>我們會在 24 小時內聯繫你確認細節。<br><br>在那之前，先好好休息一下 🍃</p>
+        <button class="btn-m btn-dk" style="margin-top:10px;" onclick="resetForm()">再次預約</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-/* ══════════════════════════
-   PRODUCTS DATA
-══════════════════════════ */
-const PRODUCTS = [
-  {id:1,cat:'coffee',emoji:'☕',theme:'t-coffee',lb:'lb-c',lbTxt:'咖啡 & 飲品',name:'手沖單品咖啡',en:'Pour-over Single Origin',price:'150',unit:'元起 / 杯',tag:'每日現沖',
-   short:'精選產區單品，每日現場手沖，釋放咖啡最純粹的香氣。',
-   desc:'精選來自衣索比亞、哥倫比亞、巴拿馬等優質產區的咖啡豆，每日新鮮烘焙、現場手沖。搭配我們的情緒日記本，在品嚐中靜靜地陪伴自己。',
-   feats:[{i:'🌍',t:'每週更換當季產區豆，保持新鮮與多樣性'},{i:'⏱️',t:'現點現磨現煮，約等候 5–8 分鐘'},{i:'📓',t:'附情緒日記本一本，免費取用'},{i:'🪑',t:'座位不限時，可自由停留'}],
-   rel:['精品特調拿鐵','療癒下午茶套餐','身心療癒入門組合']},
-  {id:2,cat:'coffee',emoji:'☁️',theme:'t-blush',lb:'lb-c',lbTxt:'咖啡 & 飲品',name:'精品特調拿鐵',en:'Signature Latte',price:'180',unit:'元 / 杯',tag:'主廚特調',
-   short:'以情緒為靈感設計的特調，每一杯都有自己的故事。',
-   desc:'每款特調以一種情緒為靈感設計——「放鬆玫瑰拿鐵」、「自信焦糖瑪奇朵」……選一杯最符合今天心情的飲品，讓味覺引導你慢慢往內心走。',
-   feats:[{i:'🌹',t:'天然玫瑰、薰衣草、焦糖等風味'},{i:'🥛',t:'可選燕麥奶 / 豆漿 / 杏仁奶'},{i:'🎨',t:'手工拉花，每杯皆為藝術品'},{i:'💬',t:'飲品附上情緒小語卡一張'}],
-   rel:['手沖單品咖啡','療癒下午茶套餐','精品茶飲']},
-  {id:3,cat:'coffee',emoji:'🍵',theme:'t-sage',lb:'lb-c',lbTxt:'咖啡 & 飲品',name:'精品茶飲',en:'Specialty Tea',price:'120',unit:'元起 / 壺',tag:'不喝咖啡也適合',
-   short:'來自台灣、日本的精品茶葉，一壺靜心時光。',
-   desc:'不是每個人都喝咖啡，但每個人都需要一個停下來的理由。精選台灣阿里山高山茶、日本靜岡抹茶與花草茶，一壺獨享，一段屬於自己的靜默時光。',
-   feats:[{i:'🍃',t:'台灣阿里山 / 梨山、日本靜岡抹茶'},{i:'🫖',t:'一壺可回沖 2–3 次，慢慢品嚐'},{i:'🌸',t:'季節限定花草茶每月更換'},{i:'📓',t:'附情緒日記本一本'}],
-   rel:['手沖單品咖啡','療癒下午茶套餐']},
-  {id:4,cat:'coffee',emoji:'🍰',theme:'t-warm',lb:'lb-c',lbTxt:'咖啡 & 飲品',name:'療癒下午茶套餐',en:'Healing Afternoon Tea',price:'350',unit:'元 / 份',tag:'14–17時限定',
-   short:'手工甜點 + 飲品，在最美的午後給自己一個小確幸。',
-   desc:'下午三點，是給自己充電的時間。當日主廚手工甜點一份，搭配任意飲品，讓甜味幫你重啟疲憊的身心。',
-   feats:[{i:'🍰',t:'每日主廚限量手工甜點（每日不同）'},{i:'☕',t:'搭配任意飲品一杯'},{i:'🌅',t:'建議時段：14:00–17:00'},{i:'📸',t:'精緻擺盤，IG 友善'}],
-   rel:['精品特調拿鐵','手沖單品咖啡','精品茶飲']},
-  {id:5,cat:'counsel',emoji:'🤝',theme:'t-blush',lb:'lb-n',lbTxt:'心理諮詢',name:'單次簡易諮詢',en:'Single Counseling Session',price:'500',unit:'元 / 30分鐘',tag:'低門檻',
-   short:'不需長期預約，隨時走進來聊聊。保密、不標籤化。',
-   desc:'不需要做好萬全準備，也不需要問題已經很嚴重。只要你想說說話，我們的心理諮詢師就在這裡。在輕鬆的咖啡館氛圍中，以非正式的方式開始你的第一步。',
-   feats:[{i:'🔒',t:'完全保密，採化名紀錄，不與消費資料連結'},{i:'🚪',t:'無需長期預約，現場或線上預約皆可'},{i:'☕',t:'含一杯飲品，讓身體先放鬆'},{i:'📋',t:'可依需求提供外部資源轉介'}],
-   rel:['預約式諮商療程','身心療癒入門組合','深度陪伴方案']},
-  {id:6,cat:'therapy',emoji:'🌿',theme:'t-sage',lb:'lb-t',lbTxt:'諮商療程',name:'預約式諮商療程',en:'Scheduled Therapy Session',price:'1,800',unit:'元 / 50分鐘',tag:'深度療癒',
-   short:'與固定心理師建立深度信任關係，有計劃地療癒。',
-   desc:'適合希望深入探索自我、持續改變的你。透過預約，與同一位心理師建立穩定的諮商關係，在二樓的獨立隱密空間中，以有系統的方式進行自我探索。',
-   feats:[{i:'🏠',t:'二樓全隱密獨立空間，不受干擾'},{i:'👤',t:'固定心理師一對一，建立深度信任'},{i:'📅',t:'可預約固定時段，每週 / 每兩週一次'},{i:'🌐',t:'可提供轉介衛政、社政專業資源'}],
-   rel:['單次簡易諮詢','深度陪伴方案','身心療癒入門組合']},
-  {id:7,cat:'package',emoji:'✨',theme:'t-gold',lb:'lb-p',lbTxt:'組合方案',name:'身心療癒入門組合',en:'Wellness Starter Package',price:'1,080',unit:'元 / 組合',tag:'新客首選',
-   short:'咖啡 + 初次諮詢，第一次來的你的最佳入門組合。',
-   desc:'專為第一次踏進 Trace & Sip 的你設計。一杯特調飲品，搭配一次30分鐘的簡易諮詢，讓你在最舒適的狀態下，輕鬆踏出接觸心理支持的第一步。',
-   feats:[{i:'☕',t:'精品特調拿鐵或手沖單品一杯（任選）'},{i:'🤝',t:'單次簡易諮詢 30 分鐘'},{i:'💰',t:'組合優惠，比單點划算'},{i:'🎁',t:'附限量心靈小卡與情緒日記本'}],
-   rel:['深度陪伴方案','預約式諮商療程','手沖單品咖啡']},
-  {id:8,cat:'package',emoji:'💎',theme:'t-dark',lb:'lb-p',lbTxt:'組合方案',name:'深度陪伴方案',en:'Deep Companionship Plan',price:'6,800',unit:'元 / 四堂',tag:'最超值',
-   short:'四次50分鐘諮商，固定心理師全程陪伴，穩定療癒旅程。',
-   desc:'為希望長期投資自己的你設計。四堂預約式諮商療程，由固定心理師全程陪伴，建立系統化的個人療癒計劃，幫助你在日常生活中持續成長與改變。',
-   feats:[{i:'🗓️',t:'四次 50 分鐘諮商（原價 $7,200）'},{i:'👤',t:'固定同一位心理師，深度建立信任'},{i:'📋',t:'量身制定個人諮商計劃書'},{i:'📞',t:'療程期間可文字諮詢，即時支持'}],
-   rel:['身心療癒入門組合','預約式諮商療程','單次簡易諮詢']},
+/* ══ PRODUCTS ══ */
+const PRODUCTS=[
+  {id:1,cat:'coffee',emoji:'☕',theme:'t-coffee',lb:'lb-c',lbTxt:'咖啡 & 飲品',name:'手沖單品咖啡',en:'Pour-over Single Origin',price:'150',unit:'元起 / 杯',tag:'每日現沖',short:'精選產區單品，每日現場手沖，釋放咖啡最純粹的香氣。',desc:'精選來自衣索比亞、哥倫比亞、巴拿馬等優質產區的咖啡豆，每日新鮮烘焙、現場手沖。搭配我們的情緒日記本，在品嚐中靜靜地陪伴自己。',feats:[{i:'🌍',t:'每週更換當季產區豆'},{i:'⏱️',t:'現點現磨現煮，約等候 5–8 分鐘'},{i:'📓',t:'附情緒日記本免費取用'},{i:'🪑',t:'座位不限時'}],rel:['精品特調拿鐵','療癒下午茶套餐','身心療癒入門組合']},
+  {id:2,cat:'coffee',emoji:'☁️',theme:'t-blush',lb:'lb-c',lbTxt:'咖啡 & 飲品',name:'精品特調拿鐵',en:'Signature Latte',price:'180',unit:'元 / 杯',tag:'主廚特調',short:'以情緒為靈感設計的特調，每一杯都有自己的故事。',desc:'每款特調以一種情緒為靈感設計——「放鬆玫瑰拿鐵」、「自信焦糖瑪奇朵」……選一杯最符合今天心情的飲品。',feats:[{i:'🌹',t:'天然玫瑰、薰衣草、焦糖等風味'},{i:'🥛',t:'可選燕麥奶 / 豆漿 / 杏仁奶'},{i:'🎨',t:'手工拉花'},{i:'💬',t:'附情緒小語卡'}],rel:['手沖單品咖啡','療癒下午茶套餐','精品茶飲']},
+  {id:3,cat:'coffee',emoji:'🍵',theme:'t-sage',lb:'lb-c',lbTxt:'咖啡 & 飲品',name:'精品茶飲',en:'Specialty Tea',price:'120',unit:'元起 / 壺',tag:'不喝咖啡也適合',short:'台灣、日本精品茶葉，一壺靜心時光。',desc:'精選台灣阿里山高山茶、日本靜岡抹茶與花草茶，一壺獨享，一段屬於自己的靜默時光。',feats:[{i:'🍃',t:'阿里山 / 梨山、日本靜岡抹茶'},{i:'🫖',t:'一壺可回沖 2–3 次'},{i:'🌸',t:'季節限定花草茶'},{i:'📓',t:'附情緒日記本'}],rel:['手沖單品咖啡','療癒下午茶套餐']},
+  {id:4,cat:'coffee',emoji:'🍰',theme:'t-warm',lb:'lb-c',lbTxt:'咖啡 & 飲品',name:'療癒下午茶套餐',en:'Healing Afternoon Tea',price:'350',unit:'元 / 份',tag:'14–17時限定',short:'手工甜點 + 飲品，午後的小確幸。',desc:'當日主廚手工甜點一份，搭配任意飲品，讓甜味幫你重啟疲憊的身心。',feats:[{i:'🍰',t:'每日限量手工甜點'},{i:'☕',t:'搭配任意飲品一杯'},{i:'🌅',t:'建議時段 14:00–17:00'},{i:'📸',t:'精緻擺盤'}],rel:['精品特調拿鐵','手沖單品咖啡']},
+  {id:5,cat:'counsel',emoji:'🤝',theme:'t-blush',lb:'lb-n',lbTxt:'心理諮詢',name:'單次簡易諮詢',en:'Single Counseling Session',price:'500',unit:'元 / 30分鐘',tag:'低門檻',short:'不需長期預約，隨時走進來聊聊。',desc:'不需要做好萬全準備。只要你想說說話，我們的心理諮詢師就在這裡。在輕鬆的咖啡館氛圍中，以非正式的方式開始你的第一步。',feats:[{i:'🔒',t:'完全保密，化名紀錄'},{i:'🚪',t:'無需長期預約'},{i:'☕',t:'含一杯飲品'},{i:'📋',t:'可提供外部資源轉介'}],rel:['預約式諮商療程','身心療癒入門組合','深度陪伴方案']},
+  {id:6,cat:'therapy',emoji:'🌿',theme:'t-sage',lb:'lb-t',lbTxt:'諮商療程',name:'預約式諮商療程',en:'Scheduled Therapy Session',price:'1,800',unit:'元 / 50分鐘',tag:'深度療癒',short:'固定心理師，有計劃地深度療癒。',desc:'與同一位心理師建立穩定的諮商關係，在二樓的獨立隱密空間中，以有系統的方式進行自我探索。',feats:[{i:'🏠',t:'二樓全隱密獨立空間'},{i:'👤',t:'固定心理師一對一'},{i:'📅',t:'每週 / 每兩週一次'},{i:'🌐',t:'可提供轉介衛政、社政資源'}],rel:['單次簡易諮詢','深度陪伴方案','身心療癒入門組合']},
+  {id:7,cat:'package',emoji:'✨',theme:'t-gold',lb:'lb-p',lbTxt:'組合方案',name:'身心療癒入門組合',en:'Wellness Starter Package',price:'1,080',unit:'元 / 組合',tag:'新客首選',short:'咖啡 + 初次諮詢，第一次來的最佳入門組合。',desc:'一杯特調飲品，搭配30分鐘的簡易諮詢，讓你在最舒適的狀態下，輕鬆踏出接觸心理支持的第一步。',feats:[{i:'☕',t:'特調拿鐵或手沖（任選）'},{i:'🤝',t:'簡易諮詢 30 分鐘'},{i:'💰',t:'組合優惠，比單點划算'},{i:'🎁',t:'附心靈小卡與情緒日記本'}],rel:['深度陪伴方案','預約式諮商療程','手沖單品咖啡']},
+  {id:8,cat:'package',emoji:'💎',theme:'t-dark',lb:'lb-p',lbTxt:'組合方案',name:'深度陪伴方案',en:'Deep Companionship Plan',price:'6,800',unit:'元 / 四堂',tag:'最超值',short:'四次諮商，固定心理師全程陪伴。',desc:'四堂預約式諮商療程，固定心理師全程陪伴，建立系統化的個人療癒計劃，幫助你在日常生活中持續成長。',feats:[{i:'🗓️',t:'四次 50 分鐘（原價 $7,200）'},{i:'👤',t:'固定同一位心理師'},{i:'📋',t:'量身制定諮商計劃書'},{i:'📞',t:'療程期間可文字諮詢'}],rel:['身心療癒入門組合','預約式諮商療程','單次簡易諮詢']},
 ];
 
-/* ══════════════════════════
-   NAVIGATION (with curtain)
-══════════════════════════ */
-const VIEWS = ['home','menu','detail','about','booking'];
-const NAV_PAGES = ['home','menu','about','booking'];
-let current = 'home';
-let busy = false;
+const MOOD_MAP={
+  tired:{title:'你需要一個被好好照顧的下午 ☁️',desc:'今天先不想任何事。試試我們的「放鬆玫瑰拿鐵」，坐在窗邊，把日記本打開，讓思緒慢慢流動。',rec:'精品特調拿鐵'},
+  anxious:{title:'焦慮的時候，先讓身體放鬆 🍵',desc:'先喝一壺台灣高山茶，讓咖啡因比較低的飲品幫你穩定一下。如果需要，我們的簡易諮詢師也在旁邊。',rec:'精品茶飲'},
+  sad:{title:'難過的時候需要被聽見 💬',desc:'不需要自己撐著。我們的單次簡易諮詢隨時歡迎你，不需要預約，走進來就好。',rec:'單次簡易諮詢'},
+  happy:{title:'狀態好的時候最適合投資自己 ✨',desc:'趁今天心情不錯，試試我們的身心療癒入門組合。一杯咖啡加上一次諮詢，開始更了解自己。',rec:'身心療癒入門組合'},
+  curious:{title:'好奇是改變的開始 🌿',desc:'如果你在考慮要不要嘗試諮商，先從最輕鬆的方式開始。我們的入門組合設計得很友善，不會有壓力。',rec:'預約式諮商療程'},
+};
 
-function nav(id) {
-  if (busy || id === current) return;
-  busy = true;
-
-  const curtain = document.getElementById('curtain');
-
-  // 1. wipe IN (brown curtain slides in from left)
-  curtain.className = 'wipe-in';
-  curtain.style.pointerEvents = 'all';
-
-  setTimeout(() => {
-    // 2. swap the view
-    document.getElementById('view-' + current).style.display = 'none';
-    current = id;
-    const nextEl = document.getElementById('view-' + id);
-    nextEl.style.display = 'block';
-    nextEl.classList.add('page-enter');
-    window.scrollTo(0, 0);
-
-    // update navbar
-    document.querySelectorAll('.nb-link').forEach((el, i) => {
-      el.classList.toggle('here', NAV_PAGES[i] === id);
-    });
-
-    // 3. wipe OUT (curtain slides off to right)
-    curtain.className = 'wipe-out';
-
-    setTimeout(() => {
-      curtain.className = '';
-      curtain.style.pointerEvents = 'none';
-      nextEl.classList.remove('page-enter');
-      busy = false;
-    }, 420);
-
-  }, 420);
+function pickMood(mood, btn) {
+  document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('picked'));
+  btn.classList.add('picked');
+  const m = MOOD_MAP[mood];
+  const res = document.getElementById('moodResult');
+  const prod = PRODUCTS.find(p=>p.name===m.rec);
+  res.innerHTML=`<h4>${m.title}</h4><p>${m.desc}</p>${prod?`<div class="mr-tag" onclick="openDetail(${prod.id})" style="cursor:pointer;">${prod.emoji} 推薦：${prod.name} — 立即查看 →</div>`:''}`;
+  res.classList.add('show');
 }
 
-function closeMob() {
-  document.getElementById('mob-menu').classList.remove('open');
-}
-
-/* ══════════════════════════
-   RENDER PRODUCT CARDS
-══════════════════════════ */
-function renderCards(cat) {
-  const list = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat);
-  document.getElementById('prodGrid').innerHTML = list.map(p => `
+/* ══ RENDER CARDS ══ */
+function renderCards(cat='all'){
+  const list=cat==='all'?PRODUCTS:PRODUCTS.filter(p=>p.cat===cat);
+  document.getElementById('prodGrid').innerHTML=list.map(p=>`
     <div class="prod-card" onclick="openDetail(${p.id})">
       <div class="pc-img ${p.theme}">
         <span class="pc-badge ${p.lb}">${p.lbTxt}</span>
@@ -1211,72 +974,150 @@ function renderCards(cat) {
           <button class="pc-btn">看詳情 →</button>
         </div>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-function filterCat(cat, btn) {
-  document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('on'));
+function filterCat(cat,btn){
+  document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   renderCards(cat);
 }
 
-/* ══════════════════════════
-   OPEN PRODUCT DETAIL
-══════════════════════════ */
-const BG = {t_coffee:'#e8d5b0',t_blush:'#f0c8c4',t_sage:'#c0d8c3',t_dark:'#b8a090',t_gold:'#f0e0a0',t_warm:'#f0d8c0'};
-
-function openDetail(id) {
-  const p = PRODUCTS.find(x => x.id === id);
-  if (!p) return;
-
-  const key = p.theme.replace('-','_');
-  document.getElementById('dVisual').style.background = BG[key] || '#e8d5b0';
-  document.getElementById('dEmoji').textContent = p.emoji;
-  document.getElementById('dCat').textContent   = '— ' + p.lbTxt + ' —';
-  document.getElementById('dName').textContent  = p.name;
-  document.getElementById('dEn').textContent    = p.en;
-  document.getElementById('dPrice').textContent = p.price;
-  document.getElementById('dUnit').textContent  = p.unit;
-  document.getElementById('dDesc').textContent  = p.desc;
-
-  document.getElementById('dFeats').innerHTML = p.feats.map(f =>
-    `<div class="feat"><span class="feat-ico">${f.i}</span><span class="feat-txt">${f.t}</span></div>`
-  ).join('');
-
-  document.getElementById('dRelated').innerHTML = p.rel.map(name => {
-    const r = PRODUCTS.find(x => x.name === name);
-    return r ? `<div class="rel-chip" onclick="openDetail(${r.id})">${r.emoji} ${r.name}</div>` : '';
+/* ══ DETAIL ══ */
+const BG={t_coffee:'#e8d5b0',t_blush:'#f0c8c4',t_sage:'#c0d8c3',t_dark:'#b8a090',t_gold:'#f0e0a0',t_warm:'#f0d8c0'};
+function openDetail(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(!p)return;
+  document.getElementById('dVisual').style.background=BG[p.theme.replace('-','_')]||'#e8d5b0';
+  document.getElementById('dEmoji').textContent=p.emoji;
+  document.getElementById('dCat').textContent='— '+p.lbTxt+' —';
+  document.getElementById('dName').textContent=p.name;
+  document.getElementById('dEn').textContent=p.en;
+  document.getElementById('dPrice').textContent=p.price;
+  document.getElementById('dUnit').textContent=p.unit;
+  document.getElementById('dDesc').textContent=p.desc;
+  document.getElementById('dFeats').innerHTML=p.feats.map(f=>`<div class="d-feat"><span class="d-feat-i">${f.i}</span><span class="d-feat-t">${f.t}</span></div>`).join('');
+  document.getElementById('dRel').innerHTML=p.rel.map(name=>{
+    const r=PRODUCTS.find(x=>x.name===name);
+    return r?`<div class="rel-chip" onclick="openDetail(${r.id})">${r.emoji} ${r.name}</div>`:'';
   }).join('');
-
   nav('detail');
 }
 
-/* ══════════════════════════
-   FORM
-══════════════════════════ */
-function submitForm() {
-  const n = document.getElementById('f-name').value.trim();
-  const p = document.getElementById('f-phone').value.trim();
-  const s = document.getElementById('f-service').value;
-  if (!n || !p || !s) { alert('請填寫姓名、聯絡電話，並選擇服務項目 🍃'); return; }
-  document.getElementById('bookForm').style.display = 'none';
+/* ══ PAGE NAV ══ */
+const NAV_PAGES=['home','menu','member','data','about','booking'];
+let current='home',busy=false;
+function nav(id){
+  if(busy||id===current)return;
+  busy=true;
+  const curtain=document.getElementById('curtain');
+  curtain.className='wipe-in';
+  curtain.style.pointerEvents='all';
+  setTimeout(()=>{
+    document.getElementById('view-'+current).style.display='none';
+    current=id;
+    const next=document.getElementById('view-'+id);
+    next.style.display='block';
+    next.classList.add('page-enter');
+    window.scrollTo(0,0);
+    document.querySelectorAll('.nb-link').forEach((el,i)=>el.classList.toggle('here',NAV_PAGES[i]===id));
+    curtain.className='wipe-out';
+    setTimeout(()=>{curtain.className='';curtain.style.pointerEvents='none';next.classList.remove('page-enter');busy=false;},380);
+  },400);
+}
+function closeMob(){document.getElementById('mob-menu').classList.remove('open');}
+
+/* ══ FORM ══ */
+function submitForm(){
+  const n=document.getElementById('f-name').value.trim();
+  const p=document.getElementById('f-phone').value.trim();
+  const s=document.getElementById('f-service').value;
+  if(!n||!p||!s){alert('請填寫姓名、聯絡電話，並選擇服務項目 🍃');return;}
+  document.getElementById('bookForm').style.display='none';
   document.getElementById('formOk').classList.add('show');
 }
-function resetForm() {
-  ['f-name','f-phone','f-email','f-msg'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('f-service').value = '';
-  document.getElementById('f-date').value = '';
-  document.getElementById('bookForm').style.display = 'block';
+function resetForm(){
+  ['f-name','f-phone','f-email','f-msg'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-service').value='';document.getElementById('f-date').value='';
+  document.getElementById('bookForm').style.display='block';
   document.getElementById('formOk').classList.remove('show');
 }
 
-/* ══════════════════════════
-   INIT
-══════════════════════════ */
-renderCards('all');
-const di = document.getElementById('f-date');
-if (di) { const t = new Date(); t.setDate(t.getDate()+1); di.min = t.toISOString().split('T')[0]; }
+/* ══ AI CHATBOT ══ */
+const BOT_REPLIES={
+  '服務':['我們提供三大類服務：☕ 咖啡空間、🤝 心理諮詢（500元/30分鐘）、🌿 諮商療程（1,800元/50分鐘）。要我幫你推薦哪一種？','也有組合方案喔！身心療癒入門組合（1,080元）是新客最常選的。'],
+  '預約':['預約很簡單！點選右上角的「立即預約」，或直接告訴我你想預約什麼，我來幫你導引～','也可以直接撥打 02-XXXX-XXXX，我們週二到週日 10點到9點都有人接。'],
+  '會員':['會員分三個等級：Espresso（入門）、Latte（療癒）、Pour-over（尊榮）。加入就自動成為 Espresso 會員，每消費 $10 累積 1 點！','尊榮會員還有 CLV 客製化成長報告，幫你追蹤心靈成長的進度 ✨'],
+  '心情':['聽起來你今天不太容易，謝謝你願意說出來 🌿 有時候，找個安靜的地方喝杯茶，就是最好的第一步。','如果你願意，我們的簡易諮詢師隨時都在，不需要預約，直接走進來就好。'],
+  'default':['我是 Trace & Sip 的心靈助理 Sip ☕ 你可以問我服務內容、預約方式，或是直接跟我說說你今天的狀態～','有任何問題都可以問我，或者你也可以點上面的快捷按鈕！'],
+};
+
+let chatOpen=false;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  const box=document.getElementById('chatBox');
+  box.classList.toggle('open',chatOpen);
+  if(chatOpen&&document.getElementById('chatMsgs').children.length===0){
+    setTimeout(()=>addBotMsg('嗨！我是 Trace & Sip 的心靈助理 Sip ☕\n\n有什麼我可以幫你的嗎？'),400);
+  }
+}
+
+function addBotMsg(text){
+  const msgs=document.getElementById('chatMsgs');
+  const typing=document.createElement('div');
+  typing.className='msg typing';
+  typing.innerHTML='<div class="typing-dots"><span></span><span></span><span></span></div>';
+  msgs.appendChild(typing);
+  msgs.scrollTop=msgs.scrollHeight;
+  setTimeout(()=>{
+    typing.remove();
+    const msg=document.createElement('div');
+    msg.className='msg bot';
+    msg.textContent=text;
+    msgs.appendChild(msg);
+    msgs.scrollTop=msgs.scrollHeight;
+  },900);
+}
+
+function addUserMsg(text){
+  const msgs=document.getElementById('chatMsgs');
+  const msg=document.createElement('div');
+  msg.className='msg user';
+  msg.textContent=text;
+  msgs.appendChild(msg);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function getBotReply(text){
+  if(text.includes('服務')||text.includes('項目')||text.includes('菜單'))return BOT_REPLIES['服務'];
+  if(text.includes('預約')||text.includes('怎麼'))return BOT_REPLIES['預約'];
+  if(text.includes('會員')||text.includes('點數')||text.includes('好處'))return BOT_REPLIES['會員'];
+  if(text.includes('心情')||text.includes('難過')||text.includes('焦慮')||text.includes('不好'))return BOT_REPLIES['心情'];
+  return BOT_REPLIES['default'];
+}
+
+function sendChat(){
+  const input=document.getElementById('chatInput');
+  const text=input.value.trim();
+  if(!text)return;
+  addUserMsg(text);
+  input.value='';
+  const replies=getBotReply(text);
+  const reply=replies[Math.floor(Math.random()*replies.length)];
+  setTimeout(()=>addBotMsg(reply),300);
+}
+
+function quickMsg(text){
+  addUserMsg(text);
+  const replies=getBotReply(text);
+  const reply=replies[Math.floor(Math.random()*replies.length)];
+  setTimeout(()=>addBotMsg(reply),300);
+}
+
+/* ══ INIT ══ */
+renderCards();
+const di=document.getElementById('f-date');
+if(di){const t=new Date();t.setDate(t.getDate()+1);di.min=t.toISOString().split('T')[0];}
 </script>
 </body>
 </html>
