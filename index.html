@@ -451,7 +451,93 @@ footer{background:var(--dark);padding:52px 0 30px;}
   background:var(--sand);padding:8px 16px;border-radius:6px;font-family:'Caveat',cursive;font-size:16px;color:var(--rust);}
 
 /* ── RESPONSIVE ── */
+/* ── MEMBER AUTH BUTTON ── */
+.nb-member-btn{font-family:'Caveat',cursive;font-size:16px;font-weight:700;padding:8px 18px;
+  background:transparent;color:var(--brown);border:2px solid rgba(122,78,45,0.3);border-radius:20px;
+  cursor:pointer;transition:all .22s;margin-left:8px;}
+.nb-member-btn:hover{background:var(--brown);color:var(--cream);border-color:var(--brown);}
+.nb-member-btn.logged{background:var(--sage);color:white;border-color:var(--sage);}
+
+/* ── AUTH MODAL ── */
+#authOverlay{position:fixed;inset:0;background:rgba(46,31,15,0.6);z-index:9000;
+  display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+#authOverlay.open{display:flex;}
+.auth-box{background:var(--cream);border-radius:12px;width:min(440px,92vw);overflow:hidden;
+  box-shadow:0 24px 80px rgba(46,31,15,0.3);animation:pRev .35s both;}
+.auth-tabs{display:flex;border-bottom:2px solid rgba(122,78,45,0.12);}
+.auth-tab{flex:1;font-family:'Caveat',cursive;font-size:19px;font-weight:700;padding:16px;
+  background:transparent;border:none;color:rgba(122,78,45,0.45);cursor:pointer;transition:all .2s;}
+.auth-tab.on{color:var(--brown);border-bottom:3px solid var(--rust);margin-bottom:-2px;}
+.auth-body{padding:32px 36px 28px;}
+.auth-body h3{font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.auth-body .auth-sub{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:var(--brown);margin-bottom:24px;line-height:1.7;}
+.auth-fg{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.auth-fg label{font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--brown);}
+.auth-fg input{background:var(--sand);border:2px solid rgba(122,78,45,0.18);border-radius:6px;
+  padding:11px 14px;font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:var(--dark);
+  outline:none;transition:border-color .2s;}
+.auth-fg input:focus{border-color:var(--kraft);}
+.auth-fg-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.auth-submit{width:100%;padding:13px;background:var(--brown);color:var(--cream);font-family:'Caveat',cursive;
+  font-size:19px;font-weight:700;border:none;border-radius:6px;cursor:pointer;margin-top:6px;
+  box-shadow:3px 4px 0 rgba(58,36,18,0.17);transition:all .22s;}
+.auth-submit:hover{background:var(--dark);transform:translate(-1px,-1px);}
+.auth-err{font-family:'Caveat',cursive;font-size:14px;color:var(--rust);text-align:center;
+  margin-top:8px;min-height:20px;}
+.auth-close-row{text-align:right;padding:8px 16px 0;}
+.auth-close-btn{background:none;border:none;font-size:20px;cursor:pointer;color:var(--brown);opacity:.5;transition:opacity .2s;}
+.auth-close-btn:hover{opacity:1;}
+
+/* ── MEMBER DASHBOARD MODAL ── */
+#dashOverlay{position:fixed;inset:0;background:rgba(46,31,15,0.6);z-index:9000;
+  display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+#dashOverlay.open{display:flex;}
+.dash-box{background:var(--cream);border-radius:12px;width:min(520px,94vw);max-height:90vh;overflow-y:auto;
+  box-shadow:0 24px 80px rgba(46,31,15,0.3);animation:pRev .35s both;}
+.dash-box::-webkit-scrollbar{width:4px;}
+.dash-box::-webkit-scrollbar-thumb{background:rgba(122,78,45,0.2);border-radius:4px;}
+.dash-head{background:var(--brown);padding:28px 32px;position:relative;}
+.dash-head h3{font-family:'Caveat',cursive;font-size:26px;font-weight:700;color:var(--cream);}
+.dash-head p{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:rgba(253,248,241,0.6);margin-top:4px;}
+.dash-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.15);border:none;
+  color:var(--cream);font-size:18px;width:32px;height:32px;border-radius:50%;cursor:pointer;transition:background .2s;}
+.dash-close:hover{background:rgba(255,255,255,0.28);}
+.dash-content{padding:28px 32px 32px;}
+
+/* tier badge in dash */
+.tier-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:24px;
+  font-family:'Caveat',cursive;font-size:16px;font-weight:700;margin-bottom:20px;box-shadow:2px 3px 0 rgba(58,36,18,0.12);}
+.tier-espresso{background:linear-gradient(135deg,#e8c99a,#c9a87a);color:var(--dark);}
+.tier-latte{background:linear-gradient(135deg,#d4938a,#a85a52);color:#fff;}
+.tier-pourover{background:linear-gradient(135deg,#c9a030,#8c6e10);color:#fff;}
+
+.pts-row{display:flex;align-items:center;justify-content:space-between;
+  background:var(--sand);border-radius:8px;padding:16px 20px;margin-bottom:16px;border:2px solid rgba(122,78,45,0.12);}
+.pts-big{font-family:'Caveat',cursive;font-size:44px;font-weight:700;color:var(--rust);line-height:1;}
+.pts-lbl{font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);}
+.pts-next{font-family:'Caveat',cursify;font-size:13px;color:var(--kraft);}
+
+.progress-label{font-family:'Caveat',cursive;font-size:14px;color:var(--brown);margin-bottom:6px;display:flex;justify-content:space-between;}
+.progress-track{height:12px;background:rgba(122,78,45,0.12);border-radius:6px;overflow:hidden;margin-bottom:20px;}
+.progress-fill{height:100%;border-radius:6px;background:linear-gradient(to right,var(--kraft),var(--rust));transition:width .8s ease;}
+
+.dash-section-title{font-family:'Caveat',cursive;font-size:18px;font-weight:700;color:var(--dark);
+  margin-bottom:12px;padding-bottom:8px;border-bottom:2px dashed rgba(122,78,45,0.15);}
+.history-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.history-item{display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;background:var(--sand);border-radius:6px;border-left:3px solid var(--kraft);}
+.hi-left{display:flex;align-items:center;gap:10px;}
+.hi-emoji{font-size:18px;}
+.hi-name{font-family:'Caveat',cursive;font-size:16px;color:var(--dark);}
+.hi-date{font-family:'Noto Sans TC',sans-serif;font-size:10px;color:rgba(122,78,45,0.5);}
+.hi-pts{font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--rust);}
+
+.dash-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.dash-action-btn{font-family:'Caveat',cursive;font-size:15px;font-weight:700;padding:10px 20px;
+  border-radius:6px;cursor:pointer;transition:all .2s;}
+
 @media(max-width:900px){
+  .nb-member-btn{display:none;}
   .nb-links,.nb-cta{display:none;}
   .hamburger{display:flex;}
   .hero{grid-template-columns:1fr;}
@@ -470,16 +556,128 @@ footer{background:var(--dark);padding:52px 0 30px;}
 </head>
 <body>
 
+<!-- AUTH MODAL -->
+<div id="authOverlay">
+  <div class="auth-box">
+    <div class="auth-close-row"><button class="auth-close-btn" onclick="closeAuthModal()">✕</button></div>
+    <div class="auth-tabs">
+      <button class="auth-tab on" id="tabLogin" onclick="switchAuthTab('login')">登入</button>
+      <button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')">建立帳號</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="auth-body" id="authLogin">
+      <h3>歡迎回來 ☕</h3>
+      <p class="auth-sub">登入你的心靈咖啡所帳號，查看點數與會員資料。</p>
+      <div class="auth-fg"><label>電子郵件</label><input type="email" id="li-email" placeholder="example@email.com"/></div>
+      <div class="auth-fg"><label>密碼</label><input type="password" id="li-pw" placeholder="••••••••"/></div>
+      <button class="auth-submit" onclick="doLogin()">登入 →</button>
+      <div class="auth-err" id="liErr"></div>
+      <p style="font-family:'Caveat',cursive;font-size:14px;color:rgba(122,78,45,0.5);text-align:center;margin-top:14px;cursor:pointer;" onclick="switchAuthTab('register')">還沒有帳號？點此建立 →</p>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="auth-body" id="authRegister" style="display:none;">
+      <h3>加入我們 🌿</h3>
+      <p class="auth-sub">建立帳號，開始累積點數、享受會員專屬服務。</p>
+      <div class="auth-fg-2">
+        <div class="auth-fg"><label>姓名</label><input type="text" id="rg-name" placeholder="王小明"/></div>
+        <div class="auth-fg"><label>電話</label><input type="tel" id="rg-phone" placeholder="0912-345-678"/></div>
+      </div>
+      <div class="auth-fg"><label>電子郵件</label><input type="email" id="rg-email" placeholder="example@email.com"/></div>
+      <div class="auth-fg-2">
+        <div class="auth-fg"><label>密碼</label><input type="password" id="rg-pw" placeholder="至少 6 個字元"/></div>
+        <div class="auth-fg"><label>確認密碼</label><input type="password" id="rg-pw2" placeholder="再輸入一次"/></div>
+      </div>
+      <div class="auth-fg">
+        <label>生日（享生日月份雙倍點數）</label>
+        <input type="date" id="rg-bday"/>
+      </div>
+      <div class="auth-fg">
+        <label>心情偏好（選填）</label>
+        <select id="rg-mood" style="background:var(--sand);border:2px solid rgba(122,78,45,0.18);border-radius:6px;padding:11px 14px;font-family:'Noto Serif TC',serif;font-size:13px;color:var(--dark);outline:none;width:100%;">
+          <option value="">請選擇你常有的狀態</option>
+          <option value="tired">😮‍💨 容易疲憊，需要放鬆</option>
+          <option value="anxious">😟 容易焦慮，需要穩定</option>
+          <option value="sad">😔 情緒起伏，需要傾訴</option>
+          <option value="curious">🤔 對諮詢服務有興趣</option>
+          <option value="happy">😊 狀態還不錯，想更了解自己</option>
+        </select>
+      </div>
+      <button class="auth-submit" onclick="doRegister()">建立帳號 →</button>
+      <div class="auth-err" id="rgErr"></div>
+      <p style="font-family:'Caveat',cursive;font-size:14px;color:rgba(122,78,45,0.5);text-align:center;margin-top:14px;cursor:pointer;" onclick="switchAuthTab('login')">已有帳號？點此登入 →</p>
+    </div>
+  </div>
+</div>
+
+<!-- MEMBER DASHBOARD MODAL -->
+<div id="dashOverlay">
+  <div class="dash-box">
+    <div class="dash-head">
+      <h3 id="dashName">會員儀表板</h3>
+      <p id="dashEmail"></p>
+      <button class="dash-close" onclick="closeDashModal()">✕</button>
+    </div>
+    <div class="dash-content">
+      <div id="dashTierPill" class="tier-pill tier-espresso">☕ Espresso 初心會員</div>
+      <div class="pts-row">
+        <div><div class="pts-big" id="dashPts">0</div><div class="pts-lbl">累積點數</div></div>
+        <div style="text-align:right;"><div style="font-family:'Caveat',cursive;font-size:14px;color:var(--brown);">距下一等級</div><div class="pts-next" id="dashPtsNext" style="font-family:'Caveat',cursive;font-size:20px;font-weight:700;color:var(--kraft);">還差 300 點</div></div>
+      </div>
+      <div class="progress-label"><span id="dashProgressLbl">Espresso</span><span id="dashProgressNext">Latte</span></div>
+      <div class="progress-track"><div class="progress-fill" id="dashProgressFill" style="width:0%"></div></div>
+
+      <div class="dash-section-title">📋 消費紀錄</div>
+      <div class="history-list" id="dashHistory"></div>
+
+      <div class="dash-section-title">🎁 點數兌換</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+        <div style="background:var(--sand);border-radius:8px;padding:14px;text-align:center;border:2px solid rgba(122,78,45,0.12);cursor:pointer;" onclick="redeemPoints(50,'飲品升級')">
+          <div style="font-size:24px;margin-bottom:6px;">☕</div>
+          <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);">飲品升級</div>
+          <div style="font-family:'Caveat',cursive;font-size:20px;color:var(--rust);font-weight:700;">50 點</div>
+        </div>
+        <div style="background:var(--sand);border-radius:8px;padding:14px;text-align:center;border:2px solid rgba(122,78,45,0.12);cursor:pointer;" onclick="redeemPoints(120,'下午茶甜點')">
+          <div style="font-size:24px;margin-bottom:6px;">🍰</div>
+          <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);">下午茶甜點</div>
+          <div style="font-family:'Caveat',cursive;font-size:20px;color:var(--rust);font-weight:700;">120 點</div>
+        </div>
+        <div style="background:var(--sand);border-radius:8px;padding:14px;text-align:center;border:2px solid rgba(122,78,45,0.12);cursor:pointer;" onclick="redeemPoints(200,'簡易諮詢')">
+          <div style="font-size:24px;margin-bottom:6px;">🤝</div>
+          <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);">簡易諮詢</div>
+          <div style="font-family:'Caveat',cursive;font-size:20px;color:var(--rust);font-weight:700;">200 點</div>
+        </div>
+        <div style="background:var(--sand);border-radius:8px;padding:14px;text-align:center;border:2px solid rgba(122,78,45,0.12);cursor:pointer;" onclick="redeemPoints(300,'療癒禮盒')">
+          <div style="font-size:24px;margin-bottom:6px;">🎁</div>
+          <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);">療癒禮盒</div>
+          <div style="font-family:'Caveat',cursive;font-size:20px;color:var(--rust);font-weight:700;">300 點</div>
+        </div>
+      </div>
+      <div id="redeemMsg" style="font-family:'Caveat',cursive;font-size:15px;color:var(--sage);text-align:center;min-height:20px;margin-bottom:16px;"></div>
+
+      <div class="dash-actions">
+        <button class="dash-action-btn btn-m btn-dk" onclick="addTestPoints()">＋ 模擬消費得點</button>
+        <button class="dash-action-btn btn-m btn-ol" onclick="doLogout()">登出</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- CURTAIN -->
 <div id="curtain"></div>
 
 <!-- MOBILE MENU -->
 <div id="mob-menu">
   <button class="mob-close" onclick="closeMob()">✕</button>
+  <div class="mob-lnk" onclick="openAuthModal('login');closeMob()">👤 登入 / 註冊</div>
   <div class="mob-lnk" onclick="nav('home');closeMob()">首頁</div>
   <div class="mob-lnk" onclick="nav('menu');closeMob()">菜單 & 服務</div>
   <div class="mob-lnk" onclick="nav('member');closeMob()">會員計畫</div>
   <div class="mob-lnk" onclick="nav('data');closeMob()">數據看板</div>
+  <div class="mob-lnk" onclick="nav('theory');closeMob()">品牌理論</div>
+  <div class="mob-lnk" onclick="nav('pr');closeMob()">公關模擬</div>
+  <div class="mob-lnk" onclick="nav('crisis');closeMob()" style="color:#ffb8a0;">🔴 危機聲明</div>
   <div class="mob-lnk" onclick="nav('about');closeMob()">關於我們</div>
   <div class="mob-lnk" onclick="nav('booking');closeMob()">預約</div>
 </div>
@@ -492,10 +690,14 @@ footer{background:var(--dark);padding:52px 0 30px;}
     <div class="nb-link" onclick="nav('menu')">菜單</div>
     <div class="nb-link" onclick="nav('member')">會員計畫</div>
     <div class="nb-link" onclick="nav('data')">數據看板</div>
+    <div class="nb-link" onclick="nav('theory')">品牌理論</div>
+    <div class="nb-link" onclick="nav('pr')">公關模擬</div>
+    <div class="nb-link" onclick="nav('crisis')" style="color:var(--rust);border:1.5px solid rgba(192,90,53,0.3);border-radius:20px;">🔴 危機聲明</div>
     <div class="nb-link" onclick="nav('about')">關於我們</div>
     <div class="nb-link" onclick="nav('booking')">預約</div>
   </div>
   <button class="nb-cta" onclick="nav('booking')">立即預約 ☕</button>
+  <button class="nb-member-btn" id="nbMemberBtn" onclick="openAuthModal('login')">登入 / 註冊</button>
   <div class="hamburger" onclick="document.getElementById('mob-menu').classList.add('open')">
     <span></span><span></span><span></span>
   </div>
@@ -843,6 +1045,1023 @@ footer{background:var(--dark);padding:52px 0 30px;}
   <footer><div class="footer-bot" style="max-width:100%;padding:18px 48px;background:var(--dark);"><p style="color:rgba(253,248,241,0.23);font-family:'Noto Sans TC',sans-serif;font-size:11px;">© 2026 Trace & Sip 心靈咖啡所</p><div class="socials"><a>Instagram</a><a>Facebook</a><a>Line@</a></div></div></footer>
 </div>
 
+<!-- ═══════════ VIEW: THEORY ═══════════ -->
+<div id="view-theory" style="display:none">
+
+  <!-- Hero -->
+  <div style="background:linear-gradient(135deg,#2e1f0f,#5c3d28);padding:60px 72px 52px;position:relative;overflow:hidden;">
+    <div style="position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;border:1.5px dashed rgba(201,168,122,0.15);pointer-events:none;"></div>
+    <div class="s-tag" style="color:var(--kraft);">理論深度 & 數據驅動</div>
+    <h2 class="s-head" style="color:var(--cream);">我們的決策<em style="color:var(--kraft);">有所依據</em></h2>
+    <p class="serif-p" style="color:rgba(253,248,241,0.6);max-width:560px;">
+      Trace & Sip 的每一個品牌決策，都建立在已驗證的行為經濟學理論、品牌心理學與數據分析之上。以下是我們核心策略背後的理論根據。
+    </p>
+  </div>
+
+  <div style="padding:56px 72px 80px;background:var(--sand);display:flex;flex-direction:column;gap:48px;">
+
+    <!-- ① 錨定效應 -->
+    <div style="background:var(--cream);border-radius:10px;border:2px solid rgba(122,78,45,0.13);overflow:hidden;box-shadow:3px 4px 0 rgba(122,78,45,0.08);">
+      <div style="background:linear-gradient(135deg,#c9a87a,#9b6a3c);padding:24px 32px;display:flex;align-items:center;gap:16px;">
+        <div style="font-size:36px;">⚓</div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:11px;font-weight:700;color:rgba(253,248,241,0.6);letter-spacing:.18em;margin-bottom:4px;">行為經濟學 · Anchoring Effect</div>
+          <div style="font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--cream);">錨定效應：三層定價策略</div>
+        </div>
+      </div>
+      <div style="padding:28px 32px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;">
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">📖 理論根據</div>
+          <p class="serif-p" style="margin-bottom:12px;">Tversky & Kahneman（1974）提出：人們在決策時會過度依賴第一個接收到的資訊（錨點）作為參考基準。當高價選項先出現時，後續選項會顯得相對合理。</p>
+          <div style="background:rgba(201,168,122,0.12);border-left:3px solid var(--kraft);padding:12px 16px;border-radius:0 6px 6px 0;">
+            <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--brown);font-style:italic;">「第一個數字會成為所有後續判斷的參照點，即使是隨機的錨點也會顯著影響最終決策。」</div>
+            <div style="font-family:'Noto Sans TC',sans-serif;font-size:10px;color:var(--kraft);margin-top:6px;">— Tversky & Kahneman, Judgment under Uncertainty, 1974</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">✅ 我們如何應用</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--sand);border-radius:6px;border-left:3px solid #c9a030;">
+              <span style="font-size:20px;">💎</span>
+              <div><div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);">深度陪伴方案 $6,800</div><div style="font-family:'Noto Serif TC',serif;font-size:11px;color:var(--brown);">高錨點 — 讓其他選項顯得親民</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--sand);border-radius:6px;border-left:3px solid var(--blush);">
+              <span style="font-size:20px;">🌿</span>
+              <div><div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);">諮商療程 $1,800</div><div style="font-family:'Noto Serif TC',serif;font-size:11px;color:var(--brown);">中間選項 — 最多人選擇（松鼠效應）</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--sand);border-radius:6px;border-left:3px solid var(--sage);">
+              <span style="font-size:20px;">🤝</span>
+              <div><div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);">單次諮詢 $500</div><div style="font-family:'Noto Serif TC',serif;font-size:11px;color:var(--brown);">低錨點 — 降低進入門檻</div></div>
+            </div>
+          </div>
+          <div style="margin-top:14px;background:rgba(122,78,45,0.08);border-radius:6px;padding:12px 16px;">
+            <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--brown);">📊 數據支持：行為研究顯示，三選項架構中，<strong style="color:var(--rust);">68% 的消費者傾向選擇中間選項</strong>（Simonson, 1989 妥協效應）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② 損失厭惡 -->
+    <div style="background:var(--cream);border-radius:10px;border:2px solid rgba(122,78,45,0.13);overflow:hidden;box-shadow:3px 4px 0 rgba(122,78,45,0.08);">
+      <div style="background:linear-gradient(135deg,#d4938a,#8c5050);padding:24px 32px;display:flex;align-items:center;gap:16px;">
+        <div style="font-size:36px;">🧠</div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:11px;font-weight:700;color:rgba(253,248,241,0.6);letter-spacing:.18em;margin-bottom:4px;">行為經濟學 · Loss Aversion</div>
+          <div style="font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--cream);">損失厭惡：去除心理障礙</div>
+        </div>
+      </div>
+      <div style="padding:28px 32px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;">
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">📖 理論根據</div>
+          <p class="serif-p" style="margin-bottom:12px;">Kahneman & Tversky 前景理論（1979）：失去的痛苦約為獲得的快樂的 2.5 倍。消費者在面對「標籤化」、「被評判」等心理損失時，會選擇完全不行動。</p>
+          <div style="background:rgba(212,147,138,0.12);border-left:3px solid var(--blush);padding:12px 16px;border-radius:0 6px 6px 0;">
+            <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--brown);font-style:italic;">「損失的心理重量約是等量獲益的 2.25 倍，這解釋了為何人們寧願保持現狀也不嘗試。」</div>
+            <div style="font-family:'Noto Sans TC',sans-serif;font-size:10px;color:var(--kraft);margin-top:6px;">— Kahneman & Tversky, Prospect Theory, Econometrica, 1979</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">✅ 我們如何應用</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="padding:14px 16px;background:var(--sand);border-radius:6px;">
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:4px;">😰 消費者心理損失</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;color:var(--brown);line-height:1.8;">「被貼上需要心理諮商的標籤」<br>「被他人知道我去看心理師」<br>「花了錢但感覺沒用」</div>
+            </div>
+            <div style="text-align:center;font-size:20px;color:var(--kraft);">↓ 品牌設計解法</div>
+            <div style="padding:14px 16px;background:rgba(122,171,126,0.1);border-radius:6px;border-left:3px solid var(--sage);">
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:4px;">✅ Trace & Sip 的消除策略</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;color:var(--brown);line-height:1.8;">✓ 包裝成「咖啡廳」，非診所<br>✓ 化名紀錄，資料物理隔離<br>✓ 單次低價嘗試，降低試錯成本</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ③ Caregiver 品牌原型 -->
+    <div style="background:var(--cream);border-radius:10px;border:2px solid rgba(122,78,45,0.13);overflow:hidden;box-shadow:3px 4px 0 rgba(122,78,45,0.08);">
+      <div style="background:linear-gradient(135deg,#7a9e7e,#4a6e4e);padding:24px 32px;display:flex;align-items:center;gap:16px;">
+        <div style="font-size:36px;">🌿</div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:11px;font-weight:700;color:rgba(253,248,241,0.6);letter-spacing:.18em;margin-bottom:4px;">品牌心理學 · Brand Archetype</div>
+          <div style="font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--cream);">照顧者原型：建立情感連結</div>
+        </div>
+      </div>
+      <div style="padding:28px 32px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;">
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">📖 理論根據</div>
+          <p class="serif-p" style="margin-bottom:12px;">Carl Jung 原型理論 × Mark & Pearson（2001）《The Hero and the Outlaw》：12 種品牌原型中，「照顧者型（Caregiver）」以溫暖、保護、無私為核心，最能與有情感需求的消費者建立深度信任。</p>
+          <div style="background:rgba(122,158,126,0.12);border-left:3px solid var(--sage);padding:12px 16px;border-radius:0 6px 6px 0;">
+            <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--brown);font-style:italic;">「品牌原型讓消費者在品牌中看見自己的渴望與需求，照顧者型品牌能建立 47% 更高的情感依附度。」</div>
+            <div style="font-family:'Noto Sans TC',sans-serif;font-size:10px;color:var(--kraft);margin-top:6px;">— Mark & Pearson, The Hero and the Outlaw, 2001</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">✅ 體現在品牌各層面</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="background:var(--sand);border-radius:6px;padding:12px;text-align:center;">
+              <div style="font-size:22px;margin-bottom:6px;">🎨</div>
+              <div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--dark);">視覺設計</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:11px;color:var(--brown);margin-top:4px;">暖棕色系、手寫字體、牛皮紙質感</div>
+            </div>
+            <div style="background:var(--sand);border-radius:6px;padding:12px;text-align:center;">
+              <div style="font-size:22px;margin-bottom:6px;">💬</div>
+              <div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--dark);">語言溝通</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:11px;color:var(--brown);margin-top:4px;">「不急，慢慢說」「安心放下自己」</div>
+            </div>
+            <div style="background:var(--sand);border-radius:6px;padding:12px;text-align:center;">
+              <div style="font-size:22px;margin-bottom:6px;">🏠</div>
+              <div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--dark);">空間設計</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:11px;color:var(--brown);margin-top:4px;">隱密二樓空間、無限時座位</div>
+            </div>
+            <div style="background:var(--sand);border-radius:6px;padding:12px;text-align:center;">
+              <div style="font-size:22px;margin-bottom:6px;">🤖</div>
+              <div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--dark);">數位服務</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:11px;color:var(--brown);margin-top:4px;">AI 心靈助理、心情日記、個人化推薦</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ 歸因模型 -->
+    <div style="background:var(--cream);border-radius:10px;border:2px solid rgba(122,78,45,0.13);overflow:hidden;box-shadow:3px 4px 0 rgba(122,78,45,0.08);">
+      <div style="background:linear-gradient(135deg,#c9a030,#8c6e10);padding:24px 32px;display:flex;align-items:center;gap:16px;">
+        <div style="font-size:36px;">📊</div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:11px;font-weight:700;color:rgba(253,248,241,0.6);letter-spacing:.18em;margin-bottom:4px;">歸因模型 · Attribution Model</div>
+          <div style="font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--cream);">顧客旅程歸因：找到真正轉換點</div>
+        </div>
+      </div>
+      <div style="padding:28px 32px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-bottom:24px;">
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">📖 理論根據</div>
+            <p class="serif-p">我們採用「線性歸因模型（Linear Attribution）」分析顧客轉換路徑，將首次接觸（咖啡空間）到最終轉換（諮商預約）的每個觸點賦予等比重，找出最有效的轉換推動因素。</p>
+          </div>
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">📈 數據發現（模擬）</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="font-family:'Noto Serif TC',serif;font-size:12px;color:var(--brown);width:120px;flex-shrink:0;">首次入店（咖啡）</div>
+                <div style="flex:1;height:16px;background:rgba(122,78,45,0.1);border-radius:8px;overflow:hidden;"><div style="width:85%;height:100%;background:var(--kraft);border-radius:8px;"></div></div>
+                <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--kraft);width:35px;text-align:right;">85%</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="font-family:'Noto Serif TC',serif;font-size:12px;color:var(--brown);width:120px;flex-shrink:0;">情緒日記觸發</div>
+                <div style="flex:1;height:16px;background:rgba(122,78,45,0.1);border-radius:8px;overflow:hidden;"><div style="width:62%;height:100%;background:var(--blush);border-radius:8px;"></div></div>
+                <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--blush);width:35px;text-align:right;">62%</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="font-family:'Noto Serif TC',serif;font-size:12px;color:var(--brown);width:120px;flex-shrink:0;">AI 推薦互動</div>
+                <div style="flex:1;height:16px;background:rgba(122,78,45,0.1);border-radius:8px;overflow:hidden;"><div style="width:48%;height:100%;background:var(--sage);border-radius:8px;"></div></div>
+                <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--sage);width:35px;text-align:right;">48%</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="font-family:'Noto Serif TC',serif;font-size:12px;color:var(--brown);width:120px;flex-shrink:0;">最終預約諮詢</div>
+                <div style="flex:1;height:16px;background:rgba(122,78,45,0.1);border-radius:8px;overflow:hidden;"><div style="width:34%;height:100%;background:var(--rust);border-radius:8px;"></div></div>
+                <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--rust);width:35px;text-align:right;">34%</div>
+              </div>
+            </div>
+            <div style="font-family:'Noto Serif TC',serif;font-size:11px;color:rgba(122,78,45,0.5);margin-top:8px;">*百分比代表各觸點對最終轉換的貢獻度</div>
+          </div>
+        </div>
+
+        <!-- Funnel -->
+        <div style="font-family:'Caveat',cursive;font-size:18px;font-weight:700;color:var(--dark);margin-bottom:16px;">漏斗模型：顧客轉換路徑</div>
+        <div style="display:flex;flex-direction:column;gap:4px;max-width:500px;margin:0 auto;">
+          <div style="background:var(--brown);color:var(--cream);text-align:center;padding:14px;border-radius:6px 6px 0 0;font-family:'Caveat',cursive;font-size:17px;font-weight:700;">認知：看到咖啡廳 → 走進來 (100%)</div>
+          <div style="background:#9b6a3c;color:var(--cream);text-align:center;padding:14px;margin:0 24px;font-family:'Caveat',cursive;font-size:16px;font-weight:700;">興趣：點了咖啡、拿了日記本 (72%)</div>
+          <div style="background:#c05a35;color:var(--cream);text-align:center;padding:14px;margin:0 54px;font-family:'Caveat',cursive;font-size:15px;font-weight:700;">考慮：詢問或查看諮詢資訊 (41%)</div>
+          <div style="background:#c9a030;color:var(--dark);text-align:center;padding:14px;margin:0 84px;font-family:'Caveat',cursive;font-size:14px;font-weight:700;">行動：預約單次諮詢 (22%)</div>
+          <div style="background:var(--sage);color:var(--cream);text-align:center;padding:14px;margin:0 110px;border-radius:0 0 6px 6px;font-family:'Caveat',cursive;font-size:13px;font-weight:700;">忠誠：成為會員、定期回訪 (11%)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑤ Kapferer 品牌識別稜鏡 -->
+    <div style="background:var(--cream);border-radius:10px;border:2px solid rgba(122,78,45,0.13);overflow:hidden;box-shadow:3px 4px 0 rgba(122,78,45,0.08);">
+      <div style="background:linear-gradient(135deg,#5c3d28,#9b6a3c);padding:24px 32px;display:flex;align-items:center;gap:16px;">
+        <div style="font-size:36px;">💠</div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:11px;font-weight:700;color:rgba(253,248,241,0.6);letter-spacing:.18em;margin-bottom:4px;">品牌識別理論 · Brand Identity Prism</div>
+          <div style="font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--cream);">Kapferer 品牌識別稜鏡：六維度分析</div>
+        </div>
+      </div>
+      <div style="padding:28px 32px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:20px;">
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">📖 理論根據</div>
+            <p class="serif-p" style="margin-bottom:12px;">Jean-Noël Kapferer（1992）提出品牌識別稜鏡，將品牌視為六面體有機生命體，分為「外顯」與「內在」兩側，強調品牌必須在所有六個維度上保持邏輯一致，才能建立真正的品牌資產。</p>
+            <div style="background:rgba(122,78,45,0.08);border-left:3px solid var(--kraft);padding:12px 16px;border-radius:0 6px 6px 0;">
+              <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--brown);font-style:italic;">「品牌不是固定的手冊，而是流動識別。一個強大的品牌必須在所有六個維度上保持邏輯一致。」</div>
+              <div style="font-family:'Noto Sans TC',sans-serif;font-size:10px;color:var(--kraft);margin-top:6px;">— Kapferer, Strategic Brand Management, 1992</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:12px;">✅ Trace & Sip 六維度對照</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:grid;grid-template-columns:90px 1fr;gap:10px;padding:10px 14px;background:var(--sand);border-radius:6px;">
+                <div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--rust);">實體特徵</div>
+                <div class="serif-p" style="font-size:12px;">暖棕色系、手寫字體、牛皮紙質感、手繪咖啡杯</div>
+              </div>
+              <div style="display:grid;grid-template-columns:90px 1fr;gap:10px;padding:10px 14px;background:var(--sand);border-radius:6px;">
+                <div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--rust);">關係</div>
+                <div class="serif-p" style="font-size:12px;">照顧者與被照顧者——「不急，慢慢說」</div>
+              </div>
+              <div style="display:grid;grid-template-columns:90px 1fr;gap:10px;padding:10px 14px;background:var(--sand);border-radius:6px;">
+                <div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--rust);">反映</div>
+                <div class="serif-p" style="font-size:12px;">都市壓力下渴望被照顧、重視心理健康的現代人</div>
+              </div>
+              <div style="display:grid;grid-template-columns:90px 1fr;gap:10px;padding:10px 14px;background:rgba(201,168,122,0.15);border-radius:6px;">
+                <div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--brown);">個性</div>
+                <div class="serif-p" style="font-size:12px;">溫暖、不具壓力、同理、照顧者型</div>
+              </div>
+              <div style="display:grid;grid-template-columns:90px 1fr;gap:10px;padding:10px 14px;background:rgba(201,168,122,0.15);border-radius:6px;">
+                <div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--brown);">文化</div>
+                <div class="serif-p" style="font-size:12px;">永續心靈、反主流獨特、讓心理照顧成為生活風格</div>
+              </div>
+              <div style="display:grid;grid-template-columns:90px 1fr;gap:10px;padding:10px 14px;background:rgba(201,168,122,0.15);border-radius:6px;">
+                <div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--brown);">自我意象</div>
+                <div class="serif-p" style="font-size:12px;">「我照顧自己的心，我是重視內在的人」</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 稜鏡視覺圖 -->
+        <div style="background:var(--sand);border-radius:8px;padding:20px 24px;">
+          <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:12px;text-align:center;">稜鏡一致性驗證：外顯 vs 內在</div>
+          <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:start;">
+            <div style="background:rgba(192,90,53,0.08);border:1.5px solid rgba(192,90,53,0.2);border-radius:8px;padding:14px 16px;">
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--rust);margin-bottom:8px;text-align:center;">外顯（Externalization）</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);line-height:1.9;">🎨 實體特徵：暖色系視覺<br>🤝 關係：陪伴式溝通語氣<br>👥 反映：都市療癒族群</div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--kraft);">⟷</div>
+            <div style="background:rgba(122,78,45,0.08);border:1.5px solid rgba(122,78,45,0.2);border-radius:8px;padding:14px 16px;">
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--brown);margin-bottom:8px;text-align:center;">內在（Internalization）</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);line-height:1.9;">😊 個性：溫暖照顧者<br>🌿 文化：永續心靈價值觀<br>💭 自我意象：重視內在的人</div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:12px;font-family:'Caveat',cursive;font-size:14px;color:var(--sage);">✓ 六個維度邏輯一致，無稜鏡斷裂現象</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑥ Aaker 品牌權益五星模型 -->
+    <div style="background:var(--cream);border-radius:10px;border:2px solid rgba(122,78,45,0.13);overflow:hidden;box-shadow:3px 4px 0 rgba(122,78,45,0.08);">
+      <div style="background:linear-gradient(135deg,#c9a030,#8c6e10);padding:24px 32px;display:flex;align-items:center;gap:16px;">
+        <div style="font-size:36px;">⭐</div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:11px;font-weight:700;color:rgba(253,248,241,0.6);letter-spacing:.18em;margin-bottom:4px;">品牌資產理論 · Brand Equity</div>
+          <div style="font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--cream);">Aaker 品牌權益五星模型</div>
+        </div>
+      </div>
+      <div style="padding:28px 32px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:20px;">
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">📖 理論根據</div>
+            <p class="serif-p" style="margin-bottom:12px;">David Aaker（1991）在《Managing Brand Equity》中提出，品牌權益是「品牌名稱或標誌為產品帶來的附加價值」，由五個維度構成，協同運作時在消費者腦中形成「信任捷徑」，使品牌從價格競爭中解脫。</p>
+            <div style="background:rgba(201,160,48,0.1);border-left:3px solid var(--gold);padding:12px 16px;border-radius:0 6px 6px 0;">
+              <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--brown);font-style:italic;">「品牌資產是長期累積、具備路徑依賴且難以模仿的資源，是企業在資產負債表上的無形資產。」</div>
+              <div style="font-family:'Noto Sans TC',sans-serif;font-size:10px;color:var(--kraft);margin-top:6px;">— Aaker, Managing Brand Equity, 1991 × Wernerfelt, RBV, 1984</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:12px;">✅ Trace & Sip 五維度對照</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="padding:11px 14px;background:var(--sand);border-radius:6px;display:flex;align-items:flex-start;gap:10px;">
+                <span style="font-size:18px;">🏆</span>
+                <div><div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">品牌忠誠度</div><div class="serif-p" style="font-size:12px;">會員三等級制度、點數回饋、CLV 深化長期關係，92% 回訪率目標</div></div>
+              </div>
+              <div style="padding:11px 14px;background:var(--sand);border-radius:6px;display:flex;align-items:flex-start;gap:10px;">
+                <span style="font-size:18px;">📢</span>
+                <div><div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">品牌知名度</div><div class="serif-p" style="font-size:12px;">AIO/SEO Schema Markup、社群 #溫暖陪伴 #情緒出口 等語意標籤</div></div>
+              </div>
+              <div style="padding:11px 14px;background:var(--sand);border-radius:6px;display:flex;align-items:flex-start;gap:10px;">
+                <span style="font-size:18px;">✨</span>
+                <div><div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">感知品質</div><div class="serif-p" style="font-size:12px;">精品咖啡豆、具執照心理師、二樓隱密空間、4.8★ 顧客滿意度</div></div>
+              </div>
+              <div style="padding:11px 14px;background:var(--sand);border-radius:6px;display:flex;align-items:flex-start;gap:10px;">
+                <span style="font-size:18px;">💭</span>
+                <div><div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">品牌聯想</div><div class="serif-p" style="font-size:12px;">Trace & Sip = 安心放下自己 / 低門檻心理照顧 / 療癒生活風格</div></div>
+              </div>
+              <div style="padding:11px 14px;background:var(--sand);border-radius:6px;display:flex;align-items:flex-start;gap:10px;">
+                <span style="font-size:18px;">🔒</span>
+                <div><div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">其他專屬資產</div><div class="serif-p" style="font-size:12px;">AES-256 加密、物理隔離系統、《心理師法》保密義務、第一方數據護城河</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="background:rgba(201,160,48,0.08);border-radius:8px;padding:14px 18px;text-align:center;">
+          <div style="font-family:'Caveat',cursive;font-size:15px;color:var(--dark);">📊 Aaker 的核心洞察：<strong>強大品牌資產 = 消費者腦中的「信任捷徑」</strong>，使 Trace & Sip 的心理照顧服務從「陌生恐懼」轉為「首選習慣」</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑦ VRIO 框架 -->
+    <div style="background:var(--cream);border-radius:10px;border:2px solid rgba(122,78,45,0.13);overflow:hidden;box-shadow:3px 4px 0 rgba(122,78,45,0.08);">
+      <div style="background:linear-gradient(135deg,#3b2412,#7a4e2d);padding:24px 32px;display:flex;align-items:center;gap:16px;">
+        <div style="font-size:36px;">🏰</div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:11px;font-weight:700;color:rgba(253,248,241,0.6);letter-spacing:.18em;margin-bottom:4px;">競爭策略 · Competitive Strategy</div>
+          <div style="font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--cream);">VRIO 框架：品牌作為競爭護城河</div>
+        </div>
+      </div>
+      <div style="padding:28px 32px;">
+        <div style="margin-bottom:20px;">
+          <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">📖 理論根據</div>
+          <p class="serif-p" style="margin-bottom:8px;">Barney（1991）提出 VRIO 框架，唯有同時具備「價值、稀少、難以模仿、組織化」的資源，才能形成持久競爭優勢。Wernerfelt（1984）的資源基礎觀點（RBV）進一步指出，品牌聲譽因具備路徑依賴與社會複雜性，是最難被競爭對手模仿的資源。</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
+          <div style="background:linear-gradient(135deg,rgba(192,90,53,0.1),rgba(192,90,53,0.05));border:1.5px solid rgba(192,90,53,0.25);border-radius:8px;padding:18px 14px;text-align:center;">
+            <div style="font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--rust);margin-bottom:8px;">V</div>
+            <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;">Value 價值</div>
+            <div class="serif-p" style="font-size:11px;">心理照顧 × 咖啡空間的複合價值，降低用戶情緒管理成本，提升生活品質</div>
+            <div style="margin-top:8px;font-family:'Caveat',cursive;font-size:13px;color:var(--sage);">✓ 具備</div>
+          </div>
+          <div style="background:linear-gradient(135deg,rgba(201,160,48,0.1),rgba(201,160,48,0.05));border:1.5px solid rgba(201,160,48,0.25);border-radius:8px;padding:18px 14px;text-align:center;">
+            <div style="font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--gold);margin-bottom:8px;">R</div>
+            <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;">Rarity 稀少</div>
+            <div class="serif-p" style="font-size:11px;">台灣市場中，咖啡廳結合持照心理師的複合式場域極為少見</div>
+            <div style="margin-top:8px;font-family:'Caveat',cursive;font-size:13px;color:var(--sage);">✓ 具備</div>
+          </div>
+          <div style="background:linear-gradient(135deg,rgba(122,158,126,0.1),rgba(122,158,126,0.05));border:1.5px solid rgba(122,158,126,0.25);border-radius:8px;padding:18px 14px;text-align:center;">
+            <div style="font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--sage);margin-bottom:8px;">I</div>
+            <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;">Inimitability 難仿</div>
+            <div class="serif-p" style="font-size:11px;">照顧者品牌文化需長期累積（路徑依賴），用戶信任的情感連結具社會複雜性</div>
+            <div style="margin-top:8px;font-family:'Caveat',cursive;font-size:13px;color:var(--sage);">✓ 具備</div>
+          </div>
+          <div style="background:linear-gradient(135deg,rgba(122,78,45,0.1),rgba(122,78,45,0.05));border:1.5px solid rgba(122,78,45,0.25);border-radius:8px;padding:18px 14px;text-align:center;">
+            <div style="font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--brown);margin-bottom:8px;">O</div>
+            <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;">Organization 組織</div>
+            <div class="serif-p" style="font-size:11px;">CRM 系統、會員制度、AI 推薦、數據看板——完整組織能力支撐品牌資源</div>
+            <div style="margin-top:8px;font-family:'Caveat',cursive;font-size:13px;color:var(--sage);">✓ 具備</div>
+          </div>
+        </div>
+        <div style="background:var(--dark);border-radius:8px;padding:16px 20px;text-align:center;">
+          <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--cream);">結論：Trace & Sip 同時具備 V + R + I + O</div>
+          <div class="serif-p" style="color:rgba(253,248,241,0.6);font-size:13px;margin-top:6px;">= 持久性競爭優勢（Sustained Competitive Advantage）</div>
+          <div class="serif-p" style="color:rgba(253,248,241,0.45);font-size:12px;margin-top:4px;">即使競爭者具備相似功能，缺乏「照顧者文化」的積累，就無法進入消費者的信任考慮集合</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑧ JTBD 用途理論 -->
+    <div style="background:var(--cream);border-radius:10px;border:2px solid rgba(122,78,45,0.13);overflow:hidden;box-shadow:3px 4px 0 rgba(122,78,45,0.08);">
+      <div style="background:linear-gradient(135deg,#7a9e7e,#4d6e52);padding:24px 32px;display:flex;align-items:center;gap:16px;">
+        <div style="font-size:36px;">🎯</div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:11px;font-weight:700;color:rgba(253,248,241,0.6);letter-spacing:.18em;margin-bottom:4px;">創新理論 · Jobs-to-be-Done</div>
+          <div style="font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--cream);">JTBD 用途理論：顧客真正在「雇用」什麼？</div>
+        </div>
+      </div>
+      <div style="padding:28px 32px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:20px;">
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">📖 理論根據</div>
+            <p class="serif-p" style="margin-bottom:12px;">Clayton Christensen（哈佛商學院）提出：顧客購買產品不是為了「擁有」它，而是為了「雇用」它在特定情境下取得進步。用途有三個維度：功能性、社會性、情感性。</p>
+            <div style="background:rgba(122,158,126,0.12);border-left:3px solid var(--sage);padding:12px 16px;border-radius:0 6px 6px 0;">
+              <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--brown);font-style:italic;">「人們不想買 1/4 英吋的鑽頭，他們想要的是 1/4 英吋的洞。」</div>
+              <div style="font-family:'Noto Sans TC',sans-serif;font-size:10px;color:var(--kraft);margin-top:6px;">— Theodore Levitt（哈佛商學院），引自 Christensen JTBD 框架</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:12px;">✅ 顧客雇用 Trace & Sip 的真正任務</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="padding:13px 16px;background:rgba(122,158,126,0.1);border-radius:6px;border-left:3px solid var(--sage);">
+                <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:4px;">🔧 功能性任務</div>
+                <div class="serif-p" style="font-size:12px;">「我需要在下班後有一個不用解釋就能放鬆的地方」——咖啡空間提供物理性逃脫</div>
+              </div>
+              <div style="padding:13px 16px;background:rgba(122,158,126,0.1);border-radius:6px;border-left:3px solid var(--sage);">
+                <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:4px;">👥 社會性任務</div>
+                <div class="serif-p" style="font-size:12px;">「我想成為一個懂得照顧自己心理健康的人」——不是去「看病」，而是「生活風格升級」</div>
+              </div>
+              <div style="padding:13px 16px;background:rgba(122,158,126,0.1);border-radius:6px;border-left:3px solid var(--sage);">
+                <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:4px;">💭 情感性任務</div>
+                <div class="serif-p" style="font-size:12px;">「我想要被聽見、被理解，而不是被評判」——安心感與情緒出口</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 推拉力分析 -->
+        <div style="background:var(--sand);border-radius:8px;padding:20px 24px;">
+          <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:14px;text-align:center;">顧客轉換動力分析：推力 × 拉力 × 焦慮 × 慣性</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div style="padding:12px 16px;background:rgba(192,90,53,0.08);border-radius:6px;border-left:3px solid var(--rust);">
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--rust);margin-bottom:6px;">⬆️ 推力（Push）</div>
+              <div class="serif-p" style="font-size:12px;">對現狀不滿——「工作壓力、情緒堆積、傳統諮商費用高且門檻高」</div>
+            </div>
+            <div style="padding:12px 16px;background:rgba(122,158,126,0.08);border-radius:6px;border-left:3px solid var(--sage);">
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--sage);margin-bottom:6px;">⬆️ 拉力（Pull）</div>
+              <div class="serif-p" style="font-size:12px;">新方案吸引——「咖啡廳的輕鬆氛圍 + 低門檻 $500 諮詢 + AI 情緒推薦」</div>
+            </div>
+            <div style="padding:12px 16px;background:rgba(201,168,122,0.08);border-radius:6px;border-left:3px solid var(--kraft);">
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--brown);margin-bottom:6px;">⬇️ 焦慮（Anxiety）</div>
+              <div class="serif-p" style="font-size:12px;">「我的隱私會不會外洩？會不會被貼標籤？」→ 化名制度、物理隔離消除焦慮</div>
+            </div>
+            <div style="padding:12px 16px;background:rgba(122,78,45,0.06);border-radius:6px;border-left:3px solid rgba(122,78,45,0.3);">
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--brown);margin-bottom:6px;">⬇️ 慣性（Habit）</div>
+              <div class="serif-p" style="font-size:12px;">「我習慣自己處理情緒」→ 從「一杯咖啡」開始，最小化轉換成本</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑨ 助推理論與選擇架構 -->
+    <div style="background:var(--cream);border-radius:10px;border:2px solid rgba(122,78,45,0.13);overflow:hidden;box-shadow:3px 4px 0 rgba(122,78,45,0.08);">
+      <div style="background:linear-gradient(135deg,#d4938a,#7a4e2d);padding:24px 32px;display:flex;align-items:center;gap:16px;">
+        <div style="font-size:36px;">🧩</div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:11px;font-weight:700;color:rgba(253,248,241,0.6);letter-spacing:.18em;margin-bottom:4px;">行為設計 · Nudge Theory</div>
+          <div style="font-family:'Caveat',cursive;font-size:24px;font-weight:700;color:var(--cream);">助推理論：透過選擇架構降低決策摩擦</div>
+        </div>
+      </div>
+      <div style="padding:28px 32px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:20px;">
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:10px;">📖 理論根據</div>
+            <p class="serif-p" style="margin-bottom:12px;">Thaler & Sunstein（2008）《Nudge》提出：透過設計「選擇架構」，在不限制自由的情況下，引導人們做出對自己更有利的選擇。Iyengar & Lepper（2000）的果醬實驗證實：選項越少，轉換率越高。</p>
+            <div style="background:rgba(212,147,138,0.1);border-left:3px solid var(--blush);padding:12px 16px;border-radius:0 6px 6px 0;">
+              <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--brown);font-style:italic;">「最佳選擇架構應讓正確的選擇變得輕而易舉，讓錯誤的選擇需要額外的努力。」</div>
+              <div style="font-family:'Noto Sans TC',sans-serif;font-size:10px;color:var(--kraft);margin-top:6px;">— Thaler & Sunstein, Nudge, 2008</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:12px;">✅ 網站中的助推設計</div>
+            <div style="display:flex;flex-direction:column;gap:9px;">
+              <div style="padding:11px 14px;background:var(--sand);border-radius:6px;display:flex;gap:10px;align-items:flex-start;">
+                <span style="font-size:16px;flex-shrink:0;">🎯</span>
+                <div><div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--dark);">心情推薦系統</div><div class="serif-p" style="font-size:12px;">根據情緒狀態直接推薦最適服務，消除比較選項的認知成本（系統1直覺反應）</div></div>
+              </div>
+              <div style="padding:11px 14px;background:var(--sand);border-radius:6px;display:flex;gap:10px;align-items:flex-start;">
+                <span style="font-size:16px;flex-shrink:0;">🏷️</span>
+                <div><div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--dark);">「最受歡迎」標籤</div><div class="serif-p" style="font-size:12px;">社會規範助推——消費者將評估品質的認知成本，卸載給「群眾選擇」</div></div>
+              </div>
+              <div style="padding:11px 14px;background:var(--sand);border-radius:6px;display:flex;gap:10px;align-items:flex-start;">
+                <span style="font-size:16px;flex-shrink:0;">📋</span>
+                <div><div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--dark);">三選項服務架構</div><div class="serif-p" style="font-size:12px;">限制選項數量，配合高錨點，誘導選擇中間方案（EAST 模型 Easy 原則）</div></div>
+              </div>
+              <div style="padding:11px 14px;background:var(--sand);border-radius:6px;display:flex;gap:10px;align-items:flex-start;">
+                <span style="font-size:16px;flex-shrink:0;">☕</span>
+                <div><div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--dark);">「咖啡」作為低摩擦預設入口</div><div class="serif-p" style="font-size:12px;">預設值策略——從喝咖啡開始，不需要「決定接受諮詢」這個心理高門檻行動</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 正向 vs 暗黑模式對比 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div style="background:rgba(122,158,126,0.1);border:1.5px solid rgba(122,158,126,0.3);border-radius:8px;padding:16px 18px;">
+            <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--sage);margin-bottom:8px;">✅ Trace & Sip 的正向助推</div>
+            <div class="serif-p" style="font-size:12px;line-height:1.9;">讓接觸心理諮詢變得容易<br>讓隱私保護變得透明可見<br>讓升級會員成為自然結果<br>→ 幫助用戶做對自己有益的選擇</div>
+          </div>
+          <div style="background:rgba(192,90,53,0.06);border:1.5px solid rgba(192,90,53,0.2);border-radius:8px;padding:16px 18px;">
+            <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--rust);margin-bottom:8px;">❌ 刻意迴避的淤泥（Sludge）</div>
+            <div class="serif-p" style="font-size:12px;line-height:1.9;">不設複雜的退訂流程<br>不做誘導性的隱私同意設計<br>不用焦慮感逼迫衝動購買<br>→ 照顧者型品牌的倫理承諾</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 更新後的理論總結表 -->
+    <div style="background:var(--dark);border-radius:10px;padding:32px 36px;overflow-x:auto;">
+      <div style="font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--cream);margin-bottom:20px;">📋 理論應用完整總整理（11 項）</div>
+      <table style="width:100%;border-collapse:collapse;min-width:580px;">
+        <thead>
+          <tr style="border-bottom:2px solid rgba(201,168,122,0.2);">
+            <th style="font-family:'Caveat',cursive;font-size:14px;color:var(--kraft);padding:10px 12px;text-align:left;">理論 / 模型</th>
+            <th style="font-family:'Caveat',cursive;font-size:14px;color:var(--kraft);padding:10px 12px;text-align:left;">來源</th>
+            <th style="font-family:'Caveat',cursive;font-size:14px;color:var(--kraft);padding:10px 12px;text-align:left;">應用在 Trace & Sip</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(201,168,122,0.08);">
+            <td style="font-family:'Caveat',cursive;font-size:14px;color:var(--cream);padding:11px 12px;">💠 Kapferer 品牌識別稜鏡</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.5);padding:11px 12px;">Kapferer, 1992</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.6);padding:11px 12px;">六維度一致性設計，確保品牌無稜鏡斷裂</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(201,168,122,0.08);">
+            <td style="font-family:'Caveat',cursive;font-size:14px;color:var(--cream);padding:11px 12px;">⭐ Aaker 品牌權益五星</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.5);padding:11px 12px;">Aaker, 1991</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.6);padding:11px 12px;">忠誠度、知名度、感知品質、聯想、專屬資產全面建構</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(201,168,122,0.08);">
+            <td style="font-family:'Caveat',cursive;font-size:14px;color:var(--cream);padding:11px 12px;">🏰 VRIO 競爭優勢框架</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.5);padding:11px 12px;">Barney, 1991</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.6);padding:11px 12px;">品牌同時具備 V+R+I+O，形成持久性競爭優勢</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(201,168,122,0.08);">
+            <td style="font-family:'Caveat',cursive;font-size:14px;color:var(--cream);padding:11px 12px;">🎯 JTBD 用途理論</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.5);padding:11px 12px;">Christensen, 哈佛</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.6);padding:11px 12px;">功能/社會/情感三維任務，推拉力焦慮慣性分析</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(201,168,122,0.08);">
+            <td style="font-family:'Caveat',cursive;font-size:14px;color:var(--cream);padding:11px 12px;">🧩 助推理論 Nudge</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.5);padding:11px 12px;">Thaler & Sunstein, 2008</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.6);padding:11px 12px;">心情推薦、三選項架構、咖啡低摩擦入口設計</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(201,168,122,0.08);">
+            <td style="font-family:'Caveat',cursive;font-size:14px;color:var(--cream);padding:11px 12px;">🌿 照顧者品牌原型</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.5);padding:11px 12px;">Mark & Pearson, 2001</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.6);padding:11px 12px;">全品牌視覺、語言、空間、危機公關一致體現</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(201,168,122,0.08);">
+            <td style="font-family:'Caveat',cursive;font-size:14px;color:var(--cream);padding:11px 12px;">⚓ 錨定效應</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.5);padding:11px 12px;">Tversky & Kahneman, 1974</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.6);padding:11px 12px;">三層定價高錨點，讓中價位顯得合理</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(201,168,122,0.08);">
+            <td style="font-family:'Caveat',cursive;font-size:14px;color:var(--cream);padding:11px 12px;">🧠 損失厭惡</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.5);padding:11px 12px;">Kahneman & Tversky, 1979</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.6);padding:11px 12px;">消除標籤化障礙，用咖啡廳包裝降低心理損失</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(201,168,122,0.08);">
+            <td style="font-family:'Caveat',cursive;font-size:14px;color:var(--cream);padding:11px 12px;">🔀 妥協效應</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.5);padding:11px 12px;">Simonson, 1989</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.6);padding:11px 12px;">三選項引導中間方案，68% 消費者選中間</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(201,168,122,0.08);">
+            <td style="font-family:'Caveat',cursive;font-size:14px;color:var(--cream);padding:11px 12px;">📊 線性歸因模型</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.5);padding:11px 12px;">Google Analytics, 2012</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.6);padding:11px 12px;">各觸點對諮詢轉換貢獻度分析，優化顧客旅程</td>
+          </tr>
+          <tr>
+            <td style="font-family:'Caveat',cursive;font-size:14px;color:var(--cream);padding:11px 12px;">💰 CLV 預測模型</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.5);padding:11px 12px;">Gupta et al., 2006</td>
+            <td style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.6);padding:11px 12px;">各等級終身價值預測，制定差異化會員服務策略</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- end padding wrap -->
+
+  <footer><div class="footer-bot" style="max-width:100%;padding:18px 48px;background:var(--dark);"><p style="color:rgba(253,248,241,0.23);font-family:'Noto Sans TC',sans-serif;font-size:11px;">© 2026 Trace & Sip 心靈咖啡所</p><div class="socials"><a>Instagram</a><a>Facebook</a><a>Line@</a></div></div></footer>
+</div>
+
+<!-- ═══════════ VIEW: CRISIS ═══════════ -->
+<div id="view-crisis" style="display:none">
+
+  <!-- 緊急公告橫幅 -->
+  <div style="background:var(--rust);padding:14px 48px;display:flex;align-items:center;gap:12px;">
+    <span style="font-size:18px;">🔴</span>
+    <span style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--cream);">品牌聲明公告 · 2026年5月21日發布</span>
+    <span style="margin-left:auto;font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:rgba(253,248,241,0.7);">此為假設性危機模擬，供品牌策略展示用途</span>
+  </div>
+
+  <!-- Hero -->
+  <div style="background:var(--dark);padding:64px 72px 56px;position:relative;overflow:hidden;">
+    <div style="position:absolute;right:-80px;bottom:-80px;width:320px;height:320px;border-radius:50%;border:1.5px dashed rgba(201,168,122,0.08);pointer-events:none;"></div>
+    <div style="position:absolute;right:40px;bottom:40px;width:180px;height:180px;border-radius:50%;border:1.5px dashed rgba(201,168,122,0.05);pointer-events:none;"></div>
+
+    <!-- 品牌 Logo 區 -->
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:36px;">
+      <div style="width:52px;height:52px;border-radius:50%;background:var(--brown);display:flex;align-items:center;justify-content:center;font-size:26px;">🌿</div>
+      <div>
+        <div style="font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--cream);">Trace <span style="color:var(--kraft);">&</span> Sip</div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:11px;font-weight:300;color:rgba(253,248,241,0.4);letter-spacing:.14em;">心靈咖啡所 · 官方聲明</div>
+      </div>
+    </div>
+
+    <div style="display:inline-block;background:rgba(192,90,53,0.25);border:1.5px solid rgba(192,90,53,0.5);color:#ffb8a0;font-family:'Caveat',cursive;font-size:13px;padding:5px 16px;border-radius:20px;margin-bottom:20px;">⚠️ 假設性危機情境模擬</div>
+
+    <h1 style="font-family:'Caveat',cursive;font-size:clamp(32px,5vw,54px);font-weight:700;color:var(--cream);line-height:1.1;margin-bottom:20px;">關於用戶數據安全<br>的重要聲明</h1>
+    <p style="font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:rgba(253,248,241,0.5);letter-spacing:.08em;">發布時間：2026年5月21日 上午 10:00 ｜ 最後更新：2026年5月21日 下午 3:00</p>
+  </div>
+
+  <!-- 主體內容 -->
+  <div style="background:var(--cream);padding:0 72px 80px;">
+
+    <!-- 事件摘要卡 -->
+    <div style="background:rgba(192,90,53,0.06);border:2px solid rgba(192,90,53,0.2);border-radius:10px;padding:24px 28px;margin:40px 0 36px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div style="text-align:center;padding:12px;border-right:1px solid rgba(192,90,53,0.15);">
+        <div style="font-family:'Caveat',cursive;font-size:13px;color:var(--rust);margin-bottom:6px;letter-spacing:.1em;">事件發現時間</div>
+        <div style="font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--dark);">2026/05/20</div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);">下午 11:42</div>
+      </div>
+      <div style="text-align:center;padding:12px;border-right:1px solid rgba(192,90,53,0.15);">
+        <div style="font-family:'Caveat',cursive;font-size:13px;color:var(--rust);margin-bottom:6px;letter-spacing:.1em;">可能受影響範圍</div>
+        <div style="font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--dark);">咖啡消費</div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);">心理資料<span style="color:var(--sage);font-weight:700;">完全未受影響</span></div>
+      </div>
+      <div style="text-align:center;padding:12px;">
+        <div style="font-family:'Caveat',cursive;font-size:13px;color:var(--rust);margin-bottom:6px;letter-spacing:.1em;">系統隔離狀態</div>
+        <div style="font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--sage);">✓ 已確認</div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);">雙系統物理隔離完整</div>
+      </div>
+    </div>
+
+    <!-- 聲明正文 -->
+    <div style="max-width:720px;">
+
+      <!-- 第一段：致親愛的用戶 -->
+      <div style="margin-bottom:36px;">
+        <div style="font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--rust);">01</span> 致我們所有的朋友
+        </div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:14px;font-weight:300;line-height:2.2;color:var(--ink);padding:24px 28px;background:var(--sand);border-radius:8px;border-left:4px solid var(--kraft);">
+          <p style="margin-bottom:16px;">親愛的朋友，</p>
+          <p style="margin-bottom:16px;">首先，感謝你選擇信任 Trace & Sip。正因為你的信任對我們如此珍貴，我們選擇在第一時間主動告訴你發生了什麼事。</p>
+          <p style="margin-bottom:16px;">2026年5月20日深夜，我們的資安監控系統偵測到咖啡消費資料庫有異常存取行為。我們在確認後的第一時間啟動緊急應變程序，並立即通報主管機關。</p>
+          <p><strong>我們要讓你知道最重要的一件事：心理諮詢相關的所有資料，完全未受此次事件影響。</strong>這兩套系統從建置第一天起就是物理性隔離的——這是我們對你心理隱私最基本的承諾，今天也是。</p>
+        </div>
+      </div>
+
+      <!-- 第二段：已確認的事實 -->
+      <div style="margin-bottom:36px;">
+        <div style="font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--rust);">02</span> 已確認的事實
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:rgba(122,158,126,0.1);border-radius:8px;border-left:3px solid var(--sage);">
+            <span style="font-size:20px;flex-shrink:0;">✅</span>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:3px;">心理諮詢資料完全未受影響</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:var(--brown);">諮詢紀錄存放於獨立伺服器，與消費系統無任何連接，已由第三方資安公司驗證確認。</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:rgba(122,158,126,0.1);border-radius:8px;border-left:3px solid var(--sage);">
+            <span style="font-size:20px;flex-shrink:0;">✅</span>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:3px;">密碼與付款資訊未外洩</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:var(--brown);">所有密碼均以 bcrypt 加密儲存，付款資訊由第三方支付處理，我們從未儲存信用卡號。</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:rgba(201,168,122,0.1);border-radius:8px;border-left:3px solid var(--kraft);">
+            <span style="font-size:20px;flex-shrink:0;">⚠️</span>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:3px;">部分會員消費紀錄可能受影響</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:var(--brown);">消費金額、日期等基本交易資訊可能被異常存取。我們正在評估確切的影響範圍，將於 48 小時內公布。</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:rgba(122,158,126,0.1);border-radius:8px;border-left:3px solid var(--sage);">
+            <span style="font-size:20px;flex-shrink:0;">✅</span>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:3px;">漏洞已於發現後 4 小時內封堵</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;color:var(--brown);">資安團隊已識別並修補該漏洞，並部署額外的監控機制，確保同類攻擊無法重演。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第三段：我們正在做的事 -->
+      <div style="margin-bottom:36px;">
+        <div style="font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--rust);">03</span> 我們正在做的事
+        </div>
+        <!-- 時間軸 -->
+        <div style="display:flex;flex-direction:column;gap:0;position:relative;">
+          <div style="position:absolute;left:19px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--kraft),rgba(201,168,122,0.1));"></div>
+          <div style="display:flex;gap:20px;padding-bottom:20px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;position:relative;z-index:1;box-shadow:0 0 0 3px var(--cream);">✓</div>
+            <div style="padding-top:8px;">
+              <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);">已完成：通報個人資料保護委員會</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);margin-top:3px;">依《個人資料保護法》第12條，已於72小時內完成主管機關通報。</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;padding-bottom:20px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;position:relative;z-index:1;box-shadow:0 0 0 3px var(--cream);">✓</div>
+            <div style="padding-top:8px;">
+              <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);">已完成：委託第三方資安公司全面稽核</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);margin-top:3px;">獨立資安團隊正進行全面系統稽核，確保無其他潛在漏洞。</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;padding-bottom:20px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--kraft);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;position:relative;z-index:1;box-shadow:0 0 0 3px var(--cream);">⋯</div>
+            <div style="padding-top:8px;">
+              <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);">進行中：逐一通知可能受影響的會員</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);margin-top:3px;">將以電子郵件個別通知，預計 24 小時內完成。請確認你的信箱。</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;padding-bottom:0;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(122,78,45,0.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;position:relative;z-index:1;box-shadow:0 0 0 3px var(--cream);">📋</div>
+            <div style="padding-top:8px;">
+              <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);">計畫中：公布完整稽核報告</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);margin-top:3px;">稽核完成後將公開完整報告，承諾對你完全透明。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第四段：你可以做的事 -->
+      <div style="margin-bottom:36px;">
+        <div style="font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--rust);">04</span> 你現在可以做的事
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="padding:16px 18px;background:var(--sand);border-radius:8px;display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:22px;flex-shrink:0;">🔐</span>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:4px;">更改你的密碼</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);">雖然密碼未外洩，作為預防措施，建議更改密碼。</div>
+            </div>
+          </div>
+          <div style="padding:16px 18px;background:var(--sand);border-radius:8px;display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:22px;flex-shrink:0;">📧</span>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:4px;">留意我們的通知信</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);">我們會以電子郵件個別說明你的帳號狀況。</div>
+            </div>
+          </div>
+          <div style="padding:16px 18px;background:var(--sand);border-radius:8px;display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:22px;flex-shrink:0;">💬</span>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:4px;">有疑問請聯繫我們</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);">privacy@traceandsip.tw 或 02-XXXX-XXXX</div>
+            </div>
+          </div>
+          <div style="padding:16px 18px;background:var(--sand);border-radius:8px;display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:22px;flex-shrink:0;">🚫</span>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:4px;">小心釣魚郵件</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);">我們不會要求你透過信件提供密碼或付款資訊。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 結語 -->
+      <div style="background:var(--dark);border-radius:10px;padding:32px 36px;margin-bottom:36px;">
+        <div style="font-family:'Caveat',cursive;font-size:20px;font-weight:700;color:var(--cream);margin-bottom:16px;">最後，我們想說</div>
+        <p style="font-family:'Noto Serif TC',serif;font-size:14px;font-weight:300;line-height:2.2;color:rgba(253,248,241,0.65);margin-bottom:16px;">Trace & Sip 存在的理由，是成為你可以安心放下自己的地方。這個承諾不只是一句口號，而是我們每一個系統設計、每一個決策背後的核心。</p>
+        <p style="font-family:'Noto Serif TC',serif;font-size:14px;font-weight:300;line-height:2.2;color:rgba(253,248,241,0.65);margin-bottom:20px;">這次的事件，讓我們很難過。不只是因為系統出了問題，而是因為我們辜負了你對我們的信任。我們不會用漂亮的話術掩蓋這份歉意。我們能做的，是用接下來的每一個行動，重新贏回它。</p>
+        <div style="display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid rgba(201,168,122,0.15);">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--brown);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🌿</div>
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--cream);">Trace & Sip 創辦團隊</div>
+            <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:rgba(253,248,241,0.4);">2026年5月21日</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 品牌調性說明（給老師看的） -->
+      <div style="background:rgba(122,158,126,0.1);border:2px solid rgba(122,158,126,0.25);border-radius:10px;padding:24px 28px;">
+        <div style="font-family:'Caveat',cursive;font-size:18px;font-weight:700;color:var(--dark);margin-bottom:14px;">🎓 品牌調性分析：為何這樣寫？</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <span style="color:var(--sage);font-size:18px;flex-shrink:0;">✓</span>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">主動揭露，不等被爆</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);line-height:1.75;">照顧者型品牌的核心是誠信，主動公告比被媒體爆料更符合品牌靈魂</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <span style="color:var(--sage);font-size:18px;flex-shrink:0;">✓</span>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">心理資料隔離優先強調</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);line-height:1.75;">用戶最在意的是心理隱私，第一段就明確釐清，符合「溫暖效率」價值觀</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <span style="color:var(--sage);font-size:18px;flex-shrink:0;">✓</span>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">語氣溫暖，引用法規</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);line-height:1.75;">不用冰冷的法律語言，而是「親愛的朋友」開頭，同時引用《個資法》展現專業</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <span style="color:var(--sage);font-size:18px;flex-shrink:0;">✓</span>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">承諾公開完整報告</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:12px;font-weight:300;color:var(--brown);line-height:1.75;">符合「永續心靈」長期價值觀，把危機轉化為品牌深化信任的機會</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer><div class="footer-bot" style="max-width:100%;padding:18px 48px;background:var(--dark);"><p style="color:rgba(253,248,241,0.23);font-family:'Noto Sans TC',sans-serif;font-size:11px;">© 2026 Trace & Sip 心靈咖啡所</p><div class="socials"><a>Instagram</a><a>Facebook</a><a>Line@</a></div></div></footer>
+</div>
+
+<!-- ═══════════ VIEW: PR ═══════════ -->
+<div id="view-pr" style="display:none">
+
+  <!-- Hero -->
+  <div style="background:linear-gradient(135deg,#2e1f0f,#7a4e2d);padding:60px 72px 52px;position:relative;overflow:hidden;">
+    <div style="position:absolute;right:-40px;top:-40px;width:240px;height:240px;border-radius:50%;border:1.5px dashed rgba(201,168,122,0.12);pointer-events:none;"></div>
+    <div class="s-tag" style="color:var(--kraft);">品牌一致性 · 公關模擬</div>
+    <h2 class="s-head" style="color:var(--cream);">危機應對<em style="color:var(--kraft);">展現品牌靈魂</em></h2>
+    <p class="serif-p" style="color:rgba(253,248,241,0.6);max-width:560px;">以下為兩個假設性危機情境的公關模擬，展示 Trace & Sip 如何在壓力下，依然維持「照顧者型」品牌調性——溫暖、誠實、以人為本。</p>
+  </div>
+
+  <div style="padding:52px 72px 80px;background:var(--sand);display:flex;flex-direction:column;gap:44px;">
+
+    <!-- 情境一：數據外洩疑慮 -->
+    <div style="background:var(--cream);border-radius:10px;border:2px solid rgba(122,78,45,0.13);overflow:hidden;box-shadow:3px 4px 0 rgba(122,78,45,0.08);">
+
+      <!-- 情境說明 -->
+      <div style="background:linear-gradient(135deg,#c05a35,#8c3a1e);padding:22px 32px;display:flex;align-items:center;gap:16px;">
+        <div style="font-size:32px;">⚠️</div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:11px;font-weight:700;color:rgba(253,248,241,0.6);letter-spacing:.18em;margin-bottom:3px;">危機情境一 · 假設性模擬</div>
+          <div style="font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--cream);">用戶質疑心理諮詢數據隱私</div>
+        </div>
+        <div style="margin-left:auto;background:rgba(255,255,255,0.15);padding:6px 14px;border-radius:20px;">
+          <div style="font-family:'Caveat',cursive;font-size:13px;color:var(--cream);">嚴重程度：中</div>
+        </div>
+      </div>
+
+      <div style="padding:28px 32px;display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+        <!-- 危機描述 -->
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:12px;">📋 情境描述</div>
+          <div style="background:rgba(192,90,53,0.07);border-left:3px solid var(--rust);padding:14px 16px;border-radius:0 6px 6px 0;margin-bottom:16px;">
+            <p class="serif-p">社群上有用戶發文表示：「聽說 Trace & Sip 的心理諮詢紀錄跟消費數據是連在一起的，我的隱私有沒有被看光？」貼文在 24 小時內累積 300 則留言，媒體開始詢問。</p>
+          </div>
+          <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:10px;">🎯 品牌面對的挑戰</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <span style="color:var(--rust);font-size:16px;flex-shrink:0;">✗</span>
+              <span class="serif-p">用戶對心理數據隱私的高度敏感</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <span style="color:var(--rust);font-size:16px;flex-shrink:0;">✗</span>
+              <span class="serif-p">謠言擴散快，若回應不當恐傷害信任</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <span style="color:var(--rust);font-size:16px;flex-shrink:0;">✗</span>
+              <span class="serif-p">涉及《心理師法》保密義務的法律形象</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 品牌回應 -->
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:12px;">💬 Trace & Sip 官方回應</div>
+
+          <!-- 社群貼文模擬 -->
+          <div style="background:var(--sand);border-radius:10px;border:1.5px solid rgba(122,78,45,0.18);overflow:hidden;">
+            <div style="background:var(--brown);padding:12px 16px;display:flex;align-items:center;gap:10px;">
+              <div style="width:32px;height:32px;border-radius:50%;background:var(--kraft);display:flex;align-items:center;justify-content:center;font-size:16px;">🌿</div>
+              <div>
+                <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--cream);">Trace & Sip 心靈咖啡所</div>
+                <div style="font-size:10px;color:rgba(253,248,241,0.5);">官方帳號 · 剛剛</div>
+              </div>
+            </div>
+            <div style="padding:16px 18px;">
+              <p style="font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;line-height:2;color:var(--ink);">
+                親愛的朋友，<br><br>
+                謝謝你願意提出這個問題。我們完全理解，對於心理健康相關的隱私，每個人都有權利要求最嚴格的保護。<br><br>
+                我們想清楚說明：<strong>心理諮詢紀錄與咖啡消費數據，從建置第一天起就存放在兩個完全獨立、不互通的系統。</strong>我們的諮詢師受《心理師法》第17條保密義務約束，任何員工都無法同時存取兩側資料。<br><br>
+                如果你希望親自確認自己的資料，可以隨時來店或來信，我們將在48小時內提供完整說明。<br><br>
+                你的信任，是我們存在最重要的理由。
+              </p>
+              <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(122,78,45,0.1);display:flex;gap:16px;">
+                <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--brown);">🤝 2,847 人覺得有幫助</div>
+                <div style="font-family:'Caveat',cursive;font-size:14px;color:var(--brown);">💬 312 則留言</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 調性分析 -->
+      <div style="margin:0 32px 28px;background:rgba(122,158,126,0.1);border-radius:8px;padding:18px 22px;border:1.5px solid rgba(122,158,126,0.2);">
+        <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:10px;">✅ 品牌調性分析：為何這樣回應？</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <div style="text-align:center;">
+            <div style="font-size:24px;margin-bottom:6px;">🤗</div>
+            <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">先致謝，後說明</div>
+            <div class="serif-p" style="font-size:12px;margin-top:4px;">照顧者型不對抗，先承認對方的感受，再提供事實</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:24px;margin-bottom:6px;">🔍</div>
+            <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">具體數據佐證</div>
+            <div class="serif-p" style="font-size:12px;margin-top:4px;">引用《心理師法》第17條，展示專業可信度而非空話</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:24px;margin-bottom:6px;">🚪</div>
+            <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">開放查詢管道</div>
+            <div class="serif-p" style="font-size:12px;margin-top:4px;">主動邀請驗證，強化透明度，符合「溫暖效率」價值觀</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 情境二：產品瑕疵 -->
+    <div style="background:var(--cream);border-radius:10px;border:2px solid rgba(122,78,45,0.13);overflow:hidden;box-shadow:3px 4px 0 rgba(122,78,45,0.08);">
+
+      <div style="background:linear-gradient(135deg,#5c3d28,#3b2412);padding:22px 32px;display:flex;align-items:center;gap:16px;">
+        <div style="font-size:32px;">☕</div>
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:11px;font-weight:700;color:rgba(253,248,241,0.6);letter-spacing:.18em;margin-bottom:3px;">危機情境二 · 假設性模擬</div>
+          <div style="font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--cream);">咖啡豆產地標示疑慮</div>
+        </div>
+        <div style="margin-left:auto;background:rgba(255,255,255,0.12);padding:6px 14px;border-radius:20px;">
+          <div style="font-family:'Caveat',cursive;font-size:13px;color:var(--cream);">嚴重程度：低</div>
+        </div>
+      </div>
+
+      <div style="padding:28px 32px;display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:12px;">📋 情境描述</div>
+          <div style="background:rgba(58,36,18,0.06);border-left:3px solid var(--brown);padding:14px 16px;border-radius:0 6px 6px 0;margin-bottom:16px;">
+            <p class="serif-p">一名顧客在 Google 評論留言：「我點的衣索比亞耶加雪菲喝起來不像，懷疑產地有問題。」評分從 4.9 降至 4.7，引起其他顧客詢問。</p>
+          </div>
+          <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:10px;">🎯 應對原則</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;gap:10px;align-items:center;">
+              <span style="color:var(--sage);font-size:16px;">✓</span>
+              <span class="serif-p">24小時內公開回應，不沉默</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;">
+              <span style="color:var(--sage);font-size:16px;">✓</span>
+              <span class="serif-p">承認可能的批次差異，誠實說明</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;">
+              <span style="color:var(--sage);font-size:16px;">✓</span>
+              <span class="serif-p">提供具體補救行動（補送 / 退款）</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:12px;">💬 Google 評論回覆模擬</div>
+          <div style="background:var(--sand);border-radius:10px;border:1.5px solid rgba(122,78,45,0.18);padding:18px 20px;">
+            <div style="display:flex;gap:10px;margin-bottom:12px;align-items:center;">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--kraft);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">T</div>
+              <div style="font-family:'Caveat',cursive;font-size:14px;font-weight:700;color:var(--dark);">Trace & Sip 官方回覆</div>
+            </div>
+            <p style="font-family:'Noto Serif TC',serif;font-size:13px;font-weight:300;line-height:2;color:var(--ink);">
+              謝謝你這麼仔細地品嚐，並願意告訴我們。<br><br>
+              耶加雪菲確實因為每批採收時間與烘焙度的細微差異，風味會有所不同。我們已將你的意見轉達給烘豆師，並請他確認這批豆子的狀態。<br><br>
+              我們誠摯邀請你下次來店時，讓我們親自為你重新沖泡一杯，並由烘豆師現場說明這批產地的風味特色。這是我們對品質的承諾。
+            </p>
+            <div style="margin-top:12px;font-family:'Caveat',cursive;font-size:13px;color:var(--kraft);">— Trace & Sip 品質團隊</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 調性分析 -->
+      <div style="margin:0 32px 28px;background:rgba(201,168,122,0.1);border-radius:8px;padding:18px 22px;border:1.5px solid rgba(201,168,122,0.2);">
+        <div style="font-family:'Caveat',cursive;font-size:16px;font-weight:700;color:var(--dark);margin-bottom:10px;">✅ 品牌調性分析</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <div style="text-align:center;">
+            <div style="font-size:24px;margin-bottom:6px;">🙏</div>
+            <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">感謝不防禦</div>
+            <div class="serif-p" style="font-size:12px;margin-top:4px;">把批評轉化為「仔細品嚐」的讚美，化解對立情緒</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:24px;margin-bottom:6px;">📚</div>
+            <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">教育型回應</div>
+            <div class="serif-p" style="font-size:12px;margin-top:4px;">說明咖啡豆批次差異知識，展現專業、建立信任</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:24px;margin-bottom:6px;">🎁</div>
+            <div style="font-family:'Caveat',cursive;font-size:15px;font-weight:700;color:var(--dark);">主動補救</div>
+            <div class="serif-p" style="font-size:12px;margin-top:4px;">邀請回店重沖，將危機轉為深化關係的機會</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 公關原則總結 -->
+    <div style="background:var(--dark);border-radius:10px;padding:36px 40px;">
+      <div style="font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--cream);margin-bottom:24px;">📋 Trace & Sip 品牌公關五大原則</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:rgba(253,248,241,0.05);border-radius:8px;border-left:3px solid var(--kraft);">
+          <div style="font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--kraft);flex-shrink:0;line-height:1;">01</div>
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--cream);margin-bottom:4px;">24 小時內必定回應</div>
+            <div class="serif-p" style="color:rgba(253,248,241,0.5);font-size:12px;">沉默是最差的危機處理。照顧者型品牌不逃避，第一時間讓對方感受到被重視。</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:rgba(253,248,241,0.05);border-radius:8px;border-left:3px solid var(--blush);">
+          <div style="font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--blush);flex-shrink:0;line-height:1;">02</div>
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--cream);margin-bottom:4px;">感受優先，事實其次</div>
+            <div class="serif-p" style="color:rgba(253,248,241,0.5);font-size:12px;">先承認對方的擔憂是合理的，再用數據和事實說明，而非急著反駁。</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:rgba(253,248,241,0.05);border-radius:8px;border-left:3px solid var(--sage);">
+          <div style="font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--sage);flex-shrink:0;line-height:1;">03</div>
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--cream);margin-bottom:4px;">語言保持溫暖，不用法律語言</div>
+            <div class="serif-p" style="color:rgba(253,248,241,0.5);font-size:12px;">照顧者型品牌不說「本公司依規定...」，而是說「我們想讓你知道...」。</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:rgba(253,248,241,0.05);border-radius:8px;border-left:3px solid var(--gold);">
+          <div style="font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--gold);flex-shrink:0;line-height:1;">04</div>
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--cream);margin-bottom:4px;">提供具體行動，不只道歉</div>
+            <div class="serif-p" style="color:rgba(253,248,241,0.5);font-size:12px;">「對不起」之後必須跟著「我們會這樣做」，讓對方看到改變的誠意。</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:rgba(253,248,241,0.05);border-radius:8px;border-left:3px solid var(--kraft);grid-column:1/-1;">
+          <div style="font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--kraft);flex-shrink:0;line-height:1;">05</div>
+          <div>
+            <div style="font-family:'Caveat',cursive;font-size:17px;font-weight:700;color:var(--cream);margin-bottom:4px;">危機過後公開透明覆盤</div>
+            <div class="serif-p" style="color:rgba(253,248,241,0.5);font-size:12px;">事件平息後主動發布「我們做了什麼改善」的說明，把危機轉化為品牌信任的加分機會。符合「永續心靈」價值觀，把每次挑戰都當作成長。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer><div class="footer-bot" style="max-width:100%;padding:18px 48px;background:var(--dark);"><p style="color:rgba(253,248,241,0.23);font-family:'Noto Sans TC',sans-serif;font-size:11px;">© 2026 Trace & Sip 心靈咖啡所</p><div class="socials"><a>Instagram</a><a>Facebook</a><a>Line@</a></div></div></footer>
+</div>
+
 <!-- ═══════════ VIEW: ABOUT ═══════════ -->
 <div id="view-about" style="display:none">
   <div class="about-layout">
@@ -1005,7 +2224,7 @@ function openDetail(id){
 }
 
 /* ══ PAGE NAV ══ */
-const NAV_PAGES=['home','menu','member','data','about','booking'];
+const NAV_PAGES=['home','menu','member','data','theory','pr','crisis','about','booking'];
 let current='home',busy=false;
 function nav(id){
   if(busy||id===current)return;
@@ -1114,10 +2333,207 @@ function quickMsg(text){
   setTimeout(()=>addBotMsg(reply),300);
 }
 
+/* ══ MEMBER SYSTEM ══ */
+
+// Storage helpers
+function getUsers(){ try{ return JSON.parse(localStorage.getItem('ts_users')||'{}'); }catch(e){return{};} }
+function saveUsers(u){ localStorage.setItem('ts_users', JSON.stringify(u)); }
+function getCurrentUser(){ try{ return JSON.parse(localStorage.getItem('ts_current')||'null'); }catch(e){return null;} }
+function saveCurrentUser(u){ localStorage.setItem('ts_current', JSON.stringify(u)); }
+
+const TIER_INFO = [
+  { name:'Espresso', label:'☕ Espresso 初心會員', cls:'tier-espresso', min:0,    max:300  },
+  { name:'Latte',    label:'🌿 Latte 療癒會員',   cls:'tier-latte',    min:300,  max:1200 },
+  { name:'Pour-over',label:'💎 Pour-over 尊榮會員',cls:'tier-pourover', min:1200, max:9999 },
+];
+
+function getTier(pts){
+  if(pts>=1200) return TIER_INFO[2];
+  if(pts>=300)  return TIER_INFO[1];
+  return TIER_INFO[0];
+}
+
+function openAuthModal(tab='login'){
+  document.getElementById('authOverlay').classList.add('open');
+  switchAuthTab(tab);
+}
+function closeAuthModal(){ document.getElementById('authOverlay').classList.remove('open'); }
+
+function switchAuthTab(tab){
+  document.getElementById('authLogin').style.display    = tab==='login'    ? 'block' : 'none';
+  document.getElementById('authRegister').style.display = tab==='register' ? 'block' : 'none';
+  document.getElementById('tabLogin').classList.toggle('on',    tab==='login');
+  document.getElementById('tabRegister').classList.toggle('on', tab==='register');
+  document.getElementById('liErr').textContent = '';
+  document.getElementById('rgErr').textContent = '';
+}
+
+function doRegister(){
+  const name  = document.getElementById('rg-name').value.trim();
+  const phone = document.getElementById('rg-phone').value.trim();
+  const email = document.getElementById('rg-email').value.trim().toLowerCase();
+  const pw    = document.getElementById('rg-pw').value;
+  const pw2   = document.getElementById('rg-pw2').value;
+  const bday  = document.getElementById('rg-bday').value;
+  const mood  = document.getElementById('rg-mood').value;
+  const err   = document.getElementById('rgErr');
+
+  if(!name||!email||!pw){ err.textContent='請填寫姓名、信箱與密碼'; return; }
+  if(pw.length < 6){ err.textContent='密碼至少需要 6 個字元'; return; }
+  if(pw !== pw2){ err.textContent='兩次密碼不一致，請再確認'; return; }
+
+  const users = getUsers();
+  if(users[email]){ err.textContent='此信箱已被註冊，請直接登入'; return; }
+
+  const now = new Date().toLocaleDateString('zh-TW');
+  const newUser = {
+    name, phone, email, pw, bday, mood,
+    points: 50,  // 加入即送 50 點
+    joinDate: now,
+    history: [
+      { emoji:'🎁', name:'加入會員禮', date: now, pts: '+50' }
+    ]
+  };
+  users[email] = newUser;
+  saveUsers(users);
+  saveCurrentUser(newUser);
+  closeAuthModal();
+  updateNavForUser(newUser);
+  setTimeout(()=>openDashModal(), 300);
+}
+
+function doLogin(){
+  const email = document.getElementById('li-email').value.trim().toLowerCase();
+  const pw    = document.getElementById('li-pw').value;
+  const err   = document.getElementById('liErr');
+
+  if(!email||!pw){ err.textContent='請輸入信箱與密碼'; return; }
+
+  const users = getUsers();
+  const user  = users[email];
+  if(!user){ err.textContent='找不到此帳號，請先註冊'; return; }
+  if(user.pw !== pw){ err.textContent='密碼錯誤，請再試一次'; return; }
+
+  saveCurrentUser(user);
+  closeAuthModal();
+  updateNavForUser(user);
+  setTimeout(()=>openDashModal(), 300);
+}
+
+function doLogout(){
+  localStorage.removeItem('ts_current');
+  closeDashModal();
+  const btn = document.getElementById('nbMemberBtn');
+  btn.textContent = '登入 / 註冊';
+  btn.classList.remove('logged');
+  btn.onclick = ()=>openAuthModal('login');
+}
+
+function updateNavForUser(user){
+  const btn = document.getElementById('nbMemberBtn');
+  btn.textContent = `👤 ${user.name}`;
+  btn.classList.add('logged');
+  btn.onclick = openDashModal;
+}
+
+function openDashModal(){
+  const user = getCurrentUser();
+  if(!user){ openAuthModal('login'); return; }
+
+  // sync latest from storage
+  const users   = getUsers();
+  const latest  = users[user.email] || user;
+  saveCurrentUser(latest);
+
+  const pts  = latest.points || 0;
+  const tier = getTier(pts);
+  const next = TIER_INFO[Math.min(TIER_INFO.indexOf(tier)+1, 2)];
+  const pct  = tier === TIER_INFO[2] ? 100 : Math.min(100, Math.round((pts - tier.min) / (tier.max - tier.min) * 100));
+
+  document.getElementById('dashName').textContent  = `嗨，${latest.name} 👋`;
+  document.getElementById('dashEmail').textContent  = latest.email;
+  document.getElementById('dashPts').textContent    = pts;
+  document.getElementById('dashTierPill').className = `tier-pill ${tier.cls}`;
+  document.getElementById('dashTierPill').textContent = tier.label;
+  document.getElementById('dashProgressLbl').textContent  = tier.name;
+  document.getElementById('dashProgressNext').textContent = next.name;
+  document.getElementById('dashProgressFill').style.width = pct + '%';
+
+  const ptsLeft = tier === TIER_INFO[2] ? '已達最高等級 🎉' : `還差 ${tier.max - pts} 點升級`;
+  document.getElementById('dashPtsNext').textContent = ptsLeft;
+
+  // history
+  const hist = (latest.history || []).slice().reverse().slice(0,6);
+  document.getElementById('dashHistory').innerHTML = hist.length
+    ? hist.map(h=>`
+        <div class="history-item">
+          <div class="hi-left"><span class="hi-emoji">${h.emoji}</span>
+            <div><div class="hi-name">${h.name}</div><div class="hi-date">${h.date}</div></div>
+          </div>
+          <div class="hi-pts">${h.pts} 點</div>
+        </div>`).join('')
+    : '<div style="font-family:\'Noto Serif TC\',serif;font-size:13px;color:var(--brown);opacity:.6;padding:8px 0;">尚無消費紀錄</div>';
+
+  document.getElementById('redeemMsg').textContent = '';
+  document.getElementById('dashOverlay').classList.add('open');
+}
+
+function closeDashModal(){ document.getElementById('dashOverlay').classList.remove('open'); }
+
+// 模擬消費得點（展示用）
+const DEMO_ITEMS = [
+  {emoji:'☕',name:'手沖單品咖啡',pts:15},
+  {emoji:'☁️',name:'玫瑰拿鐵',pts:18},
+  {emoji:'🍰',name:'下午茶套餐',pts:35},
+  {emoji:'🤝',name:'單次簡易諮詢',pts:50},
+  {emoji:'🌿',name:'諮商療程',pts:180},
+  {emoji:'✨',name:'入門組合方案',pts:108},
+];
+function addTestPoints(){
+  const user  = getCurrentUser();
+  if(!user) return;
+  const users = getUsers();
+  const item  = DEMO_ITEMS[Math.floor(Math.random()*DEMO_ITEMS.length)];
+  const today = new Date().toLocaleDateString('zh-TW');
+  users[user.email].points = (users[user.email].points||0) + item.pts;
+  users[user.email].history = users[user.email].history || [];
+  users[user.email].history.push({ emoji:item.emoji, name:item.name, date:today, pts:'+'+item.pts });
+  saveUsers(users);
+  saveCurrentUser(users[user.email]);
+  updateNavForUser(users[user.email]);
+  openDashModal(); // refresh
+}
+
+function redeemPoints(cost, itemName){
+  const user  = getCurrentUser();
+  if(!user) return;
+  const users = getUsers();
+  const pts   = users[user.email].points || 0;
+  const msg   = document.getElementById('redeemMsg');
+  if(pts < cost){ msg.style.color='var(--rust)'; msg.textContent=`點數不足！需要 ${cost} 點，目前只有 ${pts} 點。`; return; }
+  const today = new Date().toLocaleDateString('zh-TW');
+  users[user.email].points -= cost;
+  users[user.email].history = users[user.email].history || [];
+  users[user.email].history.push({ emoji:'🎟️', name:`兌換：${itemName}`, date:today, pts:'-'+cost });
+  saveUsers(users);
+  saveCurrentUser(users[user.email]);
+  msg.style.color='var(--sage)';
+  msg.textContent=`✓ 成功兌換「${itemName}」！已扣除 ${cost} 點。`;
+  updateNavForUser(users[user.email]);
+  setTimeout(()=>openDashModal(), 800);
+}
+
+// close on overlay click
+document.getElementById('authOverlay').addEventListener('click', function(e){ if(e.target===this) closeAuthModal(); });
+document.getElementById('dashOverlay').addEventListener('click', function(e){ if(e.target===this) closeDashModal(); });
+
 /* ══ INIT ══ */
 renderCards();
 const di=document.getElementById('f-date');
 if(di){const t=new Date();t.setDate(t.getDate()+1);di.min=t.toISOString().split('T')[0];}
+// 自動恢復登入狀態
+const _u = getCurrentUser();
+if(_u) updateNavForUser(_u);
 </script>
 </body>
 </html>
